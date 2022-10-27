@@ -1,2 +1,19 @@
-@import './common';
-@import './example';
+
+@import './utils/mixin';
+@import './utils/vars';
+@import './utils/placeholders';
+
+
+@import './base/common';
+@import './base/container';
+@import './base/reset';
+// @import './example';
+
+@import './components/modal-details';
+
+
+@import './layouts/header';
+@import './layouts/gallery';
+@import './layouts/footer';
+@import './layouts/watched';
+@import './layouts/queue';
