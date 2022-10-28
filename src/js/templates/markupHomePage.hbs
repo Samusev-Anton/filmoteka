@@ -1,0 +1,11 @@
+{{#each this}}
+<li>
+    <img src={{backdrop_path}} alt={{original_title}} loading="lazy"/>
+    <h2>{{original_title}}</h2>
+    <ul>
+        {{genre_ids}}
+    </ul>
+    <p>{{release_date}}</p>
+    <p>{{vote_average}}</p>
+</li>
+{{/each}}
