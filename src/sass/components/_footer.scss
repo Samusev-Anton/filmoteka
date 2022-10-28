@@ -1,0 +1,35 @@
+.footer {
+  background-color: $footer-bgc;
+  &__icon {
+    stroke: $orange-text;
+    fill: $orange-text;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+  &__btn {
+    display: inline-block;
+    border: none;
+    background: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+.wraper {
+  text-align: center;
+  padding-top: 29px;
+  padding-bottom: 28px;
+
+  color: $footer-text;
+  font-family: 'Roboto';
+  font-size: 14px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 16px;
+    line-height: 1.19;
+  }
+}
+.copyrights {
+  margin-bottom: 10px;
+}
