@@ -1,0 +1,289 @@
+.header {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: $header-bgc;
+  background-image: url(/src/images/mobile/main-background-mobile.png);
+  background-size: cover;
+  /* opacity: 0.9; */
+}
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .header {
+    background-image: url(/src/images/mobile/main-background-mobile@2x.png);
+  }
+}
+
+@media screen and (min-device-pixel-ratio: 3),
+  screen and (min-resolution: 288dpi),
+  screen and (min-resolution: 3dppx) {
+  .header {
+    background-image: url(/src/images/mobile/main-background-mobile@3x.png);
+  }
+}
+
+/*Tablet фон*/
+@media screen and (min-width: 768px) {
+  .header {
+    min-height: 216px;
+    background-image: url(/src/images/tablet/main-background-tablet.png);
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .header {
+      background-image: url(/src/images/tablet/main-background-tablet@2x.png);
+    }
+  }
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    .header {
+      background-image: url(/src/images/tablet/main-background-tablet@3x.png);
+    }
+  }
+}
+/*Desctop фон*/
+@media screen and (min-width: 1280px) {
+  .header {
+    background-image: url(/src/images/desktop/main-background-desktop.png);
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .header {
+      background-image: url(/src/images/desktop/main-background-desktop@2x.png);
+    }
+  }
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    .header {
+      background-image: url(/src/images/desktop/main-background-desktop@3x.png);
+    }
+  }
+}
+
+.header__section {
+  padding-top: 40px;
+  padding-bottom: 44px;
+}
+
+.header__logo {
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__icon {
+  stroke: $white-text;
+  fill: none;
+  display: block;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__list {
+  display: flex;
+  align-items: center;
+
+  font-style: 500;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.header__list {
+  color: $white-text;
+}
+
+.header__list-item {
+  position: relative;
+  margin-right: 40px;
+}
+
+.header__list-item:last-child {
+  margin-right: 0px;
+}
+.header__list-link {
+  color: $white-text;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.17;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__form {
+  margin-top: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__form-search {
+  position: relative;
+  width: 280px;
+}
+.header__form-input {
+  font-size: 14px;
+  max-width: 280px;
+  width: 100%;
+  height: 20px;
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid $white-text;
+
+  caret-color: $white-text;
+}
+
+@media screen and (min-width: 768px) {
+  .header__form-input {
+    max-width: 336px;
+  }
+  .header__form-search {
+    width: 336px;
+  }
+  .header__form {
+    margin-top: 40px;
+  }
+
+  .header__error {
+    font-size: 14px;
+    line-height: 1.14;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__form-input {
+    max-width: 394px;
+  }
+  .header__form-search {
+    width: 394px;
+  }
+}
+
+.header__form-input:focus-within {
+  outline: none;
+}
+.header__form-input:not(:placeholder-shown) {
+  color: $white-text;
+}
+
+.header__form-input::placeholder {
+  color: $white-text;
+}
+
+.header__form-icon {
+  display: inline-flex;
+
+}
+
+.header__error {
+  
+  opacity: 0;
+
+  visibility: hidden;
+}
+
+.header__error-visible {
+  margin-top: 16px;
+  color: $error-text;
+  opacity: 100%;
+  visibility: visible;
+}
+
+.header__list-link--accent::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translate(-50%, 0%);
+  background-color: $error-text;
+  width: 100%;
+  height: 3px;
+}
+
+.header__logo-text {
+  display: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    display: flex;
+    align-items: center;
+  }
+  .header__logo-text {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    color: $white-text;
+    margin-left: 10px;
+  }
+}
+
+.header__search {
+  position: absolute;
+  display: inline-flex;
+  background: none;
+  border: none;
+
+  stroke: $white-text;
+  fill: none;
+
+  top: 50%;
+  left: 102%;
+  transform: translate(-100%, -50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-autorization {
+  fill: white;
+  stroke: white;
+
+  transition: stroke fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*Ховери*/
+.header__logo:hover .header__icon {
+  stroke: $orange-hover;
+}
+.header__logo:hover .header__logo-text {
+  color: $orange-hover;
+}
+.header__list-link:hover {
+  color: $orange-hover;
+}
+
+.icon-autorization:hover {
+  fill: $orange-hover;
+  stroke: $orange-hover;
+}
+
+.header__form-input:hover {
+  border-bottom-color: $orange-hover;
+}
+
+.header__form-input:hover.header__form-input::placeholder {
+  color: $orange-hover;
+}
+
+.header__form-input:hover~.header__search {
+  stroke: $orange-hover;
+}
