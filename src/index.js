@@ -1,14 +1,16 @@
-import  markup  from "../src/js/templates/markupHomePage.hbs";
+import  markupHomePage  from "../src/js/templates/markupHomePage.hbs";
 import  { apiHomePage } from "./js/themovieApi";
-import  { apiHomeSearch } from "./js/themovieApi";
-
-
-const homeGallary = document.querySelector('.gallery');
+// import  { apiHomeSearch } from "./js/themovieApi";
 
 
 
- apiHomePage().then(data=>{
-homeGallary.innerHTML = markup(data.results);
- });
+export const homeGallary = document.querySelector('.gallery');
+// export { homeGallary }
 
- apiHomeSearch();
+
+
+ apiHomePage().then(data => {
+homeGallary.innerHTML = markupHomePage(data.results);
+ })
+
+ 

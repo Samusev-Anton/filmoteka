@@ -1,0 +1,16 @@
+<li>
+    <img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt={{original_title}} loading="lazy"/>
+    <h2>{{original_title}}</h2>
+    <p>Vote/Votes <span>{{vote_average}}/{{vote_count}}</span></p>
+    <p>Popularity <span>{{popularity}}</span></p>
+    <p>Original Title <span>{{original_title}}</span></p>
+
+    <ul>Genre
+         {{#each genres}}
+        <li>
+           {{this.name}}
+        </li>
+        {{/each}}
+    </ul>
+    <p>about </br> <span>{{overview}}</span></p>
+</li>

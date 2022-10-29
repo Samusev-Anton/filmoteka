@@ -13,12 +13,7 @@
   <!-- Change theme -->
   <link rel="stylesheet" title="theme" href="./sass/dark-theme.scss" disabled />
   </head>
-  
-  <script type="module" src="./index.js"></script>
-</head>
-
-<body>
-
+  <body>
   <include src="./partials/home-header.html"></include>
   <main>
     <div class="container">
@@ -33,7 +28,7 @@
     </div>
   </main>
   <include src="./partials/footer.html"></include>
-  <!-- <include src="./partials/about-modal.html"></include> -->
+  <include src="./partials/modal-card.html"></include>
   <div class="backdrop__modal-card" data-backdrop></div>
   <div class="backdrop backdrop__is-hidden js-page-loader">
     <div class="loader is-active" id="js-page-loader">🍿</div>
@@ -41,6 +36,9 @@
   <div class="container relative-container">
     <include src="./partials/up-btn.html"></include>
   </div>
+  <script type="module" src="./index.js"></script>
+  <script type="module" src="./js/modal-card.js"></script>
+
 </body>
 
 </html>
