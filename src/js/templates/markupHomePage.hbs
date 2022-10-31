@@ -1,6 +1,10 @@
 {{#each this}}
-<li>
-    <img src=https://image.tmdb.org/t/p/w500{{backdrop_path}} alt={{original_title}} loading="lazy"/>
+<li class="list-card__item">
+    {{#if poster_path}}
+    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{original_title}}' loading="lazy"/>
+    {{else}}
+    <img src='https://sd.keepcalms.com/i/keep-calm-poster-not-found.png'alt='poster not found' class='lazyload'/>
+    {{/if}}
     <h2>{{original_title}}</h2>
     <ul>
         {{genre_ids}}
