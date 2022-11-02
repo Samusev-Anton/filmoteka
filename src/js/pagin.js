@@ -1,4 +1,5 @@
-// import { totalPages } from './themovieApi';
+import { totalPages } from './themovieApi';
+// console.log(totalPages);
 
 const pageNumbers = (total, max, current) => {
   const half = Math.floor(max / 2);
@@ -139,7 +140,7 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   };
 }
 
-const paginationButtons = new PaginationButton(10, 5);
+const paginationButtons = new PaginationButton(10, 10);
 
 paginationButtons.render();
 

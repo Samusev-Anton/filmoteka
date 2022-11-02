@@ -5,6 +5,15 @@
 
 // API Read Access Token (v4 auth)
 // eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2E3NmYwODY5YWZkNTllYWZjY2VmN2Q2ZDk4NmMyMCIsInN1YiI6IjYzNWFjODY2MTUxMWFhMDA3ZTlkMjA0OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u4oo3dqnEhbq4-mU65_77HUxgSjunDdlP98tEZ8BJ8w
+
+import {
+  API_KEY,
+  BASE_URL,
+  TREND_URL,
+  SEARCH_URL,
+  ID_URL,
+} from './api/api-parts';
+
 import { inputData } from './search-films';
 let currentPage = 1;
 let totalPages = 0;
@@ -15,7 +24,7 @@ const URL = 'https://api.themoviedb.org/3';
 export async function apiHomePage() {
   try {
     const responce = await fetch(
-      `${URL}/trending/movie/week?api_key=${KEY}&page=${currentPage}`
+      `${TREND_URL}?api_key=${API_KEY}&page=${currentPage}`
     );
     const data = await responce.json();
     totalPages = data.total_pages;
@@ -28,10 +37,10 @@ export async function apiHomePage() {
   }
 }
 
-export async function apiHomeSearch() {
+export async function apiHomeSearch(inputData) {
   try {
     const responce = await fetch(
-      `${URL}/search/movie?api_key=${KEY}&query=${inputData}&language=en-US&page=1&include_adult=false&page=${currentPage}`
+      `${SEARCH_URL}?api_key=${API_KEY}&query=${inputData}&language=en-US&page=1&include_adult=false&page=${currentPage}`
     );
     const data = await responce.json();
     //   console.log(data);
@@ -46,10 +55,10 @@ export async function apiHomeSearch() {
   }
 }
 
-export async function apiModalDetails() {
+export async function apiModalDetails(movieId) {
   try {
     const responce = await fetch(
-      `${URL}/movie/436270?api_key=${KEY}&language=en-US`
+      `${ID_URL}/${movieId}?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
     //   console.log(resp);
