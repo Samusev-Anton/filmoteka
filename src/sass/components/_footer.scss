@@ -33,3 +33,25 @@
 .copyrights {
   margin-bottom: 10px;
 }
+
+.footer__icon {
+  animation: heartbeat 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+            transform: scale(1);
+        }
+    
+        10% {
+            transform: scale(1.4);
+        }
+    
+        50% {
+            transform: scale(1);
+        }
+    
+        100% {
+            transform: scale(1);
+        }
+}
