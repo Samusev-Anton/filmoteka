@@ -1,7 +1,7 @@
 {{#each this}}
-<li class="list-card__item">
+<li class="list-card__item film-card">
     {{#if poster_path}}
-    <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{original_title}}' loading="lazy" data-id="{{id}}"/>
+    <img src='https://image.tmdb.org/t/p/w400{{poster_path}}' alt='{{original_title}}' loading="lazy" data-id="{{id}}"/>
     {{else}}
     <img src='https://sd.keepcalms.com/i/keep-calm-poster-not-found.png'alt='poster not found' class='lazyload'/>
     {{/if}}

@@ -1,0 +1,26 @@
+main {
+  flex-grow: 1;
+}
+
+.films-section {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.film-list {
+  margin-bottom: 40px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 15px;
+  }
+}
