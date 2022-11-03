@@ -15,50 +15,16 @@ button.change_theme[data-theme=onDark] {
   display: none;
 }
 
-body {
-  background-color: #222222;
-}
-
-.film-card__discription {
-  color: rgb(255, 107, 8);
-}
-
-.film-card__title {
-  color: white;
-}
-
-.pagination_button {
-  color: #fff;
-}
-
-.pagination_button:hover {
-  color: black;
-}
-
-.pagination_button-dots:hover {
-  color: #fff;
-}
-
-.pagination_button-active:hover {
-  background-color: #ff6b01;
-  color: #fff;
-}
-
-.pagination_button-arrow_left,
-.pagination_button-arrow_right {
-  background-color: #333;
-}
-
 h2.swiper-title {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .film-list.js-main-film-list {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 section.films-section h2.film-card__title {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 footer.footer {
