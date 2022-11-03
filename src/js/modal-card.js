@@ -4,8 +4,6 @@ import { refs } from './refs';
 
 const choiceFilm = document.querySelector('.list-card__item');
 
-// function onClickFilm() {}
-
 refs.homeGallery.addEventListener('click', clickOnMovie);
 
 // Click Handler Function
@@ -18,11 +16,6 @@ async function clickOnMovie(evt) {
   console.log(evt.target.dataset.id);
   let movieId = evt.target.dataset.id;
   apiModalDetails(movieId).then(resp => {
-    // console.log(resp);
     refs.filmBox.innerHTML = markupModal(resp);
-    // console.log(choiceFilm);
   });
-
-  // await fetchById(movieId);
-  // textModalBtn(movieId);
 }
