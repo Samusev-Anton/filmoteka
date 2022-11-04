@@ -1,17 +1,14 @@
-const modal = document.getElementById('modal-students-js');
-const btn = document.getElementById('modal-students-open');
-const span = document.getElementsByClassName('modal-students-close')[0];
+(() => {
+  const refs = {
+    openModalBtn: document.querySelector('[data-modal-open]'),
+    closeModalBtn: document.querySelector('[data-modal-close]'),
+    modal: document.querySelector('[data-modal]'),
+  };
 
-btn.onclick = function () {
-  modal.style.display = 'block';
-};
+  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', toggleModal);
 
-span.onclick = function () {
-  modal.style.display = 'none';
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = 'none';
+  function toggleModal() {
+    refs.modal.classList.toggle('is-hidden');
   }
-};
+})();
