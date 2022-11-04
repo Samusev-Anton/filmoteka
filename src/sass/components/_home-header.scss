@@ -74,10 +74,6 @@
   padding-bottom: 44px;
 }
 
-// .header__logo {
-//   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-// }
-
 .header__logo {
   display: flex;
   justify-content: center;
@@ -89,30 +85,13 @@
   &:focus {
     transform: scale(1.15);
     text-shadow: 0px 8px 9px white;
-    // &::after {
-    //   content: '';
-    //   width: 100%;
-    //   height: 4px;
-    //   background: #FF001B;
-    //   border-radius: 1px;
-    //   position: absolute;
-    //   left: 0;
-    //   bottom: -5px;
-    // }
   }
-}
-
-.header__icon {
-  stroke: $white-text;
-  fill: none;
-  display: block;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header__icon_logo {
   animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
   stroke-width: 3px;
-  stroke: red;
+  stroke: white;
   fill: transparent;
 }
 
@@ -305,23 +284,26 @@
   transition: stroke fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/*Ховери*/
-.header__logo:hover .header__icon {
+/*Ховери та фокуси*/
+.header__logo:hover .header__logo-text, 
+.header__logo:hover .header__icon_logo,
+.header__logo:focus .header__logo-text, 
+.header__logo:focus .header__icon_logo {
+  color: $orange-hover;
   stroke: $orange-hover;
 }
-.header__logo:hover .header__logo-text {
-  color: $orange-hover;
-}
-.header__list-link:hover {
+.header__list-link:hover, 
+.header__list-link:focus{
   color: $orange-hover;
 }
 
-.icon-autorization:hover {
+.icon-autorization:hover, 
+.icon-autorization:focus {
   fill: $orange-hover;
   stroke: $orange-hover;
 }
 
-.header__form-input:hover {
+.header__form-input:hover{
   border-bottom-color: $orange-hover;
 }
 
