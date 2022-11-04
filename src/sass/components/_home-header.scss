@@ -332,3 +332,52 @@
 .header__form-input:hover~.header__search {
   stroke: $orange-hover;
 }
+
+.filter_form {
+  // position: absolute;
+  top: 105px;
+	display: flex;
+	flex-direction: column;
+  text-align: center;
+  font-size: 13px;
+  @media screen and (min-width: 768px) {
+	display: block;
+  }
+}
+
+.filter_form__select {
+  @media screen and (min-width: 320px) {
+    &:last-child {
+      margin-top: 10px;
+    }
+  }
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  background-color: inherit;
+  padding: 1px;
+}
+
+.filter_form__select > option {
+  background-color: #272e34;
+}
+.filter_form__select:not(:last-child) {
+  margin-right: 3px;
+	margin-bottom: 8px;
+	@media screen and (min-width: 768px) {
+		margin-bottom: 0px;
+	}
+}
+
+.btnResetFilter {
+  margin: 0 auto;
+  width: 45px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  background-color: inherit;
+  cursor: pointer;
+  text-align: center;
+}

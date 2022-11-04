@@ -394,146 +394,6 @@ main {
   }
 }
 
-.not-film-card {
-  width: 280px;
-  height: 158px;
-  padding: 15px 85px 110px;
-  display: block;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.33;
-  text-transform: uppercase;
-  text-align: center;
-  background-image: url("../images/mobile/cinema-mobile.jpg");
-  background-size: contain;
-}
-@media screen and (min-width: 768px) {
-  .not-film-card {
-    width: 704px;
-    height: 396px;
-    padding: 38px 214px 275px;
-    font-size: 30px;
-    background-image: url("../images/tablet/cinema-tablet.jpg");
-  }
-}
-@media screen and (min-width: 1280px) {
-  .not-film-card {
-    width: 1216px;
-    height: 684px;
-    padding: 65px 366px 476px;
-    font-size: 52px;
-    background-image: url("../images/desktop/cinema-desktop.jpg");
-  }
-}
-
-.film-card {
-  margin-bottom: 20px;
-  width: 280px;
-  cursor: pointer;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-@media screen and (min-width: 768px) {
-  .film-card {
-    width: 336px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .film-card {
-    width: 395px;
-  }
-}
-.film-card:hover {
-  transform: scale(1.05);
-}
-
-.film-card__img {
-  height: 398px;
-  border-radius: 5px;
-}
-@media screen and (min-width: 768px) {
-  .film-card__img {
-    height: 455px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .film-card__img {
-    height: 574px;
-  }
-}
-
-.film-card__title {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  text-transform: uppercase;
-  color: #000000;
-}
-@media screen and (min-width: 1280px) {
-  .film-card__title {
-    font-size: 20px;
-    line-height: 1.2;
-  }
-}
-
-.film-card__genres {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  color: #ff6b08;
-}
-@media screen and (min-width: 1280px) {
-  .film-card__genres {
-    font-size: 20px;
-    line-height: 1.2;
-  }
-}
-
-.film-card__release-date {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  color: #ff6b08;
-}
-@media screen and (min-width: 1280px) {
-  .film-card__release-date {
-    font-size: 20px;
-    line-height: 1.2;
-  }
-}
-
-.card__vote_average {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  color: #ffffff;
-  background: #ff6b08;
-  border-radius: 5px;
-  padding: 2px;
-}
-
-.film-card__wrapper {
-  display: block;
-  flex-grow: 1;
-  padding-top: 8px;
-}
-
-.film-card__discription {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  color: #ff6b08;
-}
-
 .footer {
   background-color: #f7f7f7;
 }
@@ -590,4 +450,87 @@ main {
   100% {
     transform: scale(1);
   }
+}
+.modal {
+  padding: 40px 12px;
+  background-color: #ffffff;
+}
+.modal__title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.17;
+}
+.modal__info {
+  display: flex;
+  margin-bottom: 20px;
+}
+.modal__list-key-item {
+  color: #8c8c8c;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+}
+.modal__list-key-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.modal__list-value-item {
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+}
+.modal__list-value-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.modal__list-value {
+  margin-left: 85px;
+}
+.modal__list-vote {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #ffffff;
+}
+.modal__about {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+}
+.modal__about-text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.66;
+  margin-bottom: 20px;
+}
+.modal__buttons {
+  display: flex;
+  gap: 15px;
+}
+.modal__button--watched, .modal__button--queue {
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 136px;
+  height: 44px;
+  background-color: #ffffff;
+  border-style: none;
+  outline: 1px solid black;
+  border-radius: 5px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+}
+.modal__button--watched:hover, .modal__button--queue:hover {
+  background-color: #ff6b01;
+  color: #ffffff;
+  outline: 1px solid #ff6b01;
+  border-color: #ff6b01;
 }/*# sourceMappingURL=library.css.map */
