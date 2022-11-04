@@ -1,0 +1,125 @@
+.film-card {
+    width: 280px;
+    height: 443px;
+    transition: transform 0.15s ease-in-out;
+
+    &:hover,
+    &:focus {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out 0s;
+        .film-card h2 {
+          color: #ff6b08;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 336px;
+        height: 494px;
+    }
+    @media screen and (min-width: 1080px) {
+        width: 395px;
+        height: 634px;
+    }
+}
+
+
+.film-card img {
+    display: block;
+    width: 100%;
+    height: 402px;
+    margin-bottom: 10px;
+    border-radius: $main-border-radius;
+    @media screen and (min-width: 768px) {
+        height: 455px;
+        margin-bottom: 8px;
+    }
+    @media screen and (min-width: 1080px) {
+        height: 574px;
+        margin-bottom: 12px;
+    }
+}
+
+
+.film-card h2 {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white-text;
+    font-size: 12px;
+    line-height: 1,2;
+    @media screen and (min-width: 768px) {
+        line-height: 0,75;
+    }
+    @media screen and (min-width: 1080px) {
+        font-size: 20px;
+        line-height: 1,2;
+    }
+}
+
+.film-card__description {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: #ff6b08;
+    padding: 1px 0;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    @media screen and (min-width: 1080px) {
+        font-size: 20px;
+        line-height: calc(24 / 20);
+    }
+}
+
+.film-card__description>ul {
+    display: flex;
+    justify-content: start;
+    margin-right: 3px;
+}
+
+.film-card__description li:not(:last-child):after {
+    content: ",";
+    display: inline-block;
+}
+
+.film-card__description li:last-child {
+    // margin-right: 7px;
+
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        height: 10px;
+        margin-left: 5px;
+        background-color: #ff6b08;
+        @media screen and (min-width: 768px) {
+            height: 11px;
+            margin-left: 7px;
+        }
+              @media screen and (min-width: 1080px) {
+        height: 15px;
+    }
+    }
+}
+
+.film-card__description li:not(:last-child) {
+    margin-right: 3px;
+}
+.film-card__year {
+    margin-left: 3px;
+    @media screen and (min-width: 1080px) {
+        margin-left: 5px;
+    }
+}
+
+// .film-card__rating {
+//     margin-left: 10px;
+//     color: #fff;
+//     line-height: 14px;
+//     height: 16px;
+//     width: 36px;
+//     padding-top: 1px;
+//     text-align: center;
+//     background-color: #ff6b01;
+//     border-radius: $main-border-radius;
+// }
+

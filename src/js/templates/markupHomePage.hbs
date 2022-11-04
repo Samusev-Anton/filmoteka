@@ -1,19 +1,24 @@
 {{#each this}}
 <li class="list-card__item film-card">
-    {{#if poster_path}}
-    <img src='https://image.tmdb.org/t/p/w400{{poster_path}}' alt='{{original_title}}' loading="lazy" data-id="{{id}}"/>
-    {{else}}
-    <img src='https://sd.keepcalms.com/i/keep-calm-poster-not-found.png'alt='poster not found' class='lazyload'/>
-    {{/if}}
+<div class="film-card__thumb">
+        {{#if poster_path}}
+        <img src="https://image.tmdb.org/t/p/w400{{poster_path}}"
+            alt="{{original_title}}" loading="lazy" data-id="{{id}}" />
+        {{else}}
+        <img src="https://sd.keepcalms.com/i/keep-calm-poster-not-found.png"
+            alt="poster not found" class="lazyload" />
+        {{/if}}
+</div>
     <h2 data-id="{{id}}">{{original_title}}</h2>
-    <ul>Genre
-        {{#each genres}}
-        <li>
-            {{this.name}}
-        </li>
-        {{/each}}
-    </ul>
-    <p>{{year}}</p>
-    <p>{{vote_average}}</p>
+        <div class="film-card__description">
+        <ul>
+            {{#each genres}}
+            <li>{{this.name}}</li>
+            {{/each}}
+        </ul>
+    <p class="film-card__year">{{year}}</p>
+    <p class="film-card__rating visually-hidden">{{vote_average}}</p>
+    </div>
 </li>
 {{/each}}
+

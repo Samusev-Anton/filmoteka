@@ -13,14 +13,20 @@ main {
 }
 
 .film-list {
+  display: grid;
   margin-bottom: 40px;
+  gap: 32px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 60px;
-    gap: 32px;
+    grid-row-gap: 32px;
+    grid-column-gap: 32px;
   }
+
   @media screen and (min-width: 1280px) {
-    gap: 15px;
+    grid-row-gap: 32px;
+    grid-column-gap: 15px;
   }
 }
