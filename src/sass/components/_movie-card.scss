@@ -40,10 +40,10 @@
 }
 
 
-.film-card h2 {
+.film-card__title {
     font-weight: 500;
     text-transform: uppercase;
-    color: $white-text;
+    // color: $white-text;
     font-size: 12px;
     line-height: 1,2;
     @media screen and (min-width: 768px) {
