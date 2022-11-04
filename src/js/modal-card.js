@@ -16,6 +16,13 @@ async function clickOnMovie(evt) {
   console.log(evt.target.dataset.id);
   let movieId = evt.target.dataset.id;
   apiModalDetails(movieId).then(resp => {
+    refs.filmBox.classList.remove('visually-hidden');
     refs.filmBox.innerHTML = markupModal(resp);
+    const closeModalBtn = document.querySelector('.modal__button-close');
+    closeModalBtn.addEventListener('click', onCloseModal);
   });
+}
+
+function onCloseModal() {
+  refs.filmBox.classList.add('visually-hidden');
 }
