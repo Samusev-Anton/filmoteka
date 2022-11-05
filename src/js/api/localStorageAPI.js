@@ -2,12 +2,13 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import "notiflix/dist/notiflix-3.2.5.min.css";
 
 export const localStorageAPI = {
-    save,
-    load,
-    pushMovie,
-  };
+  save,
+  load,
+  pushWatched,
+  pushQueue,
+};
   
-  let watchedStorage = [];
+  
 
   function save(key, value) {
     try {
@@ -22,22 +23,46 @@ export const localStorageAPI = {
     try {
       const list = localStorage.getItem(key);
       return list === null
-        ? console.log('nothing')
+        ? undefined
         : JSON.parse(list);
     } catch (error) {
       Notify.failure("Local storage error");
     }
   }
 
-  function pushMovie(value) {
+
+
+
+  //=============================================
+  //Add data to localstorage
+  let watchedStorage = [];
+  let queueStorage = [];
+
+  function pushWatched(key, obj) {
     try {
-      if (watchedStorage.includes(value)) {
-        Notify.failure('We have already seen that movie');
-        return;
-      }
-      watchedStorage.push(value);
-      localStorage.setItem('watched', JSON.stringify(watchedStorage));
+       if (watchedStorage.includes(obj)) {
+         Notify.failure('Yes, we know.');
+         return;
+       }
+     
+      watchedStorage.push(obj);
+      localStorage.setItem(key, JSON.stringify(watchedStorage));
     } catch (error) {
       Notify.failure('Local storage error');
     }
   }
+
+  function pushQueue(key, obj) {
+    try {
+      if (queueStorage.includes(obj)) {
+        Notify.failure('We have already seen that movie');
+        return;
+      }
+      queueStorage.push(obj);
+      localStorage.setItem(key, JSON.stringify(queueStorage));
+    } catch (error) {
+      Notify.failure('Local storage error');
+    }
+  }
+
+   
