@@ -16,13 +16,37 @@ async function clickOnMovie(evt) {
   console.log(evt.target.dataset.id);
   let movieId = evt.target.dataset.id;
   apiModalDetails(movieId).then(resp => {
-    refs.filmBox.classList.remove('visually-hidden');
     refs.filmBox.innerHTML = markupModal(resp);
-    const closeModalBtn = document.querySelector('.modal__button-close');
-    closeModalBtn.addEventListener('click', onCloseModal);
+    onOpenModal();
   });
 }
 
+function onOpenModal() {
+  const closeModalBtn = document.querySelector('.modal__button-close');
+  document.body.addEventListener('keydown', onEscButton);
+  document.body.classList.add('modal-open');
+  refs.filmBox.classList.remove('visually-hidden');
+  document.body.addEventListener('click', handleClick);
+  closeModalBtn.addEventListener('click', onCloseModal);
+}
+
 function onCloseModal() {
+  document.body.classList.remove('modal-open');
   refs.filmBox.classList.add('visually-hidden');
+  document.body.removeEventListener('click', handleClick);
+  document.body.removeEventListener('keydown', onEscButton);
+}
+
+function handleClick(event) {
+  console.log('event target: ', event.target);
+  console.log('currentTarget: ', event.currentTarget);
+  if (event.target === refs.filmBox) {
+    onCloseModal();
+  }
+}
+
+function onEscButton(evt) {
+  if (evt.code === 'Escape') {
+    onCloseModal();
+  }
 }
