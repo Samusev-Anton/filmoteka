@@ -80,7 +80,7 @@
   align-items: center;
   margin-right: auto;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     transform: scale(1.15);
@@ -96,17 +96,17 @@
 }
 
 @keyframes animate360 {
-    0% {
-        transform: rotateY(0deg);
-    }
+  0% {
+    transform: rotateY(0deg);
+  }
 
-    50% {
-        transform: rotateY(180deg);
-    }
+  50% {
+    transform: rotateY(180deg);
+  }
 
-    100% {
-        transform: rotateY(360deg);
-    }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 .site-nav {
@@ -211,11 +211,9 @@
 
 .header__form-icon {
   display: inline-flex;
-
 }
 
 .header__error {
-  
   opacity: 0;
 
   visibility: hidden;
@@ -285,25 +283,25 @@
 }
 
 /*Ховери та фокуси*/
-.header__logo:hover .header__logo-text, 
+.header__logo:hover .header__logo-text,
 .header__logo:hover .header__icon_logo,
-.header__logo:focus .header__logo-text, 
+.header__logo:focus .header__logo-text,
 .header__logo:focus .header__icon_logo {
   color: $orange-hover;
   stroke: $orange-hover;
 }
-.header__list-link:hover, 
-.header__list-link:focus{
+.header__list-link:hover,
+.header__list-link:focus {
   color: $orange-hover;
 }
 
-.icon-autorization:hover, 
+.icon-autorization:hover,
 .icon-autorization:focus {
   fill: $orange-hover;
   stroke: $orange-hover;
 }
 
-.header__form-input:hover{
+.header__form-input:hover {
   border-bottom-color: $orange-hover;
 }
 
@@ -311,6 +309,6 @@
   color: $orange-hover;
 }
 
-.header__form-input:hover~.header__search {
+.header__form-input:hover ~ .header__search {
   stroke: $orange-hover;
 }
