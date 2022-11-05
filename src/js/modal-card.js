@@ -19,9 +19,6 @@ async function clickOnMovie(evt) {
     refs.filmBox.classList.remove('visually-hidden');
     refs.filmBox.innerHTML = markupModal(resp);
     const closeModalBtn = document.querySelector('.modal__button-close');
-    // console.log(closeModalBtn);
-    // const addToWatched = document.querySelector('.modal__button--watched');
-    // console.log(addToWatched);
     closeModalBtn.addEventListener('click', onCloseModal);
   });
 }
