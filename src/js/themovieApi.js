@@ -18,9 +18,6 @@ import { inputData } from './search-films';
 let currentPage = 1;
 let totalPages = 0;
 
-const KEY = '27a76f0869afd59eafccef7d6d986c20';
-const URL = 'https://api.themoviedb.org/3';
-
 export async function apiHomePage() {
   try {
     const responce = await fetch(
