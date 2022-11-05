@@ -1,22 +1,3 @@
-{{!-- <div class="modal">
-    <img src=https://image.tmdb.org/t/p/w500{{poster_path}} alt={{original_title}} loading="lazy"/>
-    <h2 class="modal__title">{{original_title}}</h2>
-    <p class="modal__key">Vote/Votes <span class="modal__value">{{vote_average}}/{{vote_count}}</span></p>
-    <p class="modal__key">Popularity <span class="modal__value">{{popularity}}</span></p>
-    <p class="modal__key">Original Title <span class="modal__value">{{original_title}}</span></p>
-
-    <ul class="modal__key">Genre
-         {{#each genres}}
-        <li class="modal__value">
-           {{this.name}}
-        </li>
-        {{/each}}
-    </ul>
-    <p class="modal__about">ABOUT </br> <span class="modal__about--text">{{overview}}</span></p>
-    <button class="modal__button--watched" type="submit">ADD TO WATCHED</button>
-    <button class="modal__button--queue" type="submit">ADD TO QUEUE</button>
-</div> --}}
-{{! <div class='backdrop'></div> }}
 <div class='modal'>
   <div class='modal__img'><img
       class='modal__poster'
@@ -54,12 +35,10 @@
       <button class='modal__button--watched' type='submit'>ADD TO WATCHED</button>
       <button class='modal__button--queue' type='submit'>ADD TO QUEUE</button></div>
   </div>
-  <button class='modal__button-close'><svg
+  <button type='button' class='modal__button-close'><svg
       class='modal__button-close-icon'
       width='20'
       height='20'
     >
-      <use
-        href='../../../images/sprite.svg#card-btn-close'
-      ></use></svg></button>
+      <use href='./images/close.svg'></use></svg></button>
 </div>

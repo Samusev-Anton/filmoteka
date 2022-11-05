@@ -1,26 +1,26 @@
 @import './variables';
 .modal {
   position: absolute;
+  width: 280px;
+  left: 50%;
   padding-top: 48px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
   background-color: $main-bgc;
-  width: 280px;
-  left: 50%;
   transform: translate(-50%);
   z-index: 5;
   @media screen and (min-width: 768px) {
+    display: flex;
     width: 704px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    gap: 68px;
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
     padding-bottom: 40px;
+    gap: 68px;
   }
   @media screen and (min-width: 1280px) {
     width: 806px;
@@ -78,10 +78,10 @@
     line-height: 1.3;
   }
   &__about-text {
+    margin-bottom: 20px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.66;
-    margin-bottom: 20px;
   }
   &__buttons {
     display: flex;
@@ -89,16 +89,12 @@
   }
   &__button--watched,
   &__button--queue {
-    padding-left: 8px;
-    padding-right: 8px;
-    // padding-top: 14px;
-    // padding-bottom: 12px;
     width: 136px;
     height: 44px;
+    padding-left: 8px;
+    padding-right: 8px;
     background-color: $main-bgc;
-    border-style: none;
-    outline: 1px solid black;
-    // border-color: $black-text;
+    border: 1px solid rgb(121, 121, 121);
     border-radius: 5px;
     color: $black-text;
     font-weight: 500;
@@ -106,7 +102,8 @@
     line-height: 1.3;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
       color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   &__button--watched:hover,
   &__button--watched:focus,
@@ -114,29 +111,35 @@
   &__button--queue:focus {
     background-color: $orange-btn;
     color: $white-text;
-    outline: 1px solid $orange-btn;
-    // border: none;
-    // border-color: $orange-btn;
-    // outline: none;
+    border: 1px solid $orange-btn;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   }
   &__button-close {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 8px;
-    right: 8px;
-    // background-color: transparent;
-    fill: black;
-    // background-image: url(../images/film.svg);
+    // position: absolute;
+    // width: 30px;
+    // height: 30px;
+    // top: 8px;
+    // right: 8px;
+    // fill: black;
+    // border-radius: 50%;
+    // cursor: pointer;
 
-    border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    padding: 0;
+    display: flex;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
   }
   &__button-close-icon {
+    // fill: black;
+    stroke: black;
+    // z-index: 5;
+    // stroke: $black-text;
     fill: black;
-    z-index: 5;
-
-    // stroke: black;
   }
   &__content {
     @media screen and (min-width: 768px) {
@@ -148,20 +151,23 @@
   }
   &__img {
     @media screen and (min-width: 768px) {
-      // margin-right: 68px;
-      margin-bottom: 0px;
       width: 264px;
+      margin-bottom: 0px;
     }
     @media screen and (min-width: 1280px) {
-      // margin-right: 68px;
-      margin-bottom: 0px;
       width: 375px;
+      margin-bottom: 0px;
     }
   }
   &__poster {
-    margin-bottom: 20px;
-    border-radius: 5px;
     width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(121, 121, 121);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    @media screen and (max-width: 768px) {
+      margin-bottom: 20px;
+    }
   }
 }
 
@@ -178,8 +184,7 @@
   padding-top: 20px;
   z-index: 0;
   opacity: 1;
-  overflow-y: auto;
-
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -198,23 +203,3 @@
     pointer-events: none;
   }
 }
-
-// .backdrop {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: 0;
-//   opacity: 1;
-//   overflow-y: scroll;
-//   // padding: 20px;
-
-//   background-color: rgba(0, 0, 0, 0.2);
-
-//   &.is-hidden {
-//     visibility: hidden;
-//     opacity: 0;
-//     pointer-events: none;
-//   }
-// }
