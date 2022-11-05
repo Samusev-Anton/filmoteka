@@ -9,25 +9,27 @@
     <div class='modal__info'>
       <ul class='modal__list-key'>
         <li class='modal__list-key-item'>Vote / Votes</li>
-        <li class='modal__list-key-item'>Popularity</li>
-        <li class='modal__list-key-item'>Original Title</li>
-        <li class='modal__list-key-item'>Genre</li>
-      </ul>
-      <ul class='modal__list-value'>
-        <li class='modal__list-key-item'><span
+        <li class='modal__list-value-item'><span
             class='modal__list-vote'
           >{{vote_average}}</span>
           /
           <span class='modal__list-value-item'>{{vote_count}}</span>
         </li>
+      </ul>
+      <ul class='modal__list-key'>
+        <li class='modal__list-key-item'>Popularity</li>
         <li class='modal__list-value-item'>{{popularity}}</li>
+      </ul>
+      <ul class='modal__list-key'>
+        <li class='modal__list-key-item'>Original Title</li>
         <li class='modal__list-value-item'>{{original_title}}</li>
-        <li class='modal__list-value-item'>{{#each genres}}
-            <li class='modal__list-value-item'>
-              {{this.name}}
-            </li>
+      </ul>
+      <ul class='modal__list-key'>
+        <li class='modal__list-key-item'>Genre</li>
+        <li class='modal__list-value-item'>{{#each genres}}{{this.name}}
           {{/each}}</li>
       </ul>
+
     </div>
     <p class='modal__about'>ABOUT</p>
     <p class='modal__about-text'>{{overview}}</p>

@@ -35,30 +35,39 @@
     line-height: 1.17;
   }
   &__info {
-    display: flex;
     margin-bottom: 20px;
   }
+  &__list-key {
+    display: flex;
+    gap: 39px;
+    align-items: baseline;
+  }
+  &__list-key:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
   &__list-key-item {
     color: $modal-key-text;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.3;
+    width: 71px;
   }
-  &__list-key-item:not(:last-child) {
-    margin-bottom: 8px;
-  }
+
   &__list-value-item {
     color: $black-text;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.3;
+    width: 130px;
+    @media screen and (min-width: 768px) {
+      width: 155px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 280px;
+    }
   }
-  &__list-value-item:not(:last-child) {
-    margin-bottom: 8px;
-  }
-  &__list-value {
-    margin-left: 39px;
-  }
+
   &__list-vote {
     padding-left: 10px;
     padding-right: 10px;
