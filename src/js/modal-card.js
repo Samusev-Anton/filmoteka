@@ -1,11 +1,13 @@
 import { apiModalDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
+import addWatched from './my-library';
 
 const choiceFilm = document.querySelector('.list-card__item');
 
 refs.homeGallery.addEventListener('click', clickOnMovie);
-
+let response;
+let movieId;
 // Click Handler Function
 async function clickOnMovie(evt) {
   evt.preventDefault();
@@ -13,9 +15,11 @@ async function clickOnMovie(evt) {
   if (evt.target.nodeName !== 'IMG' && evt.target.nodeName !== 'H2') {
     return;
   }
-  console.log(evt.target.dataset.id);
-  let movieId = evt.target.dataset.id;
+  
+  // console.log(evt.target.dataset.id);
+  movieId = evt.target.dataset.id;
   apiModalDetails(movieId).then(resp => {
+    response = resp;
     refs.filmBox.innerHTML = markupModal(resp);
     onOpenModal();
   });
@@ -38,8 +42,11 @@ function onCloseModal() {
 }
 
 function handleClick(event) {
-  console.log('event target: ', event.target);
-  console.log('currentTarget: ', event.currentTarget);
+  if (event.target.className === 'modal__button--watched') {
+    addWatched(movieId, response);
+  }
+  // console.dir(event.target);
+  // console.log('currentTarget: ', event.currentTarget);
   if (event.target === refs.filmBox) {
     onCloseModal();
   }
