@@ -4,6 +4,7 @@
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -152,7 +153,7 @@ a {
     background-image: url(/src/images/mobile/main-background-mobile@2x.png);
   }
 }
-@media screen and (min-device-pixel-ratio: 3), screen and (-webkit-min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
+@media screen and (min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/mobile/main-background-mobile@3x.png);
   }
@@ -169,7 +170,7 @@ a {
     background-image: url(/src/images/tablet/main-background-tablet@2x.png);
   }
 }
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/tablet/main-background-tablet@3x.png);
   }
@@ -185,7 +186,7 @@ a {
     background-image: url(/src/images/desktop/main-background-desktop@2x.png);
   }
 }
-@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/desktop/main-background-desktop@3x.png);
   }
@@ -208,23 +209,10 @@ a {
 }
 
 .header__icon_logo {
-  -webkit-animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-          animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
   stroke-width: 3px;
   stroke: white;
   fill: transparent;
-}
-
-@-webkit-keyframes animate360 {
-  0% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
 }
 
 @keyframes animate360 {
@@ -327,23 +315,7 @@ a {
   outline: none;
 }
 
-.header__form-input:not(:-moz-placeholder-shown) {
-  color: #ffffff;
-}
-
-.header__form-input:not(:-ms-input-placeholder) {
-  color: #ffffff;
-}
-
 .header__form-input:not(:placeholder-shown) {
-  color: #ffffff;
-}
-
-.header__form-input::-moz-placeholder {
-  color: #ffffff;
-}
-
-.header__form-input:-ms-input-placeholder {
   color: #ffffff;
 }
 
@@ -444,20 +416,65 @@ a {
   border-bottom-color: rgb(220, 71, 11);
 }
 
-.header__form-input:hover.header__form-input::-moz-placeholder {
-  color: rgb(220, 71, 11);
-}
-
-.header__form-input:hover.header__form-input:-ms-input-placeholder {
-  color: rgb(220, 71, 11);
-}
-
 .header__form-input:hover.header__form-input::placeholder {
   color: rgb(220, 71, 11);
 }
 
 .header__form-input:hover ~ .header__search {
   stroke: rgb(220, 71, 11);
+}
+
+.filter_form {
+  top: 105px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 13px;
+}
+@media screen and (min-width: 768px) {
+  .filter_form {
+    display: block;
+  }
+}
+
+.filter_form__select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  background-color: inherit;
+  padding: 1px;
+}
+@media screen and (min-width: 320px) {
+  .filter_form__select:last-child {
+    margin-top: 10px;
+  }
+}
+
+.filter_form__select > option {
+  background-color: #272e34;
+}
+
+.filter_form__select:not(:last-child) {
+  margin-right: 3px;
+  margin-bottom: 8px;
+}
+@media screen and (min-width: 768px) {
+  .filter_form__select:not(:last-child) {
+    margin-bottom: 0px;
+  }
+}
+
+.btnResetFilter {
+  margin: 0 auto;
+  width: 45px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  background-color: inherit;
+  cursor: pointer;
+  text-align: center;
 }
 
 .lib-header {
@@ -474,7 +491,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/mobile/library-background-mobile@2x.jpg);
   }
 }
-@media screen and (min-device-pixel-ratio: 3), screen and (-webkit-min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
+@media screen and (min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/mobile/library-background-mobile@3x.jpg);
   }
@@ -503,7 +520,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/tablet/library-background-tablet@2x.jpg);
   }
 }
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/tablet/library-background-tablet@3x.jpg);
   }
@@ -519,7 +536,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/desktop/library-background-desktop@2x.jpg);
   }
 }
-@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/desktop/library-background-desktop@3x.jpg);
   }
@@ -745,23 +762,7 @@ main {
 }
 
 .footer__icon {
-  -webkit-animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-          animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-}
-
-@-webkit-keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.4);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
 
 @keyframes heartbeat {
@@ -779,31 +780,36 @@ main {
   }
 }
 .modal {
-  position: relative;
-  display: block;
+  position: absolute;
   padding-top: 48px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
   background-color: #ffffff;
+  width: 280px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 5;
 }
 @media screen and (min-width: 768px) {
   .modal {
+    width: 704px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     gap: 68px;
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
     padding-bottom: 40px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 @media screen and (min-width: 1280px) {
   .modal {
-    gap: 16px;
+    width: 806px;
     padding: 40px 12px;
+    gap: 16px;
   }
 }
 .modal__title {
@@ -835,7 +841,7 @@ main {
   margin-bottom: 8px;
 }
 .modal__list-value {
-  margin-left: 85px;
+  margin-left: 39px;
 }
 .modal__list-vote {
   padding-left: 10px;
@@ -878,12 +884,26 @@ main {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.3;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), outline 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal__button--watched:hover, .modal__button--watched:focus, .modal__button--queue:hover, .modal__button--queue:focus {
   background-color: #ff6b01;
   color: #ffffff;
   outline: 1px solid #ff6b01;
-  border-color: #ff6b01;
+}
+.modal__button-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 8px;
+  fill: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.modal__button-close-icon {
+  fill: black;
+  z-index: 5;
 }
 @media screen and (min-width: 768px) {
   .modal__content {
@@ -912,29 +932,23 @@ main {
   border-radius: 5px;
   width: 100%;
 }
-.modal__button-close {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: 8px;
-  right: 8px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.modal__button-close-icon {
-  fill: black;
-  stroke: black;
+
+.modal-open {
+  overflow: hidden;
 }
 
 .film-box {
-  position: absolute;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  z-index: 0;
+  opacity: 1;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
   .film-box {
@@ -948,19 +962,7 @@ main {
     padding-right: 237px;
   }
 }
-
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 1;
-  overflow-y: scroll;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.backdrop.is-hidden {
+.film-box.visually-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
