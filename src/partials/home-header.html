@@ -102,10 +102,18 @@
         <option value="2005">2005</option>
       </select>
       <select class="filter_form__select" name="sortForm" id="sortForm">
-        <option value="start">Sorting</option>
-        <option value="popularity.desc">Popularity (to decrease)</option>
-        <option value="popularity.inc">Popularity (by increase)</option>
-      </select>
+            <option value="start">Sorting</option>
+            <option value="popularity.desc">Popularity (decreasing)</option>
+            <option value="popularity.asc">Popularity (increasing)</option>
+            <option value="primary_release_date.desc">
+              Release date (decreasing)
+            </option>
+            <option value="primary_release_date.asc">
+              Release date (ascending)
+            </option>
+            <option value="original_title.asc">Name (A-Z)</option>
+            <option value="original_title.desc">Name (Z-A)</option>
+          </select>
       <button class="btnResetFilter" id="btnResetFilter" type="submit">
         Reset
       </button>
