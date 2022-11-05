@@ -7,8 +7,9 @@ let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
 
 // const conteiner = document.querySelector('.gallery');
-
+const spinner = document.querySelector('.preloader');
 function onButtonClick(evt) {
+  spinner.classList.remove('done');
   evt.preventDefault();
   page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
@@ -30,6 +31,7 @@ function onButtonClick(evt) {
     const normalFilmData = dataRevize(films, allGenres);
 
     refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+    spinner.classList.add('done');
   });
 }
 

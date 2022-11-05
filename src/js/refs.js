@@ -4,4 +4,5 @@ export const refs = {
   filmBox: document.querySelector('.film-box'),
   changeTheme: document.querySelectorAll(`.change_theme`),
   changeThemeCssLink: document.querySelector(`[title= "theme"]`),
+  spinner: document.querySelector('.preloader'),
 };
