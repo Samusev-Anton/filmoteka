@@ -125,31 +125,33 @@
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   }
   &__button-close {
-    // position: absolute;
-    // width: 30px;
-    // height: 30px;
-    // top: 8px;
-    // right: 8px;
-    // fill: black;
-    // border-radius: 50%;
-    // cursor: pointer;
-
     position: absolute;
     right: 8px;
     top: 8px;
+    width: 30px;
+    height: 30px;
     padding: 0;
-    display: flex;
     border: none;
     background-color: transparent;
+    background-image: url(../images/close.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
     cursor: pointer;
   }
-  &__button-close-icon {
-    // fill: black;
-    stroke: black;
-    // z-index: 5;
-    // stroke: $black-text;
-    fill: black;
-  }
+
+  // &__button-close-icon {
+  //   // fill: red;
+  //   // stroke: black;
+  //   // z-index: 5;
+  //   // stroke: $black-text;
+  //   // fill: black;
+  //   // display: inline-block;
+  //   // width: 1em;
+  //   // height: 1em;
+  //   // stroke-width: 0;
+  //   // stroke: currentColor;
+  //   // fill: currentColor;
+  // }
   &__content {
     @media screen and (min-width: 768px) {
       width: 264px;
