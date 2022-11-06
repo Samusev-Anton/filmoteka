@@ -20,24 +20,36 @@
 
 .modal-students {
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 50%;
+  left: 50%;
 
-  width: auto;
-  height: 100%;
-
-  background-color: rgba(0, 0, 0, 0.25);
-}
-
-.modal-content {
-  position: relative;
-  background-color: $main-bgc;
-  margin: 15px auto;
-  padding: 20px;
+  transform: translate(-50%, -50%);
 
   width: 80%;
+  height: auto;
+  padding: 20px;
 
-  border-radius: $main-border-radius;
+  background: $main-bgc;
+  border-radius: 10px;
+  box-shadow: 0px 1px 1px $active-btn-shadow;
+  transition: transform 450ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+  @media screen and (max-width: 479px) {
+    width: 70%;
+    height: 650px;
+    overflow-y: scroll;
+  }
+
+  @media screen and (min-width: 480px) {
+    width: 75%;
+    height: 650px;
+    overflow-y: scroll;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-height: 750px;
+    padding: 40px;
+  }
 }
 
 .footer__btn {
@@ -49,10 +61,22 @@
   }
 }
 
+.button-close__icon {
+  stroke: $black-text;
+
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    stroke: $orange-hover;
+  }
+}
+
 .modal-students-close {
   position: absolute;
-  right: 0;
-  top: 5px;
+  right: 8px;
+  top: 8px;
+  padding: 0;
 
   display: flex;
 
@@ -60,30 +84,78 @@
   background-color: transparent;
 
   cursor: pointer;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    fill: $orange-hover;
-  }
 }
 
 .modal-content__title {
+  display: flex;
   color: $footer-text;
   text-align: center;
   text-transform: uppercase;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.17;
+
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 1280px) {
+    font-weight: 600;
+    font-size: 30px;
+  }
+}
+
+.title__icon {
+  background-color: transparent;
+  display: flex;
+  margin-left: 8px;
+
+  animation-name: spinning;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  @media screen and (max-width: 479px) {
+    width: 0;
+    height: 0;
+  }
+
+  @media screen and (min-width: 480px) {
+    margin-left: 8px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 10px;
+  }
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+    fill: $footer-text;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    fill: $orange-text;
+  }
 }
 
 .card-student__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-around;
 
+  gap: 15px;
   margin-top: 15px;
 
   color: $footer-text;
+
+  @media screen and (max-width: 1280px) {
+    justify-content: center;
+    gap: 20px;
+  }
 }
+
 .card-student__item {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
@@ -93,6 +165,7 @@
 }
 .card-student__wrap {
   padding: 10px;
+  background-color: transparent;
 }
 
 .card-student__name {
