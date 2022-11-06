@@ -5,16 +5,16 @@
     modal: document.querySelector('[data-modal]'),
   };
 
-  refs.openModalBtn.addEventListener('click', openModal);
-  refs.closeModalBtn.addEventListener('click', closeModal);
+  refs.openModalBtn.addEventListener('click', onModal);
+  refs.closeModalBtn.addEventListener('click', onModal);
 
-  function openModal(event) {
-    refs.modal.classList.remove('is-hidden');
-    console.log(event.target);
+  function onModal(event) {
+    event.preventDefault();
+    refs.modal.classList.toggle('is-hidden');
   }
 
   function closeModal() {
-    refs.modal.classList.add('is-hidden');
+    refs.modal.classList.toggle('is-hidden');
   }
 
   document.addEventListener('keydown', event => {
@@ -24,7 +24,7 @@
   });
 
   document.addEventListener('click', event => {
-    if (event.target.classList.contains('modal-students')) {
+    if (event.target.classList.contains('backdrop')) {
       refs.modal.classList.add('is-hidden');
     }
   });
