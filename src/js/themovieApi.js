@@ -58,7 +58,6 @@ export async function apiModalDetails(movieId) {
       `${ID_URL}/${movieId}?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
-    //   console.log(resp);
     return resp;
   } catch (Error) {
     //   Notiflix.Notify.failure(
@@ -80,3 +79,18 @@ export async function takeGenresList() {
 }
 
 // export { totalPages };
+
+export async function apiMovieDetails(movieId) {
+  try {
+    const responce = await fetch(
+      `${ID_URL}/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+    );
+    const resp = await responce.json();
+    console.log('resp :>> ', resp.results[0].key);
+    return resp.results[0].key;
+  } catch (Error) {
+    //   Notiflix.Notify.failure(
+    //     'Sorry, there are no trailer for this movie on Youtube. Please try again.'
+    //   );
+  }
+}
