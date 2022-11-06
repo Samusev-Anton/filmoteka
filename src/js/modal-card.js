@@ -22,7 +22,7 @@ async function clickOnMovie(evt) {
   }
   
   // console.log(evt.target.dataset.id);
-  movieId = evt.target.dataset.id;
+  const movieId = evt.target.dataset.id;
   apiModalDetails(movieId).then(resp => {
 
 
