@@ -1,7 +1,11 @@
 import { apiModalDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
-import { localStorageAPI } from './api/localStorageAPI';
+import addWatched from './my-library';
+import { addWatchedBtn, addQueueBtn } from './modal-card-btn';
+
+const STORAGE_KEY_WATCHED = 'watched';
+const STORAGE_KEY_QUEUE = 'queue';
 
 const choiceFilm = document.querySelector('.list-card__item');
 
@@ -53,17 +57,14 @@ function onCloseModal() {
 }
 
 function handleClick(event) {
-
-  
-  //add data to localstorage
-  //--------------------------------------------------------
+  // console.log(response);
   if (event.target.className === 'modal__button--watched') {
-    localStorageAPI.pushWatched('watched', response);
+    addWatchedBtn(STORAGE_KEY_WATCHED, response);
+    onCloseModal();
   }
   if (event.target.className === 'modal__button--queue') {
-    localStorageAPI.pushQueue('queue', response);
-  }
-  //---------------------------------------------------------
+    addQueueBtn(STORAGE_KEY_QUEUE, response);
+    onCloseModal();
 
 
 
@@ -73,7 +74,6 @@ function handleClick(event) {
     onCloseModal();
   }
 }
-
 function onEscButton(evt) {
   if (evt.code === 'Escape') {
     onCloseModal();
