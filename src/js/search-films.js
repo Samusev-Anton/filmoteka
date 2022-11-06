@@ -23,14 +23,24 @@ function onButtonClick(evt) {
     localStorageAPI.save('query-pg', inputData);
     
   } else {
-    warningUnShown();
-    const allGenres = getGenres();
-    const films = data.results;
-    const normalFilmData = dataRevize(films, allGenres);
+    apiHomeSearch(inputData).then(data => {
+      //   //   if (data.hits.length === 0) {
+      //   //     homeGallary.innerHTML = '';
+      //   //     // Notiflix.Notify.failure(
+      //   //     //   'Sorry, there are no images matching your search query. Please try again.'
+      //   //     // );
+      //   //     return;
+      //   //   }
+      
+      warningUnShown();
+      const allGenres = getGenres();
+      const films = data.results;
+      const normalFilmData = dataRevize(films, allGenres);
+      
+      refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+      spinner.classList.add('done');
+    });
     
-    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
-    
-    form.reset();
   }
   
   // apiHomeSearch(inputData).then(data => {
