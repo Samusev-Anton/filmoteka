@@ -1,0 +1,130 @@
+@import './variables';
+
+.auth-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid $orange-hover;
+    background-color: $footer-bgc;
+}
+
+.auth-section {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.auth-title{
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+}
+
+.auth-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.auth-input{
+    width: 30vw;
+    height: 40px;
+    margin-top: 15px; 
+    border: 1px solid $footer-text;
+    border-radius: 5px;
+    padding-left: 5px;
+
+
+    &:hover,
+    &:focus{
+        border-color: $orange-hover;
+        cursor: pointer;
+    }
+}
+
+.btn-list{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.btn-item{
+    margin-top: 15px;
+}
+
+.btn{
+    display: block;
+        text-align: center;
+        font-size: 12px;
+        
+        line-height: 1.33;
+        font-weight: 500;
+    
+        padding-top: 14px;
+        padding-bottom: 12px;
+        padding-left: 36px;
+        padding-right: 36px;
+    
+        width: 130px;
+        height: 44px;
+        border: 1px solid $black-text;
+        color: $black-text;
+        border-radius: 5px;
+        background: none;
+    
+        margin-right: 20px;
+        transition: background-color border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .btn {
+        width: 152px;
+        height: 44px;
+        padding: 13px, 46px;
+        margin-right: 32px;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+    .btn {
+        width: 148px;
+        height: 42px;
+        margin-right: 16px;
+        padding: 12px 41px;
+    }
+
+
+}
+
+.login-btn{
+            background-color: $orange-btn;
+            border-color: $orange-btn;
+
+            &:hover,
+            &:focus{
+                background-color: $white-text;
+                    border-color: $footer-text;
+            }
+}
+
+.signup-btn {
+    background-color: $white-text;
+        border-color: $footer-text;
+
+    &:hover,
+    &:focus {
+        background-color: $orange-btn;
+            border-color: $orange-btn;
+    }
+}

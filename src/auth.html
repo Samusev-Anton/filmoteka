@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Authorization</title>
-<link rel="icon" href="./images/film.svg" type="image/svg+xml" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="./sass/index.scss" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authorization</title>
+    <link rel="icon" href="./images/film.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <link rel="stylesheet" href="./sass/library.scss" />
+    <link rel="stylesheet" href="./sass/auth.scss" />
 </head>
+
 <body>
-    <div class="auth-box">
-        <div class="container">
-            <h1>Login</h1>
-           <input type="text" id="login-email" placeholder="E-Mail" required>
-           <input type="password" id="login-password" name="password" placeholder="password" required>
-           <button type="submit" class="login-btn">LOGIN</button>
-            <button type="submit" class="signup-btn">SIGN UP</button>
-        </div>
-    </div>
+    <include src="./partials/auth-header.html"></include>
+    <main>
+        <include src="./partials/auth-main.html"></include>
+    </main>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/footer-students.html"></include>
+    <include src="./partials/modal-card.html"></include>
     <script type="module" src="./auth.js"></script>
 </body>
+
 </html>
