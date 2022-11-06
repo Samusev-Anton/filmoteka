@@ -29,15 +29,23 @@ function dataRevize(films, allGenres) {
     genres: genresFromTrend(film.genre_ids, allGenres),
   }));
 }
+// добавление года в библиотеку
+function dataToYear(films) {
+  return films.map(film => ({
+    ...film,
+    year: createYear(film),
+  }));
+}
 
 // Извлечение локальных жанров из json файла
 function getGenres() {
-    const { genres } = allGenres;
-    return genres;
-  }
+  const { genres } = allGenres;
+  return genres;
+}
 
 export {
   dataRevize,
+  dataToYear,
   genresFromTrend,
   genresFromID,
   createYear,
