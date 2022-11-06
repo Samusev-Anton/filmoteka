@@ -25,7 +25,7 @@ export async function apiHomePage() {
     );
     const data = await responce.json();
     totalPages = data.total_pages;
-    console.log(totalPages);
+    // console.log(totalPages);
     return data;
   } catch (Error) {
     //   Notiflix.Notify.failure(
