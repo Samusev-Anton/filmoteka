@@ -9,16 +9,25 @@ refs.form.addEventListener('submit', onButtonClick);
 
 // const conteiner = document.querySelector('.gallery');
 const spinner = document.querySelector('.preloader');
+const toMainBtn = document.querySelector('.to_main__link');
+
+if (toMainBtn) {
+  toMainBtn.addEventListener('click', e => {
+    spinner.classList.remove('done');
+    page = 1;
+    localStorageAPI.save('page-pg', page);
+  });
+}
 
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  page = 1;
+  // page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
     spinner.classList.add('done');
-    form.reset();
+    refs.form.reset();
     inputData === '';
     localStorageAPI.save('query-pg', inputData);
     
@@ -31,13 +40,14 @@ function onButtonClick(evt) {
       //   //     // );
       //   //     return;
       //   //   }
-      
+      refs.form.reset();
       warningUnShown();
       const allGenres = getGenres();
       const films = data.results;
       const normalFilmData = dataRevize(films, allGenres);
       
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+      localStorageAPI.save('query-pg', inputData);
       spinner.classList.add('done');
     });
     
@@ -72,6 +82,24 @@ function warningUnShown() {
   refs.divError.classList.add('visually-hidden');
   refs.homeGallery.classList.remove('visually-hidden');
   refs.filterForm.classList.remove('visually-hidden');
+}
+
+refs.logo.addEventListener('click', onLogoClick);
+
+function onLogoClick(e) {
+  spinner.classList.remove('done');
+  amountOfPages = 1000;
+  page = 1;
+  genre = '';
+  year = '';
+  query = '';
+  sort = '';
+  localStorageAPI.save('page-pg', page);
+  localStorageAPI.save('genre-pg', genre);
+  localStorageAPI.save('year-pg', year);
+  localStorageAPI.save('total-pages', amountOfPages);
+  localStorageAPI.save('query-pg', query);
+  localStorageAPI.save('sort-pg', sort);
 }
 
 export { inputData };

@@ -1,6 +1,6 @@
 export const refs = {
   homeGallery: document.querySelector('.gallery'),
-  
+  logo: document.querySelector('.header__logo'),
   form: document.querySelector('.header__form'),
   filmBox: document.querySelector('.film-box'),
   changeTheme: document.querySelectorAll(`.change_theme`),

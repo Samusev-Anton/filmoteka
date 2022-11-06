@@ -4,5 +4,6 @@ import './js/modal-card';
 import './js/theme-switcher';
 import './js/modal-students';
 import './js/api/localStorageAPI';
+import './js/filter';
 
 
