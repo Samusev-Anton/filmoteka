@@ -5,3 +5,4 @@ import  './js/pagin';
 import './js/theme-switcher';
 import './js/modal-students';
 import './js/trailer';
+import './js/scroll-top';
