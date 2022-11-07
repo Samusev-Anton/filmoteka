@@ -1,12 +1,5 @@
 @import './variables';
 
-.auth-container{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1px solid $orange-hover;
-    background-color: $footer-bgc;
-}
-
 .auth-section {
     padding-top: 20px;
     padding-bottom: 40px;
@@ -35,19 +28,29 @@
 
 }
 
-.auth-input{
-    width: 30vw;
+
+.auth-input {
+    width: 280px;
     height: 40px;
-    margin-top: 15px; 
+    margin-top: 15px;
     border: 1px solid $footer-text;
     border-radius: 5px;
     padding-left: 5px;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 
     &:hover,
-    &:focus{
+    &:focus {
         border-color: $orange-hover;
         cursor: pointer;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 385px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 500px;
     }
 }
 
@@ -80,10 +83,9 @@
         border: 1px solid $black-text;
         color: $black-text;
         border-radius: 5px;
-        background: none;
     
         margin-right: 20px;
-        transition: background-color border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+       
 }
 
 @media screen and (min-width: 768px) {
@@ -110,6 +112,7 @@
 .login-btn{
             background-color: $orange-btn;
             border-color: $orange-btn;
+            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
             &:hover,
             &:focus{
@@ -121,6 +124,7 @@
 .signup-btn {
     background-color: $white-text;
         border-color: $footer-text;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {
