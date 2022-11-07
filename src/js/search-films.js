@@ -43,13 +43,16 @@ function onButtonClick(evt) {
       //   //   }
       refs.form.reset();
       warningUnShown();
+      
       const allGenres = getGenres();
       const films = data.results;
       const normalFilmData = dataRevize(films, allGenres);
-      
+      refs.pagination.classList.remove('visually-hidden');
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
       localStorageAPI.save('query-pg', inputData);
+      
       spinner.classList.add('done');
+      
     });
     
   }
