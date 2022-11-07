@@ -1,151 +1,85 @@
 import { totalPages } from './themovieApi';
 // console.log(totalPages);
+import Pagination from 'tui-pagination';
+import { apiHomePage } from "./themovieApi";
+import { renderTrendingMovies } from './home-page';
 
-const pageNumbers = (total, max, current) => {
-  const half = Math.floor(max / 2);
-  let to = max;
-
-  if (current + half >= total) {
-    to = total;
-  } else if (current > half) {
-    to = current + half;
-  }
-
-  let from = Math.max(to - max, 0);
-
-  return Array.from({ length: Math.min(total, max) }, (_, i) => i + 1 + from);
+const container = document.getElementById('pagination');
+const options = {
+  totalItems: 200,
+  itemsPerPage: 20,
+  visiblePages: 5,
+  page: 1,
+  centerAlign: true,
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span>⋅⋅⋅</span>' +
+      '</a>',
+  },
 };
+const pagination = new Pagination(container, options);
 
-function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
-  let pages = pageNumbers(totalPages, maxPagesVisible, currentPage);
-  let currentPageBtn = null;
-  const buttons = new Map();
-  const disabled = {
-    start: () => pages[0] === 1,
-    prev: () => currentPage === 1 || currentPage > totalPages,
-    end: () => pages.slice(-1)[0] === totalPages,
-    next: () => currentPage >= totalPages,
-  };
-  const frag = document.createDocumentFragment();
-  const paginationButtonContainer = document.createElement('div');
-  paginationButtonContainer.className = 'pagination-buttons';
+pagination.on('beforeMove', async evt => {
 
-  const createAndSetupButton = (
-    label = '',
-    cls = '',
-    disabled = false,
-    handleClick
-  ) => {
-    const buttonElement = document.createElement('button');
-    buttonElement.textContent = label;
-    buttonElement.className = `page-btn ${cls}`;
-    buttonElement.disabled = disabled;
-    buttonElement.addEventListener('click', e => {
-      handleClick(e);
-      this.update();
-      paginationButtonContainer.value = currentPage;
-      paginationButtonContainer.dispatchEvent(
-        new CustomEvent('change', { detail: { currentPageBtn } })
-      );
-    });
-
-    return buttonElement;
-  };
-
-  const onPageButtonClick = e =>
-    (currentPage = Number(e.currentTarget.textContent));
-
-  const onPageButtonUpdate = index => btn => {
-    btn.textContent = pages[index];
-
-    if (pages[index] === currentPage) {
-      currentPageBtn.classList.remove('active');
-      btn.classList.add('active');
-      currentPageBtn = btn;
-      currentPageBtn.focus();
-    }
-  };
-
-  buttons.set(
-    createAndSetupButton(
-      'start',
-      'start-page',
-      disabled.start(),
-      () => (currentPage = 1)
-    ),
-    btn => (btn.disabled = disabled.start())
-  );
-
-  buttons.set(
-    createAndSetupButton(
-      'prev',
-      'prev-page',
-      disabled.prev(),
-      () => (currentPage -= 1)
-    ),
-    btn => (btn.disabled = disabled.prev())
-  );
-
-  pages.map((pageNumber, index) => {
-    const isCurrentPage = currentPage === pageNumber;
-    const button = createAndSetupButton(
-      pageNumber,
-      isCurrentPage ? 'active' : '',
-      false,
-      onPageButtonClick
-    );
-
-    if (isCurrentPage) {
-      currentPageBtn = button;
-    }
-
-    buttons.set(button, onPageButtonUpdate(index));
-  });
-
-  buttons.set(
-    createAndSetupButton(
-      'next',
-      'next-page',
-      disabled.next(),
-      () => (currentPage += 1)
-    ),
-    btn => (btn.disabled = disabled.next())
-  );
-
-  buttons.set(
-    createAndSetupButton(
-      'end',
-      'end-page',
-      disabled.end(),
-      () => (currentPage = totalPages)
-    ),
-    btn => (btn.disabled = disabled.end())
-  );
-
-  buttons.forEach((_, btn) => frag.appendChild(btn));
-  paginationButtonContainer.appendChild(frag);
-
-  this.render = (container = document.body) => {
-    container.appendChild(paginationButtonContainer);
-  };
-
-  this.update = (newPageNumber = currentPage) => {
-    currentPage = newPageNumber;
-    pages = pageNumbers(totalPages, maxPagesVisible, currentPage);
-    buttons.forEach((updateButton, btn) => updateButton(btn));
-  };
-
-  this.onChange = handler => {
-    paginationButtonContainer.addEventListener('change', handler);
-  };
-}
-
-const paginationButtons = new PaginationButton(10, 10);
-
-paginationButtons.render();
-
-paginationButtons.onChange(e => {
-  console.log('-- changed', e.target.value);
 });
 
-// PaginationButton(totalPages, 10, 1);
+
+
+// const onPageClick = async event => {
+//   const renderTrendingPage = await renderTrendingMovies(event.page);
+//   scrollToNewPage();
+//   return renderTrendingPage;
+// };
+
+// export const scrollToNewPage = () => {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: 'smooth',
+//   });
+// };
+
+// export const createPagination = () => {
+// const container = document.getElementById('pagination');
+// apiHomePage().then(movies => {
+//   const pagination = new Pagination(container, {
+//     totalItems: movies.total_results,
+//     itemsPerPage: 20,
+//     visiblePages: 5,
+//     page: 1,
+//     centerAlign: true,
+//     firstItemClassName: 'tui-first-child',
+//     lastItemClassName: 'tui-last-child',
+//     usageStatistics: false,
+//     template: {
+//       page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+//       currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+//       moveButton:
+//         '<a href="#" class="tui-page-btn tui-{{type}}">' +
+//         '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//         '</a>',
+//       disabledMoveButton:
+//         '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+//         '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//         '</span>',
+//       moreButton:
+//         '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' + '<span>⋅⋅⋅</span>' + '</a>',
+//     },
+// });
+// return pagination
+// })
+// .then(pagination => {
+//   pagination.on('beforeMove', onPageClick);
+// });
+// }
