@@ -10,23 +10,17 @@ import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
 
-// const refs = {
-//     filterForm: document.querySelector('#filter-form'),
-//     sortForm: document.querySelector('#sortForm'),
-//     genreForm: document.querySelector('#genreForm'),
-//     yearForm: document.querySelector('#yearForm'),
-//     btnReset: document.querySelector('#btnResetFilter'),
-// };
+
 const genreForm = document.querySelector('#genreForm');
 const filterForm = document.querySelector('#filter-form');
 const yearForm = document.querySelector('#yearForm');
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
+const sortForm = document.querySelector('#sortForm');
 
 if (genreForm) {
     genreForm.addEventListener('input', eventGenre);
 };
-
 
 if (yearForm) {
     yearForm.addEventListener('input', eventYear);
@@ -81,14 +75,69 @@ function eventGenre(evn) {
     spinner.classList.remove('done');
     genre = evn.target.value;
     page = 1;
+    // query = '';
+    // year = '';
+    // sort = '';
     localStorageAPI.save('page-pg', page);
     localStorageAPI.save('genre-pg', genre);
-    getSearchForm(page, query, genre, year, sort).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data);
-      localStorageAPI.save('total-pages', amountOfPages);
-      spinner.classList.add('done');
+    getSearchForm(page, genre).then(data => {
+    refs.homeGallery.innerHTML = markupSearchPage(data);
+        if (data.total_pages > 500) {
+            amountOfPages = 500;
+        } else {
+            amountOfPages = data.total_pages;
+        }
+        localStorageAPI.save('total-pages', amountOfPages);
+        spinner.classList.add('done');
     });
-  }
+    }
+}
+
+function eventYear(evn) {
+    if (evn) {
+        spinner.classList.remove('done');
+        page = 1;
+        query = '';
+        localStorageAPI.save('page-pg', page);
+        year = evn.target.value;
+        localStorageAPI.save('year-pg', year);
+        getSearchForm(page,year).then(data => {
+            refs.homeGallery.innerHTML = markupSearchPage(data);
+            if (data.total_pages > 500) {
+                amountOfPages = 500;
+            } else {
+                amountOfPages = data.total_pages;
+            }
+            spinner.classList.add('done');
+            if (query == '') {
+                localStorageAPI.save('total-pages', amountOfPages);
+            }
+        });
+    }
+}
+
+function eventSort(evn) {
+    if (evn) {
+        spinner.classList.remove('done');
+        page = 1;
+        query = '';
+        year = '';
+        genre = '';
+        localStorageAPI.save('page-pg', page);
+        sort = evn.target.value;
+        localStorageAPI.save('sort-pg', sort);
+        getSearchForm(page,sort).then(data => {
+            refs.homeGallery.innerHTML = markupSearchPage(data);
+            if (data.total_pages > 500) {
+                amountOfPages = 500;
+            } else {
+                amountOfPages = data.total_pages;
+            }
+                
+                localStorageAPI.save('total-pages', amountOfPages);
+                spinner.classList.add('done');
+        });
+    }
 }
 
 
