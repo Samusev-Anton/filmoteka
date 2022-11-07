@@ -109,14 +109,9 @@
   }
 }
 
-// .film-card__rating {
-//     margin-left: 10px;
-//     color: #fff;
-//     line-height: 14px;
-//     height: 16px;
-//     width: 36px;
-//     padding-top: 1px;
-//     text-align: center;
-//     background-color: #ff6b01;
-//     border-radius: $main-border-radius;
-// }
+.film-card__title-white {
+color: white;  
+}
+.film-card__title-black {
+color: black;  
+}

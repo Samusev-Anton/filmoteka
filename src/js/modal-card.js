@@ -67,10 +67,10 @@ function handleClick(event) {
       onCloseModal();
     }
   }
-
+}
   function onEscButton(evt) {
     if (evt.code === 'Escape') {
       onCloseModal();
     }
   }
-}
+
