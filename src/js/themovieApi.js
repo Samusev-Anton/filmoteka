@@ -69,7 +69,7 @@ export async function apiModalDetails(movieId) {
 export async function takeGenresList() {
   try {
     const responce = await fetch(
-      `${URL}/genre/movie/list?api_key=${KEY}&language=en-US`
+      `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US`
     );
     const data = await responce.json();
     return data;
