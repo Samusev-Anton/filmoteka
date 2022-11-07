@@ -90,4 +90,12 @@ function handleClick(event) {
     if (event.target === refs.filmBox) {
       onCloseModal();
     }
+
+  }
 }
+  function onEscButton(evt) {
+    if (evt.code === 'Escape') {
+      onCloseModal();
+    }
+  }
+

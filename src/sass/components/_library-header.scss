@@ -175,7 +175,7 @@
 }
 
 .library__button {
-    display: block;
+  display: block;
   text-align: center;
   font-size: 12px;
   color: $white-text;
@@ -202,7 +202,6 @@
   border-color: $orange-btn;
 }
 
-
 @media screen and (min-width: 768px) {
   .library__btns {
     margin-top: 40px;
@@ -214,7 +213,6 @@
     padding: 13px, 46px;
     margin-right: 32px;
   }
-
 }
 
 @media screen and (min-width: 1280px) {
@@ -228,20 +226,54 @@
     margin-right: 16px;
     padding: 12px 41px;
   }
-
-
 }
 /*Ховери та фокуси*/
 
-.header__list-link:hover, .header__list-link:focus{
+.header__list-link:hover,
+.header__list-link:focus {
   color: $orange-hover;
 }
-.library__button:hover, .library__button:focus{
+.library__button:hover,
+.library__button:focus {
   background-color: $orange-hover;
   border-color: $orange-hover;
 }
 
-.icon-autorization:hover, .icon-autorization:focus{
+.icon-autorization:hover,
+.icon-autorization:focus {
   fill: $orange-hover;
   stroke: $orange-hover;
+}
+
+.library__card-rating {
+  width: 36px;
+  height: 16px;
+  margin-left: 9px;
+  text-align: center;
+  background-color: $orange-btn;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: $white-text;
+  @media screen and (min-width: 1280px) {
+    width: 40px;
+    height: 20px;
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+.library-section {
+  margin-top: 20px;
 }

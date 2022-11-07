@@ -15,17 +15,26 @@ function onClickQueue() {
 function onClickWatched() {
   markupLibrary('watched');
 }
-
+let listFilms;
 markupLibrary('watched');
 
 function markupLibrary(key) {
   libraryGallery.innerHTML = '';
+
   try {
-    const listFilms = localStorageAPI.load(key);
+    listFilms = localStorageAPI.load(key);
+    listFilms.map(obj => {
+      obj.genres.splice(1);
+      obj.vote_average = Number(obj.vote_average.toFixed(1));
+      return obj;
+    });
     const normalListFilms = dataToYear(listFilms);
     console.log(normalListFilms);
     libraryGallery.innerHTML = markupLibraryPage(normalListFilms);
+    
   } catch (error) {
     console.log(error);
   }
 }
+
+
