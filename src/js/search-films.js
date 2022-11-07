@@ -102,4 +102,10 @@ function onLogoClick(e) {
   localStorageAPI.save('sort-pg', sort);
 }
 
+refs.home.addEventListener('click', onHomeClick);
+
+function onHomeClick(e) {
+  spinner.classList.remove('done');
+}
+
 export { inputData };
