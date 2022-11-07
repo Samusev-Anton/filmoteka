@@ -156,9 +156,15 @@
   }
 }
 
+<<<<<<< Updated upstream
+.card-student__img {
+=======
 .card-student__item > img {
+  width: 225px;
   object-fit: cover;
+>>>>>>> Stashed changes
   height: 250px;
+  object-fit: cover;
 }
 
 .card-student__item {
@@ -169,7 +175,7 @@
   }
 }
 .card-student__wrap {
-  width: 200px;
+  width: 225px;
   padding: 10px;
   background-color: transparent;
 }
