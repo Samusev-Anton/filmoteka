@@ -48,8 +48,8 @@ export const paginationPage = pagination.getCurrentPage();
 console.log(paginationPage);
 
 pagination.on('afterMove', function (event) {
-  apiHomePage(page) = event.page;
-  // console.log("currentPage", event.page);
+  // apiHomePage() = event.page;
+  console.log("currentPage", event.page);
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
