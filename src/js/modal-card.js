@@ -37,6 +37,10 @@ async function clickOnMovie(evt) {
 
 function onOpenModal() {
   const closeModalBtn = document.querySelector('.modal__button-close');
+  const rotateModal = document.querySelector('.modal__button-rotate');
+  const unRotateModal = document.querySelector('.modal__button-backtoinfo');
+  unRotateModal.addEventListener("click", onUnRotateModal)
+  rotateModal.addEventListener('click', onRotateModal)
   document.body.addEventListener('keydown', onEscButton);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
@@ -44,11 +48,31 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
 }
 
+function onUnRotateModal() {
+  const modal = document.querySelector('.modal')
+  const modalBackSide = document.querySelector('.modal__backside')
+  modal.classList.remove('rotated');
+  modalBackSide.classList.remove('rotated360')
+}
+
+function onRotateModal() {
+  const modal = document.querySelector('.modal')
+  const modalBackSide = document.querySelector('.modal__backside')
+  modal.classList.add('rotated');
+  modalBackSide.classList.add('rotated360');
+}
+
 function onCloseModal() {
   document.body.classList.remove('modal-open');
   refs.filmBox.classList.add('visually-hidden');
   document.body.removeEventListener('click', handleClick);
   document.body.removeEventListener('keydown', onEscButton);
+}
+
+function onEscButton(evt) {
+  if (evt.code === 'Escape') {
+    onCloseModal();
+  }
 }
 
 function handleClick(event) {
@@ -60,17 +84,10 @@ function handleClick(event) {
   if (event.target.className === 'modal__button--queue') {
     addQueueBtn(STORAGE_KEY_QUEUE, response);
     onCloseModal();
-
-    // console.dir(event.target);
+  }
+  // console.log(event.target);
     // console.log('currentTarget: ', event.currentTarget);
     if (event.target === refs.filmBox) {
       onCloseModal();
     }
-  }
-
-  function onEscButton(evt) {
-    if (evt.code === 'Escape') {
-      onCloseModal();
-    }
-  }
 }
