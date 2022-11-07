@@ -39,8 +39,8 @@ function onOpenModal() {
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
-  unRotateModal.addEventListener("click", onUnRotateModal)
-  rotateModal.addEventListener('click', onRotateModal)
+  unRotateModal.addEventListener('click', onUnRotateModal);
+  rotateModal.addEventListener('click', onRotateModal);
   document.body.addEventListener('keydown', onEscButton);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
@@ -49,15 +49,15 @@ function onOpenModal() {
 }
 
 function onUnRotateModal() {
-  const modal = document.querySelector('.modal')
-  const modalBackSide = document.querySelector('.modal__backside')
+  const modal = document.querySelector('.modal');
+  const modalBackSide = document.querySelector('.modal__backside');
   modal.classList.remove('rotated');
-  modalBackSide.classList.remove('rotated360')
+  modalBackSide.classList.remove('rotated360');
 }
 
 function onRotateModal() {
-  const modal = document.querySelector('.modal')
-  const modalBackSide = document.querySelector('.modal__backside')
+  const modal = document.querySelector('.modal');
+  const modalBackSide = document.querySelector('.modal__backside');
   modal.classList.add('rotated');
   modalBackSide.classList.add('rotated360');
 }
@@ -86,16 +86,8 @@ function handleClick(event) {
     onCloseModal();
   }
   // console.log(event.target);
-    // console.log('currentTarget: ', event.currentTarget);
-    if (event.target === refs.filmBox) {
-      onCloseModal();
-    }
-
+  // console.log('currentTarget: ', event.currentTarget);
+  if (event.target === refs.filmBox) {
+    onCloseModal();
   }
 }
-  function onEscButton(evt) {
-    if (evt.code === 'Escape') {
-      onCloseModal();
-    }
-  }
-
