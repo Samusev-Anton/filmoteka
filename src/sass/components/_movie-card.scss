@@ -1,4 +1,5 @@
 .film-card {
+  position: relative;
   width: 280px;
   height: 443px;
   transition: transform 0.15s ease-in-out;
@@ -16,7 +17,7 @@
     width: 336px;
     height: 494px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1080px) {
     width: 395px;
     height: 634px;
   }
@@ -32,7 +33,7 @@
     height: 455px;
     margin-bottom: 8px;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1080px) {
     height: 574px;
     margin-bottom: 12px;
   }
@@ -47,7 +48,7 @@
   @media screen and (min-width: 768px) {
     line-height: 0, 75;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1080px) {
     font-size: 20px;
     line-height: 1, 2;
   }
@@ -62,7 +63,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1080px) {
     font-size: 20px;
     line-height: calc(24 / 20);
   }
@@ -93,7 +94,7 @@
       height: 11px;
       margin-left: 7px;
     }
-    @media screen and (min-width: 1280px) {
+    @media screen and (min-width: 1080px) {
       height: 15px;
     }
   }
@@ -104,14 +105,33 @@
 }
 .film-card__year {
   margin-left: 3px;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1080px) {
     margin-left: 5px;
   }
 }
 
-.film-card__title-white {
-color: white;  
+.button__trailer {
+  position: absolute;
+
+  top: 10px;
+  left: 10px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  border-radius: 5px;
+  background-color: #ff6b01;
+  color: #ffffff;
 }
-.film-card__title-black {
-color: black;  
-}
+
+// .film-card__rating {
+//     margin-left: 10px;
+//     color: #fff;
+//     line-height: 14px;
+//     height: 16px;
+//     width: 36px;
+//     padding-top: 1px;
+//     text-align: center;
+//     background-color: #ff6b01;
+//     border-radius: $main-border-radius;
+// }
