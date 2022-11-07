@@ -26,6 +26,7 @@ function onButtonClick(evt) {
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
+    refs.pagination.classList.add('visually-hidden');
     spinner.classList.add('done');
     refs.form.reset();
     inputData === '';

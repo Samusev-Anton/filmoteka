@@ -9,4 +9,5 @@ export const refs = {
   spinner: document.querySelector('.preloader'),
   divError: document.querySelector('.to_main__div'),
   filterForm: document.querySelector('#filter-form'),
+  pagination: document.querySelector('#pagination'),
 };
