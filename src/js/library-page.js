@@ -1,5 +1,6 @@
 import markupLibraryPage from './templates/markupLibraryPage.hbs';
 import { localStorageAPI } from './api/localStorageAPI';
+import { dataToYear } from './data/data-revize';
 
 const libraryGallery = document.querySelector('.library-gallery');
 const btnQueue = document.querySelector('.js-queue');
@@ -21,7 +22,9 @@ function markupLibrary(key) {
   libraryGallery.innerHTML = '';
   try {
     const listFilms = localStorageAPI.load(key);
-    libraryGallery.innerHTML = markupLibraryPage(listFilms);
+    const normalListFilms = dataToYear(listFilms);
+    console.log(normalListFilms);
+    libraryGallery.innerHTML = markupLibraryPage(normalListFilms);
   } catch (error) {
     console.log(error);
   }

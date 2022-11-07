@@ -29,11 +29,6 @@
   height: auto;
   padding: 20px;
 
-  // background-image: url(/src/images/students-card/coding-programming-application-development-vector-21795005.jpeg);
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
-
   background: $main-bgc;
   border-radius: 10px;
   box-shadow: 0px 1px 1px $active-btn-shadow;
@@ -110,30 +105,38 @@
 }
 
 .title__icon {
-  width: 0;
-  height: 0;
   background-color: transparent;
   display: flex;
+  margin-left: 8px;
 
-  @media screen and (min-width: 480px) {
-    width: 100px;
-    height: 70px;
+  animation-name: spinning;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 
-    margin-right: 10px;
+  @media screen and (max-width: 479px) {
+    width: 0;
+    height: 0;
   }
 
-  @media screen and (min-width: 768px) {
-    width: 120px;
-    height: 80px;
-
-    margin-right: 15px;
+  @media screen and (min-width: 480px) {
+    margin-left: 8px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 150px;
-    height: 90px;
+    margin-left: 10px;
+  }
+}
 
-    margin-right: 20px;
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+    fill: $footer-text;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    fill: $orange-text;
   }
 }
 
@@ -153,6 +156,11 @@
   }
 }
 
+.card-student__item > img {
+  object-fit: cover;
+  height: 250px;
+}
+
 .card-student__item {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
@@ -161,24 +169,36 @@
   }
 }
 .card-student__wrap {
+  width: 200px;
   padding: 10px;
   background-color: transparent;
 }
 
-.card-student__name {
+.card-student__name,
+.card-student__role {
   text-align: center;
   color: $orange-text;
   margin-bottom: 5px;
 }
+
 .card-student__role {
+  font-weight: 600;
   color: $black-text;
+}
+
+.card-student__text {
+  display: flex;
+  color: $footer-text;
+
   text-align: center;
+  justify-content: center;
+  align-items: center;
   padding: 3px;
 
   margin-bottom: 10px;
-  border: 1.5px solid $pagination-hover-btn-bgc;
+  border: 2px solid $pagination-hover-btn-bgc;
   border-radius: 5px;
-  height: 50px;
+  height: 100px;
 }
 
 .social-list {
