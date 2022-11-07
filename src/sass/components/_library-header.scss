@@ -245,38 +245,3 @@
   fill: $orange-hover;
   stroke: $orange-hover;
 }
-
-
-
-.library__card-rating {
-  width: 36px;
-  height: 16px;
-  margin-left: 9px;
-  text-align: center;
-  background-color: $orange-btn;
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
-  color: $white-text;
-  @media screen and (min-width: 1280px) {
-    width: 40px;
-    height: 20px;
-    margin-top: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-}
-
-
-
-.library-section {
-  color: white;
-  text-align: center;
-}
-
-.film-card__title {
-  color: black;
-  text-align: left;
-}
