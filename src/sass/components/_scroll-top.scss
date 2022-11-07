@@ -32,4 +32,19 @@
     margin-left: -4px;
     top: 19px;
   }
+  &:hover {
+    border-color: #FF6B07; 
+    box-shadow: 0 0 15px 5px #FF6B07;
+    opacity: 0.8;
+
+    &::after,
+    &:before {
+      background-color: #FF6B07;
+    }
+  }
+};
+
+.visually-hidden-scroll{
+  display: none;
 }
+
