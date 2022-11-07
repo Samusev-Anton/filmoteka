@@ -22,22 +22,27 @@ let listFilms;
 markupLibrary('watched');
 movieTitle = document.querySelector('.film-card__title');
 function markupLibrary(key) {
-    
   libraryGallery.innerHTML = '';
   listFilms = localStorageAPI.load(key);
-
-  if (listFilms.length >= 1) {
-    libraryTitle.classList.add('is-hidden');
+  if (listFilms === undefined) {
+    return;
   }
-
   listFilms.map(obj => {
     obj.genres.splice(1);
     obj.vote_average = Number(obj.vote_average.toFixed(1));
     return obj;
   });
   const normalListFilms = dataToYear(listFilms);
-  console.log(normalListFilms);
-  libraryGallery.innerHTML = markupLibraryPage(normalListFilms);
-  
-}
 
+  const arrId = {};
+  normalListFilms.forEach(obj => {
+    arrId[obj.id] = obj;
+  });
+
+  const renderArr = Object.values(arrId);
+  if (renderArr.length >= 1) {
+    libraryTitle.classList.add('is-hidden');
+  }
+
+  libraryGallery.innerHTML = markupLibraryPage(renderArr);
+}
