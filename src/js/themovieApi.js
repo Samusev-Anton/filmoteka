@@ -18,7 +18,7 @@ import { inputData } from './search-films';
 let page = 1;
 let totalPages = 0;
 
-export async function apiHomePage(page) {
+export async function apiHomePage() {
   try {
     const responce = await fetch(
       `${TREND_URL}?api_key=${API_KEY}&page=${page}`
