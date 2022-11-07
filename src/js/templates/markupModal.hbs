@@ -1,13 +1,31 @@
 <div class='modal'>
-  <div class='modal__img'><button type="button" class="modal__button-rotate"><svg width="30" height="30" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 461.001 461.001" style="enable-background:new 0 0 461.001 461.001;" xml:space="preserve">
-<g>
-	<path style="fill:#F61C0D;" d="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
+  <div class='modal__img'><button
+      type='button'
+      class='modal__button-rotate'
+    ><svg
+        width='30'
+        height='30'
+        version='1.1'
+        id='Layer_1'
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:xlink='http://www.w3.org/1999/xlink'
+        x='0px'
+        y='0px'
+        viewBox='0 0 461.001 461.001'
+        style='enable-background:new 0 0 461.001 461.001;'
+        xml:space='preserve'
+      >
+        <g>
+          <path
+            style='fill:#F61C0D;'
+            d='M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
 		c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137
 		C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607
-		c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z"/>
-</g>
-</svg> Watch trailer</button><img
+		c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z'
+          ></path>
+        </g>
+      </svg>
+      Watch trailer</button><img
       class='modal__poster'
       src='https://image.tmdb.org/t/p/w500{{poster_path}}'
       alt={{original_title}}
@@ -37,7 +55,6 @@
         <li class='modal__list-value-item'>{{#each genres}}{{this.name}}
           {{/each}}</li>
       </ul>
-
     </div>
     <p class='modal__about'>ABOUT</p>
     <p class='modal__about-text'>{{overview}}</p>
@@ -45,22 +62,42 @@
       <button class='modal__button--watched' type='submit'>ADD TO WATCHED</button>
       <button class='modal__button--queue' type='submit'>ADD TO QUEUE</button></div>
   </div>
- 
   <button type='button' class='modal__button-close'></button>
-  
-  
 </div>
- <div class="modal__backside">
-    <button type="button" class="modal__button-backtoinfo">Back to movie info
-<svg width="20" height="20" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 499.2 499.2" style="enable-background:new 0 0 499.2 499.2;" xml:space="preserve">
-<path style="fill:#4F0404;" d="M489.6,229.6c-10.4,20.8-29.6,37.6-52.8,44c19.2,45.6,21.6,96.8,2.4,142.4c34.4-11.2,60-43.2,60-81.6
-	v-68.8C499.2,253.6,495.2,241.6,489.6,229.6z"/>
-<path style="fill:#C42014;" d="M413.6,177.6h-228c-47.2,0-86.4,38.4-86.4,85.6v58.4h232l0,0h82.4c33.6,0,64,20.8,77.6,49.6
-	c6.4-14.4,8-25.6,8-39.2v-68.8C499.2,216,460.8,177.6,413.6,177.6z"/>
-<polygon style="fill:#EA2D28;" points="123.2,249.6 219.2,153.6 219.2,30.4 0,249.6 219.2,468.8 219.2,345.6 "/>
-<polyline style="fill:#C42014;" points="1.6,249.6 219.2,468.8 219.2,345.6 124.8,249.6 219.2,153.6 "/>
-</svg>
-</button>
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Zq_zgig9DqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+
+<div class='modal__backside'>
+  <button type='button' class='modal__button-backtoinfo'>Back to movie info
+    <svg
+      width='20'
+      height='20'
+      version='1.1'
+      id='Layer_1'
+      xmlns='http://www.w3.org/2000/svg'
+      xmlns:xlink='http://www.w3.org/1999/xlink'
+      x='0px'
+      y='0px'
+      viewBox='0 0 499.2 499.2'
+      style='enable-background:new 0 0 499.2 499.2;'
+      xml:space='preserve'
+    >
+      <path
+        style='fill:#4F0404;'
+        d='M489.6,229.6c-10.4,20.8-29.6,37.6-52.8,44c19.2,45.6,21.6,96.8,2.4,142.4c34.4-11.2,60-43.2,60-81.6
+	v-68.8C499.2,253.6,495.2,241.6,489.6,229.6z'
+      ></path>
+      <path
+        style='fill:#C42014;'
+        d='M413.6,177.6h-228c-47.2,0-86.4,38.4-86.4,85.6v58.4h232l0,0h82.4c33.6,0,64,20.8,77.6,49.6
+	c6.4-14.4,8-25.6,8-39.2v-68.8C499.2,216,460.8,177.6,413.6,177.6z'
+      ></path>
+      <polygon
+        style='fill:#EA2D28;'
+        points='123.2,249.6 219.2,153.6 219.2,30.4 0,249.6 219.2,468.8 219.2,345.6 '
+      ></polygon>
+      <polyline
+        style='fill:#C42014;'
+        points='1.6,249.6 219.2,468.8 219.2,345.6 124.8,249.6 219.2,153.6 '
+      ></polyline>
+    </svg>
+  </button>
+</div>
