@@ -1,4 +1,4 @@
-<div class='modal'>
+<div class='modal background-modal'>
   <div class='modal__img'><button
       type='button'
       class='modal__button-rotate'
@@ -31,38 +31,43 @@
       alt={{original_title}}
       loading='lazy'
     /></div>
-  <div class='modal__content'><h2 class='modal__title'>{{original_title}}</h2>
+  <div class='modal__content'><h2 class='modal__title dark-theme-text'>{{original_title}}</h2>
     <div class='modal__info'>
       <ul class='modal__list-key'>
         <li class='modal__list-key-item'>Vote / Votes</li>
-        <li class='modal__list-value-item'><span
-            class='modal__list-vote'
+        <li class='modal__list-value-item dark-theme-text'><span
+            class='modal__list-vote dark-theme-text'
           >{{vote_average}}</span>
           /
-          <span class='modal__list-value-item'>{{vote_count}}</span>
+          <span class='modal__list-value-item dark-theme-text'>{{vote_count}}</span>
         </li>
       </ul>
       <ul class='modal__list-key'>
         <li class='modal__list-key-item'>Popularity</li>
-        <li class='modal__list-value-item'>{{popularity}}</li>
+        <li class='modal__list-value-item dark-theme-text'>{{popularity}}</li>
       </ul>
       <ul class='modal__list-key'>
         <li class='modal__list-key-item'>Original Title</li>
-        <li class='modal__list-value-item'>{{original_title}}</li>
+        <li class='modal__list-value-item dark-theme-text'>{{original_title}}</li>
       </ul>
       <ul class='modal__list-key'>
         <li class='modal__list-key-item'>Genre</li>
-        <li class='modal__list-value-item'>{{#each genres}}{{this.name}}
+        <li class='modal__list-value-item dark-theme-text'>{{#each genres}}{{this.name}}
           {{/each}}</li>
       </ul>
     </div>
-    <p class='modal__about'>ABOUT</p>
-    <p class='modal__about-text'>{{overview}}</p>
+    <p class='modal__about dark-theme-text'>ABOUT</p>
+    <p class='modal__about-text dark-theme-text'>{{overview}}</p>
     <div class='modal__buttons'>
       <button class='modal__button--watched' type='submit'>ADD TO WATCHED</button>
       <button class='modal__button--queue' type='submit'>ADD TO QUEUE</button></div>
   </div>
-  <button type='button' class='modal__button-close'></button>
+  <button type='button' class='modal__button-close'>
+      <svg class='modal-close__svg' width='30' height='30' viewBox='0 0 30 30'>
+      <path class='modal-close__svg__path dark-theme-text' d='M8 8L22 22' stroke='black' stroke-width='2'></path>
+      <path class='modal-close__svg__path dark-theme-text' d='M8 22L22 8' stroke='black' stroke-width='2'></path>
+    </svg>
+  </button>
 </div>
 
 <div class='modal__backside'>

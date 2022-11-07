@@ -170,7 +170,6 @@
     padding: 0;
     border: none;
     background-color: transparent;
-    background-image: url(../images/close.svg);
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -346,3 +345,11 @@ justify-content: center;
     pointer-events: none;
   }
 }
+
+.modal-close__svg__path{
+  transition: all 200ms;
+}
+.modal__button-close:hover .modal-close__svg__path,
+.modal__button-close:focus .modal-close__svg__path{
+  stroke: $orange-hover;
+} 

@@ -96,15 +96,23 @@ a {
 }
 
 /* Стиль кнопки (перемикача)*/
-.change_theme {
-  margin-top: 15px;
-  cursor: pointer;
+.change_theme-box{
+  padding-bottom: 0;
+  padding-top: 20px;
+}
 
-  text-align: center;
+.change_theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
   background: none;
   border: 1px solid white;
   border-radius: 5px;
   box-shadow: 1px 4px 6px 0px rgb(0 0 0 / 16%);
+  width: 30px;
+  height: 30px;
 }
 
 .change_theme[data-theme='onLight'] {
