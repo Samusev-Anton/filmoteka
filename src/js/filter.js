@@ -82,7 +82,7 @@ function eventYear(evn) {
     getSearchYear(page, year).then(data => {
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
-        amountOfPages = 500;
+        const amountOfPages = 500;
       } else {
         amountOfPages = data.total_pages;
       }
@@ -106,7 +106,7 @@ function eventGenre(evn) {
       console.log(data);
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
-        amountOfPages = 500;
+        const amountOfPages = 500;
       } else {
         amountOfPages = data.total_pages;
       }
@@ -127,7 +127,7 @@ function eventSort(evn) {
     getSearchSort(page, sort).then(data => {
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
-        amountOfPages = 500;
+        const amountOfPages = 500;
       } else {
         amountOfPages = data.total_pages;
       }
