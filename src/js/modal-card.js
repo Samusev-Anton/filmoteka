@@ -11,6 +11,8 @@ refs.homeGallery.addEventListener('click', clickOnMovie);
 
 // variable for localstorage
 let response;
+let addWathedBtnref = null;
+let addQueueBtnref = null;
 let iD = [];
 // -------------------------
 // Click Handler Function
@@ -38,6 +40,8 @@ function onOpenModal() {
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
+  addWathedBtnref = document.querySelector('.modal__button--watched');
+  addQueueBtnref = document.querySelector('.modal__button--queue');
   rotateModal.addEventListener('click', onRotateModal);
   rotateModal.addEventListener('click', watchTrailer);
   unRotateModal.addEventListener('click', onUnRotateModal);
@@ -87,17 +91,17 @@ function onEscButton(evt) {
 }
 
 function handleClick(event) {
-  // console.log(response);
-  if (event.target.className === 'modal__button--watched') {
-    addWatchedBtn(STORAGE_KEY_WATCHED, response);
-    onCloseModal();
-  }
   if (event.target.className === 'modal__button--queue') {
+    console.log(addWathedBtnref);
+    addWathedBtnref.disabled = true;
     addQueueBtn(STORAGE_KEY_QUEUE, response);
-    onCloseModal();
   }
-  // console.log(event.target);
-  // console.log('currentTarget: ', event.currentTarget);
+  if (event.target.className === 'modal__button--watched') {
+    console.log(addQueueBtnref);
+    addQueueBtnref.disabled = true;
+    addWatchedBtn(STORAGE_KEY_WATCHED, response);
+  }
+  
   if (event.target === refs.filmBox) {
     onCloseModal();
   }
