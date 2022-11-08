@@ -1,8 +1,4 @@
 /* Стиль кнопки (перемикача)*/
-.change_theme-box{
-  padding-bottom: 0;
-}
-
 .change_theme {
   border: 1px solid white;
   border-radius: 5px;
@@ -26,9 +22,14 @@ body {
   color: rgba(255, 107, 8, 1);
 }
 
-// .film-card__title {
-//   color: white;
-// }
+.background-modal{
+  background-color: #222222;
+}
+
+.dark-theme-text {
+  color: white;
+  stroke: white;
+}
 
 .pagination_button {
   color: #fff;

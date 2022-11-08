@@ -14,87 +14,182 @@
 
     <ul class="card-student__list">
       <li class="card-student__item">
-        <img
-          class=""
-          src="./images/students-card/students_photo/Anton Samusiev.jpg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200.jpg    1x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768.jpg    1x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480.jpg    1x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480.jpg"
+            alt="students photo"
+            width="200"
+          />
+        </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Anton Samusiev</h3>
           <p class="card-student__role">Team Leader</p>
-          <p class="card-student__text">Створення API-запити на сервер та їх рендер</p>
+          <p class="card-student__text">
+            Створення API-запити на сервер та їх рендер
+          </p>
 
           <ul class="social-list">
-            <a
-              href="https://www.facebook.com/profile.php?id=100033779014560"
-              class="social-list__item"
-            >
+            <li class="social-list__item">
+            <a href="https://www.facebook.com/profile.php?id=100033779014560">
               <svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                ></use>
+                <use href="./images/students-card/symbol-defs.svg#icon-facebook2"></use>
               </svg>
             </a>
-            <a href="https://github.com/Samusev-Anton" class="social-list__item"
+            </li>
+            <li class="social-list__item">
+            <a href="https://github.com/Samusev-Anton"
               ><svg class="social-list__icon" width="20" height="20">
                 <use
                   href="./images/students-card/symbol-defs.svg#icon-github"
                 ></use></svg
             ></a>
-            <a href="" class="social-list__item"
+            </li>
+             <li class="social-list__item">
+            <a href=""
               ><svg class="social-list__icon" width="20" height="20">
                 <use
                   href="./images/students-card/symbol-defs.svg#icon-video-camera"
                 ></use></svg
             ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200.jpg    1x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768.jpg    1x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768@2x.jpg 2x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480.jpg    1x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480@2x.jpg 2x,
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480.jpg"
+            alt="students photo"
+            width="200"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Alevtyna Aharkova</h3>
           <p class="card-student__role">Scrum Master</p>
-          <p class="card-student__text">Створення кнопки "Up" для зручності користувача</p>
+          <p class="card-student__text">
+            Створення кнопки "Up" для зручності користувача
+          </p>
           <ul class="social-list">
-            <a href="https://github.com/nonbinary00" class="social-list__item"
+            <li class="social-list__item">
+            <a href="https://github.com/nonbinary00"
               ><svg class="social-list__icon" width="20" height="20">
                 <use
                   href="./images/students-card/symbol-defs.svg#icon-github"
                 ></use></svg
             ></a>
-            <a href="" class="social-list__item"
+            </li>
+            <li class="social-list__item">
+            <a href="" 
               ><svg class="social-list__icon" width="20" height="20">
                 <use
                   href="./images/students-card/symbol-defs.svg#icon-video-camera"
                 ></use></svg
             ></a>
+
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/students_photo/Anton Zmiievskyi.jpg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200.jpg    1x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768.jpg    1x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480.jpg    1x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480@2x.jpg 2x,
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Anton Zmiievskyi</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Рендер сторінки "My Library", функціонал кнопок "Watched", "Queue"</p>
+          <p class="card-student__text">
+            Рендер сторінки "My Library", функціонал кнопок "Watched", "Queue"
+          </p>
           <ul class="social-list">
+
             <a href="" class="social-list__item">
-            <a href="https://github.com/Zmiievskyi/" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
+            <a href="https://github.com/Zmiievskyi/" class="social-list__item"><svg class="social-list__icon" width="20" height="20">
                 <use
                   href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
+                ></use></svg></a>
             <a href="" class="social-list__item"
               ><svg class="social-list__icon" width="20" height="20">
                 <use
@@ -104,132 +199,280 @@
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/students_photo/Oleg Andreev.jpg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200.jpg    1x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768.jpg    1x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768@2x.jpg 2x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480.jpg    1x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480@2x.jpg 2x,
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/OlegAndreev/OlegAndreev-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Oleg Andreev</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Автор назви команди, створення модального вікна для фільму</p>
+          <p class="card-student__text">
+            Автор назви команди, створення модального вікна для фільму
+          </p>
           <ul class="social-list">
-            <a href="https://www.facebook.com/profile.php?id=1105311904" class="social-list__item">
-              <svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                ></use>
-              </svg>
-            </a>
-            <a href="https://github.com/OlegAndreiev" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="https://www.linkedin.com/in/oleg-andreev/" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-linkedin"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://www.facebook.com/profile.php?id=1105311904">
+                <svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-facebook2"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a href="https://github.com/OlegAndreiev"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href="https://www.linkedin.com/in/oleg-andreev/"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-linkedin"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/students_photo/Nataliia Svystula.jpg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200.jpg    1x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768.jpg    1x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768@2x.jpg 2x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480.jpg    1x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480@2x.jpg 2x,
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Nataliia Svystula</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Створення розширеної фільтрації під час пошуку фільму, розробка та підключення spinner</p>
+          <p class="card-student__text">
+            Створення розширеної фільтрації під час пошуку фільму, розробка та
+            підключення spinner
+          </p>
           <ul class="social-list">
-            <a href="https://github.com/Nataliia0202" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://github.com/Nataliia0202"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200.jpg    1x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768.jpg    1x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768@2x.jpg 2x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480.jpg    1x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480@2x.jpg 2x,
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Andrii Honchar</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text"></p>
+          <p class="card-student__text">
+            Сворення сторінки "Home", перемикач для світлої/темної теми
+          </p>
           <ul class="social-list">
-            <a href="https://github.com/goncharas" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://github.com/goncharas"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/students_photo/Vasylyna Shvets .jpg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200.jpg    1x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768.jpg    1x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768@2x.jpg 2x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480.jpg    1x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480@2x.jpg 2x,
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Vasylyna Shvets</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Робота з localStorage, запис даних для формування бібліотеки</p>
+          <p class="card-student__text">
+            Робота з localStorage, запис даних для формування бібліотеки
+          </p>
           <ul class="social-list">
-            <a href="https://www.facebook.com/weselyna" class="social-list__item">
-              <svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                ></use>
-              </svg>
-            </a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://www.facebook.com/weselyna">
+                <svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-facebook2"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
         <img
+          class="card-student__img"
           src="./images/students-card/default-avatar.jpeg"
           alt="students photo"
           width="200px"
@@ -237,25 +480,34 @@
         <div class="card-student__wrap">
           <h3 class="card-student__name">Nerodenko Maksym</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text"></p>
+          <p class="card-student__text">
+            Створення контейнеру сторінки "My Library", рендер тa відображення
+            жанрів фільму
+          </p>
           <ul class="social-list">
-            <a href="https://github.com/vsC0dex" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://github.com/vsC0dex"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
         <img
+          class="card-student__img"
           src="./images/students-card/default-avatar.jpeg"
           alt="students photo"
           width="200px"
@@ -263,58 +515,102 @@
         <div class="card-student__wrap">
           <h3 class="card-student__name">Serhii Yehorov</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Розробка модуля програвання трейлера фільма</p>
+          <p class="card-student__text">
+            Розробка модуля програвання трейлера фільма
+          </p>
           <ul class="social-list">
-            <a href="https://github.com/SmartCom80?tab=repositories" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://github.com/SmartCom80?tab=repositories"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
-        <img
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200.jpg    1x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200@2x.jpg 2x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768.jpg    1x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768@2x.jpg 2x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480.jpg    1x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480@2x.jpg 2x,
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Viktoriia Ostrozhynska</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text">Розробка модульного вікна з інформацією про учасників команди</p>
+          <p class="card-student__text">
+            Розробка модульного вікна з інформацією про учасників команди
+          </p>
           <ul class="social-list">
-            <a href="https://www.facebook.com/profile.php?id=100004181658861" class="social-list__item">
-              <svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                ></use>
-              </svg>
-            </a>
-            <a href="https://github.com/ViktoriiaOstrojinskaya" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://www.facebook.com/profile.php?id=100004181658861">
+                <svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-facebook2"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a href="https://github.com/ViktoriiaOstrojinskaya"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
         <img
+          class="card-student__img"
           src="./images/students-card/default-avatar.jpeg"
           alt="students photo"
           width="200px"
@@ -324,29 +620,38 @@
           <p class="card-student__role">Developer</p>
           <p class="card-student__text">Розробка та підключення Pagination</p>
           <ul class="social-list">
-            <a href="https://github.com/Ostrynska" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="https://www.linkedin.com/in/kateryna-ostrynska-9155b0151/" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-linkedin"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="https://github.com/Ostrynska"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a
+                href="https://www.linkedin.com/in/kateryna-ostrynska-9155b0151/"
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-linkedin"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>
+
       <li class="card-student__item">
         <img
+          class="card-student__img"
           src="./images/students-card/default-avatar.jpeg"
           alt="students photo"
           width="200px"
@@ -356,31 +661,39 @@
           <p class="card-student__role">Developer</p>
           <p class="card-student__text"></p>
           <ul class="social-list">
-            <a href="" class="social-list__item">
-              <svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                ></use>
-              </svg>
-            </a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-github"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-linkedin"
-                ></use></svg
-            ></a>
-            <a href="" class="social-list__item"
-              ><svg class="social-list__icon" width="20" height="20">
-                <use
-                  href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                ></use></svg
-            ></a>
+            <li class="social-list__item">
+              <a href="">
+                <svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-facebook2"
+                  ></use>
+                </svg>
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-github"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-linkedin"
+                  ></use></svg
+              ></a>
+            </li>
+            <li class="social-list__item">
+              <a href=""
+                ><svg class="social-list__icon" width="20" height="20">
+                  <use
+                    href="./images/students-card/symbol-defs.svg#icon-video-camera"
+                  ></use></svg
+              ></a>
+            </li>
           </ul>
         </div>
       </li>

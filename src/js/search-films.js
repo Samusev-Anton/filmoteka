@@ -22,10 +22,11 @@ if (toMainBtn) {
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  // page = 1;
+  page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
+    refs.pagination.classList.add('visually-hidden');
     spinner.classList.add('done');
     refs.form.reset();
     inputData === '';
@@ -42,13 +43,16 @@ function onButtonClick(evt) {
       //   //   }
       refs.form.reset();
       warningUnShown();
+      
       const allGenres = getGenres();
       const films = data.results;
       const normalFilmData = dataRevize(films, allGenres);
-      
+      refs.pagination.classList.remove('visually-hidden');
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
       localStorageAPI.save('query-pg', inputData);
+      
       spinner.classList.add('done');
+      
     });
     
   }

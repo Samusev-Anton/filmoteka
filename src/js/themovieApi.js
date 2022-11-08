@@ -15,13 +15,13 @@ import {
 } from './api/api-parts';
 
 import { inputData } from './search-films';
-let currentPage = 1;
+let page = 1;
 let totalPages = 0;
 
 export async function apiHomePage() {
   try {
     const responce = await fetch(
-      `${TREND_URL}?api_key=${API_KEY}&page=${currentPage}`
+      `${TREND_URL}?api_key=${API_KEY}&page=${page}`
     );
     const data = await responce.json();
     totalPages = data.total_pages;
@@ -34,10 +34,10 @@ export async function apiHomePage() {
   }
 }
 
-export async function apiHomeSearch(inputData) {
+export async function apiHomeSearch(inputData, page) {
   try {
     const responce = await fetch(
-      `${SEARCH_URL}?api_key=${API_KEY}&query=${inputData}&language=en-US&page=1&include_adult=false&page=${currentPage}`
+      `${SEARCH_URL}?api_key=${API_KEY}&query=${inputData}&language=en-US&page=1&include_adult=false&page=${page}`
     );
     const data = await responce.json();
     //   console.log(data);

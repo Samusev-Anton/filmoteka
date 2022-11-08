@@ -1,4 +1,4 @@
-import { apiModalDetails } from './themovieApi';
+import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
 // import addWatched from './my-library';
@@ -7,14 +7,12 @@ import { addWatchedBtn, addQueueBtn } from './modal-card-btn';
 const STORAGE_KEY_WATCHED = 'watched';
 const STORAGE_KEY_QUEUE = 'queue';
 
-const choiceFilm = document.querySelector('.list-card__item');
-
 refs.homeGallery.addEventListener('click', clickOnMovie);
 
 // variable for localstorage
 let response;
+let iD = [];
 // -------------------------
-
 // Click Handler Function
 async function clickOnMovie(evt) {
   evt.preventDefault();
@@ -32,6 +30,7 @@ async function clickOnMovie(evt) {
 
     refs.filmBox.innerHTML = markupModal(resp);
     onOpenModal();
+    iD.push(movieId);
   });
 }
 
@@ -41,6 +40,7 @@ function onOpenModal() {
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
   unRotateModal.addEventListener('click', onUnRotateModal);
   rotateModal.addEventListener('click', onRotateModal);
+  rotateModal.addEventListener('click', watchTrailer);
   document.body.addEventListener('keydown', onEscButton);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
@@ -67,6 +67,7 @@ function onCloseModal() {
   refs.filmBox.classList.add('visually-hidden');
   document.body.removeEventListener('click', handleClick);
   document.body.removeEventListener('keydown', onEscButton);
+  iD = [];
 }
 
 function onEscButton(evt) {
@@ -92,3 +93,24 @@ function handleClick(event) {
   }
 }
 
+function watchTrailer() {
+  console.log(iD);
+  apiMovieDetails(iD).then(resp => {
+    console.log(resp);
+    createPlayer(resp);
+  });
+}
+
+function createPlayer(videoKey) {
+  const modalBackSide = document.querySelector('.modal__backside');
+  const player = `<iframe
+  width="100%"
+  height="100%"
+  src="https://www.youtube.com/embed/${videoKey}"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  ></iframe>`;
+  modalBackSide.insertAdjacentHTML('beforeend', player);
+}
