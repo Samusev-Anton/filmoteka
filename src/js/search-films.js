@@ -14,7 +14,7 @@ const toMainBtn = document.querySelector('.to_main__link');
 if (toMainBtn) {
   toMainBtn.addEventListener('click', e => {
     spinner.classList.remove('done');
-    page = 1;
+    let page = 1;
     localStorageAPI.save('page-pg', page);
   });
 }
@@ -31,7 +31,6 @@ function onButtonClick(evt) {
     refs.form.reset();
     inputData === '';
     localStorageAPI.save('query-pg', inputData);
-    
   } else {
     apiHomeSearch(inputData).then(data => {
       //   //   if (data.hits.length === 0) {
@@ -43,20 +42,18 @@ function onButtonClick(evt) {
       //   //   }
       refs.form.reset();
       warningUnShown();
-      
+
       const allGenres = getGenres();
       const films = data.results;
       const normalFilmData = dataRevize(films, allGenres);
       refs.pagination.classList.remove('visually-hidden');
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
       localStorageAPI.save('query-pg', inputData);
-      
+
       spinner.classList.add('done');
-      
     });
-    
   }
-  
+
   // apiHomeSearch(inputData).then(data => {
   //   //   if (data.hits.length === 0) {
   //   //     homeGallary.innerHTML = '';
@@ -75,14 +72,12 @@ function onButtonClick(evt) {
 }
 
 function warningShown() {
-  
   refs.divError.classList.remove('visually-hidden');
   refs.homeGallery.classList.add('visually-hidden');
   refs.filterForm.classList.add('visually-hidden');
 }
 
 function warningUnShown() {
-  
   refs.divError.classList.add('visually-hidden');
   refs.homeGallery.classList.remove('visually-hidden');
   refs.filterForm.classList.remove('visually-hidden');
