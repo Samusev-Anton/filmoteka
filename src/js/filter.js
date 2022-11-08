@@ -69,7 +69,7 @@ const getSearchForm = async (
   }
 
   let { data } = await axios.get(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&sort_by=primary_release_date.desc&language=en-US&page=${page}`
+    `${BASE_URL}${filters.discover}/movie${filters.week}?api_key=${API_KEY}${filters.genre}${filters.year}${filters.sort}&language=en-US${filters.queryFetch}&page=${page}`
   );
   console.log(data);
 
@@ -111,7 +111,7 @@ function eventYear(evn) {
     year = evn.target.value;
     localStorageAPI.save('year-pg', year);
     getSearchForm(page, year).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data);
+      refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
         amountOfPages = 500;
       } else {
@@ -136,7 +136,7 @@ function eventSort(evn) {
     sort = evn.target.value;
     localStorageAPI.save('sort-pg', sort);
     getSearchForm(page, sort).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data);
+      refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
         amountOfPages = 500;
       } else {
@@ -170,8 +170,8 @@ function submitResetFilter(evn) {
   localStorageAPI.save('page-pg', page);
   localStorageAPI.save('total-pages', amountOfPages);
   getSearchForm(page, query, genre, year, sort).then(data => {
-    refs.homeGallery.innerHTML = markupSearchPage(data);
-    moviesDataUpdate(data);
+    refs.homeGallery.innerHTML = markupSearchPage(data.results);
+    moviesDataUpdate(data.results);
     localStorageAPI.save('total-pages', amountOfPages);
     spinner.classList.add('done');
   });
