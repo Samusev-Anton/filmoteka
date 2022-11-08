@@ -58,6 +58,9 @@ export async function apiModalDetails(movieId) {
       `${ID_URL}/${movieId}?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
+    resp.vote_average = Number(resp.vote_average.toFixed(1));
+    resp.popularity = Number(resp.popularity.toFixed(1));
+    // console.log(resp);
     return resp;
   } catch (Error) {
     //   Notiflix.Notify.failure(
