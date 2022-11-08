@@ -27,7 +27,7 @@ async function clickOnMovie(evt) {
     // refrash variable for localstorage
     response = resp;
     //--------------------------
-
+    // console.log(resp);
     refs.filmBox.innerHTML = markupModal(resp);
     onOpenModal();
     iD.push(movieId);
@@ -38,19 +38,20 @@ function onOpenModal() {
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
-  unRotateModal.addEventListener('click', onUnRotateModal);
   rotateModal.addEventListener('click', onRotateModal);
   rotateModal.addEventListener('click', watchTrailer);
+  unRotateModal.addEventListener('click', onUnRotateModal);
   document.body.addEventListener('keydown', onEscButton);
-  document.body.classList.add('modal-open');
-  refs.filmBox.classList.remove('visually-hidden');
   document.body.addEventListener('click', handleClick);
   closeModalBtn.addEventListener('click', onCloseModal);
+  document.body.classList.add('modal-open');
+  refs.filmBox.classList.remove('visually-hidden');
 }
 
 function onUnRotateModal() {
   const modal = document.querySelector('.modal');
   const modalBackSide = document.querySelector('.modal__backside');
+
   modal.classList.remove('rotated');
   modalBackSide.classList.remove('rotated360');
 }
@@ -60,13 +61,22 @@ function onRotateModal() {
   const modalBackSide = document.querySelector('.modal__backside');
   modal.classList.add('rotated');
   modalBackSide.classList.add('rotated360');
+  const iframe = document.querySelector('iframe');
+  iframe.remove();
 }
 
 function onCloseModal() {
+  const closeModalBtn = document.querySelector('.modal__button-close');
+  const rotateModal = document.querySelector('.modal__button-rotate');
+  const unRotateModal = document.querySelector('.modal__button-backtoinfo');
   document.body.classList.remove('modal-open');
   refs.filmBox.classList.add('visually-hidden');
-  document.body.removeEventListener('click', handleClick);
+  rotateModal.removeEventListener('click', onRotateModal);
+  rotateModal.removeEventListener('click', watchTrailer);
+  unRotateModal.removeEventListener('click', onUnRotateModal);
   document.body.removeEventListener('keydown', onEscButton);
+  document.body.removeEventListener('click', handleClick);
+  closeModalBtn.removeEventListener('click', onCloseModal);
   iD = [];
 }
 
@@ -94,16 +104,14 @@ function handleClick(event) {
 }
 
 function watchTrailer() {
-  console.log(iD);
   apiMovieDetails(iD).then(resp => {
-    console.log(resp);
     createPlayer(resp);
   });
 }
 
 function createPlayer(videoKey) {
   const modalBackSide = document.querySelector('.modal__backside');
-  const player = `<iframe
+  const player = `<iframe class="youtube-player"
   width="100%"
   height="100%"
   src="https://www.youtube.com/embed/${videoKey}"

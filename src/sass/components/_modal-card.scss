@@ -1,60 +1,52 @@
 @import './variables';
 .modal {
   position: absolute;
-  // display: flex;
   width: 280px;
- 
+
   padding-top: 48px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
   background-color: $main-bgc;
-  
   z-index: 5;
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
   backface-visibility: hidden;
   @media screen and (max-width: 767px) {
- left: 50%;
- transform: translate(-50%);
+    left: 50%;
+    transform: translate(-50%);
   }
   @media screen and (min-width: 768px) {
     display: flex;
-    
     width: 704px;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
     padding-bottom: 40px;
     gap: 68px;
-    
   }
-  
   @media screen and (min-width: 1280px) {
     width: 806px;
     padding: 40px 12px;
     gap: 16px;
   }
- 
 
-  
- 
   &__title {
     margin-bottom: 20px;
     font-size: 30px;
     font-weight: 500;
     line-height: 1.17;
   }
+
   &__info {
     margin-bottom: 20px;
   }
+
   &__list-key {
     display: flex;
     gap: 39px;
     align-items: baseline;
   }
+
   &__list-key:not(:last-child) {
     margin-bottom: 8px;
   }
@@ -93,22 +85,26 @@
     line-height: 1.17;
     color: $white-text;
   }
+
   &__about {
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.3;
   }
+
   &__about-text {
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.66;
   }
+
   &__buttons {
     display: flex;
     gap: 15px;
   }
+
   &__button--watched,
   &__button--queue {
     width: 136px;
@@ -130,7 +126,6 @@
 
   &__button--trailer {
     position: absolute;
-
     top: 58px;
     left: 30px;
     align-items: center;
@@ -140,7 +135,6 @@
     border-radius: 5px;
     background-color: #ff6b01;
     color: #ffffff;
-
     @media screen and (min-width: 768px) {
       top: 50px;
       left: 46px;
@@ -161,6 +155,7 @@
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   }
+
   &__button-close {
     position: absolute;
     right: 8px;
@@ -175,9 +170,12 @@
     cursor: pointer;
   }
 
-  &__button-rotate{
+  &__button-rotate {
     position: absolute;
     top: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 2px;
@@ -185,29 +183,22 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 1.3;
-    // background-color: transparent;
     transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
-    // transition-delay: 1s;
     z-index: -1;
-    // border: none;
-    // left: 300px;;
-    display: flex;
-    gap: 10px;
-    align-items: center;
     border: 1px solid rgb(121, 121, 121);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom: none;
     background-color: rgb(245, 245, 245);
   }
-  &:hover .modal__button-rotate{
+
+  &:hover .modal__button-rotate {
     transform: translateY(-99%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 1s;
   }
- 
-  &__button-backtoinfo{
-    // position: absolute;
+
+  &__button-backtoinfo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,22 +212,8 @@
     align-items: center;
     border: 1px solid rgb(121, 121, 121);
     background-color: rgb(245, 245, 245);
-    // left: 300px;;
   }
 
-  // &__button-close-icon {
-  //   // fill: red;
-  //   // stroke: black;
-  //   // z-index: 5;
-  //   // stroke: $black-text;
-  //   // fill: black;
-  //   // display: inline-block;
-  //   // width: 1em;
-  //   // height: 1em;
-  //   // stroke-width: 0;
-  //   // stroke: currentColor;
-  //   // fill: currentColor;
-  // }
   &__content {
     @media screen and (min-width: 768px) {
       width: 264px;
@@ -245,6 +222,7 @@
       width: 391px;
     }
   }
+
   &__img {
     position: relative;
     display: flex;
@@ -258,6 +236,7 @@
       margin-bottom: 0px;
     }
   }
+
   &__poster {
     width: 100%;
     border-radius: 5px;
@@ -270,56 +249,48 @@
   }
 }
 
-
-
 .modal-open {
   overflow: hidden;
 }
 
 .modal__backside {
-  // position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 400px;
-  @media screen and (min-width: 768px) {
-    width: 704px;;
-  height: 475px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 806px;;
-  height: 641.5px;
-  }
-  
   top: 0;
   left: 0;
   background-color: #fff;
   transform: rotateY(180deg);
   backface-visibility: hidden;
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 475px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    height: 641.5px;
+  }
 }
 
-.rotated{
+.rotated {
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
-  transform: perspective(1500px) rotateY(180deg);
-  // backface-visibility: hidden;
+  transform: perspective(1300px) rotateY(180deg);
 }
-.rotated360{
+.rotated360 {
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
-  transform: perspective(1500px) rotateY(360deg);
-  // backface-visibility: visible;
-
+  transform: perspective(1300px) rotateY(360deg);
 }
 
 .film-box {
   position: fixed;
-  display: flex;
-  justify-content: center;
-      // align-items: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
   z-index: 0;
   opacity: 1;
@@ -329,7 +300,7 @@
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     display: flex;
-justify-content: center;
+    justify-content: center;
     align-items: center;
     padding-left: 32px;
     padding-right: 32px;
@@ -346,10 +317,11 @@ justify-content: center;
   }
 }
 
-.modal-close__svg__path{
-  transition: all 200ms;
+.modal-close__svg__path {
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal__button-close:hover .modal-close__svg__path,
-.modal__button-close:focus .modal-close__svg__path{
+.modal__button-close:focus .modal-close__svg__path {
   stroke: $orange-hover;
-} 
+}
