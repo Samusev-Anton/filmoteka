@@ -8,7 +8,6 @@ import pagination from "./pagin";
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
 
-// const conteiner = document.querySelector('.gallery');
 const conteiner = document.querySelector('.gallery');
 const spinner = document.querySelector('.preloader');
 const toMainBtn = document.querySelector('.to_main__link');
