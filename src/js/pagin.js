@@ -6,7 +6,7 @@ import { refs } from './refs';
 import { renderTrendingMovies } from './home-page';
 import { getGenres, dataRevize } from './data/data-revize';
 import markupHomePage from './templates/markupHomePage.hbs';
-import apiHomePage  from "./api/api-movie";
+import apiHomePage from './api/api-movie';
 
 import {
   API_KEY,
@@ -16,11 +16,10 @@ import {
   ID_URL,
 } from './api/api-parts';
 
-
 // ----- POPULAR -----
 const container = document.getElementById('pagination');
 const optionsTrending = {
-  totalItems:  20000,
+  totalItems: 20000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -49,7 +48,6 @@ export const paginationPage = pagination.getCurrentPage();
 console.log(paginationPage);
 
 pagination.on('afterMove', function (event) {
-  
   // console.log("currentPage", event.page);
 
   apiHomePagePagin(event.page).then(data => {
@@ -68,15 +66,14 @@ export async function apiHomePagePagin(page) {
       `${TREND_URL}?api_key=${API_KEY}&page=${page}`
     );
     const data = await responce.json();
-    totalPages = data.total_pages;
+    // const totalPages = data.total_pages;
     return data;
   } catch (Error) {
-      Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
 }
-
 
 // ----- FILTER -----
 export function paginationFilter(genre, year, sort, page) {
@@ -115,7 +112,6 @@ export function paginationFilter(genre, year, sort, page) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
-
 
 // ----- SEARCH -----
 export function paginationSearch(inputData) {
@@ -157,10 +153,7 @@ export function paginationSearch(inputData) {
   });
 }
 
-
 export default pagination;
-
-
 
 function resetGallery() {
   refs.homeGallery.innerHTML = '';
