@@ -81,7 +81,7 @@
                     href="./images/students-card/symbol-defs.svg#icon-video-camera"
                   ></use></svg
               ></a>
-              </li>
+            </li>
           </ul>
         </div>
       </li>
@@ -513,12 +513,38 @@
       </li>
 
       <li class="card-student__item">
-        <img
-          class="card-student__img"
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200.jpg    1x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768.jpg    1x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480.jpg    1x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Serhii Yehorov</h3>
           <p class="card-student__role">Developer</p>
