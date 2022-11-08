@@ -97,7 +97,6 @@ function handleClick(event) {
     addQueueBtn(STORAGE_KEY_QUEUE, response);
   }
   if (event.target.className === 'modal__button--watched') {
-    console.log(addQueueBtnref);
     addQueueBtnref.disabled = true;
     addWatchedBtn(STORAGE_KEY_WATCHED, response);
   }
