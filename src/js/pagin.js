@@ -1,7 +1,8 @@
 import { totalPages } from './themovieApi';
 // console.log(totalPages);
 import Pagination from 'tui-pagination';
-import { apiHomePage, takeGenresList } from "./themovieApi";
+// import { apiHomePage } from "./themovieApi";
+import { refs } from './refs';
 import { renderTrendingMovies } from './home-page';
 import { getGenres, dataRevize } from './data/data-revize';
 import markupHomePage from './templates/markupHomePage.hbs';
@@ -25,7 +26,7 @@ const optionsTrending = {
   page: 1,
   centerAlign: true,
   template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    page: '<a href="#" class="tui-page-btn  pagination_button">{{page}}</a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
@@ -48,12 +49,33 @@ export const paginationPage = pagination.getCurrentPage();
 console.log(paginationPage);
 
 pagination.on('afterMove', function (event) {
-  // apiHomePage() = event.page;
-  console.log("currentPage", event.page);
+  
+  // console.log("currentPage", event.page);
+
+  apiHomePagePagin(event.page).then(data => {
+    const allGenres = getGenres();
+    const films = data.results;
+    const normalFilmData = dataRevize(films, allGenres);
+    refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
+  });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+export async function apiHomePagePagin(page) {
+  try {
+    const responce = await fetch(
+      `${TREND_URL}?api_key=${API_KEY}&page=${page}`
+    );
+    const data = await responce.json();
+    totalPages = data.total_pages;
+    return data;
+  } catch (Error) {
+      Notiflix.Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+  }
+}
 
 
 // ----- FILTER -----
