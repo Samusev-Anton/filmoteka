@@ -36,40 +36,10 @@ function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
 }
 
-const getSearchForm = async (
-  page = '',
-  query = '',
-  genre = '',
-  year = '',
-  sort = ''
-) => {
-  let filters = {
-    year:
-      year !== '' && year !== 'start' ? `&primary_release_year=${year}` : '',
-    genre: genre !== '' && genre !== 'start' ? `&with_genres=${genre}` : '',
-    queryFetch: `&query=${query}`,
-    sort: sort !== '' && sort !== 'start' ? `&sort_by=${sort}` : '',
-    discover: `/trending`,
-    week: `/week`,
-  };
-  if (query === '') {
-    filters.queryFetch = '';
-  }
-  if (query !== '' && genre === '') {
-    filters.discover = '/search';
-    filters.week = '';
-  }
-  if (query === '' && genre !== '') {
-    filters.discover = '/discover';
-    filters.week = '';
-  }
-  if (query === '' && year !== '') {
-    filters.discover = '/discover';
-    filters.week = '';
-  }
-
+//search year
+const getSearchYear = async (page, year) => {
   let { data } = await axios.get(
-    `${BASE_URL}${filters.discover}/movie${filters.week}?api_key=${API_KEY}${filters.genre}${filters.year}${filters.sort}&language=en-US${filters.queryFetch}&page=${page}`
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&page=${page}`
   );
   console.log(data);
 
@@ -78,17 +48,61 @@ const getSearchForm = async (
   return data;
 };
 
+//search sort
+const getSearchSort = async (page, sort) => {
+  let { data } = await axios.get(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sort}&page=${page}`
+  );
+  console.log(data);
+
+  localStorageAPI.save('moviesData', data.results);
+
+  return data;
+};
+
+const getSearchGenre = async (page, genre) => {
+  let { data } = await axios.get(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
+  );
+  console.log(data);
+
+  localStorageAPI.save('moviesData', data.results);
+
+  return data;
+};
+
+function eventYear(evn) {
+  if (evn) {
+    spinner.classList.remove('done');
+    page = 1;
+    localStorageAPI.save('page-pg', page);
+    year = evn.target.value;
+    console.log(year);
+    localStorageAPI.save('year-pg', year);
+    getSearchYear(page, year).then(data => {
+      refs.homeGallery.innerHTML = markupSearchPage(data.results);
+      if (data.total_pages > 500) {
+        amountOfPages = 500;
+      } else {
+        amountOfPages = data.total_pages;
+      }
+      spinner.classList.add('done');
+    });
+  }
+}
+
 function eventGenre(evn) {
   if (evn) {
     spinner.classList.remove('done');
     const genre = evn.target.value;
+    console.log(genre);
     const page = 1;
     // query = '';
     // year = '';
     // sort = '';
     localStorageAPI.save('page-pg', page);
     localStorageAPI.save('genre-pg', genre);
-    getSearchForm(page, genre).then(data => {
+    getSearchGenre(page, genre).then(data => {
       console.log(data);
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
@@ -102,40 +116,15 @@ function eventGenre(evn) {
   }
 }
 
-function eventYear(evn) {
-  if (evn) {
-    spinner.classList.remove('done');
-    page = 1;
-    query = '';
-    localStorageAPI.save('page-pg', page);
-    year = evn.target.value;
-    localStorageAPI.save('year-pg', year);
-    getSearchForm(page, year).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      if (data.total_pages > 500) {
-        amountOfPages = 500;
-      } else {
-        amountOfPages = data.total_pages;
-      }
-      spinner.classList.add('done');
-      if (query == '') {
-        localStorageAPI.save('total-pages', amountOfPages);
-      }
-    });
-  }
-}
-
 function eventSort(evn) {
   if (evn) {
     spinner.classList.remove('done');
     page = 1;
-    query = '';
-    year = '';
-    genre = '';
     localStorageAPI.save('page-pg', page);
     sort = evn.target.value;
+    console.log(sort);
     localStorageAPI.save('sort-pg', sort);
-    getSearchForm(page, sort).then(data => {
+    getSearchSort(page, sort).then(data => {
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
       if (data.total_pages > 500) {
         amountOfPages = 500;
