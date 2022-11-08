@@ -18,6 +18,25 @@
   pointer-events: none;
 }
 
+.title-box {
+  width: auto;
+  position: sticky;
+  top: -1px;
+
+  margin: 0;
+  height: 70px;
+
+  border-bottom: 1px solid $orange-text;
+  box-shadow: 0px 2px 2px $orange-text;
+
+  background: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  display: flex;
+}
+
 .modal-students {
   position: absolute;
   top: 50%;
@@ -25,9 +44,7 @@
 
   transform: translate(-50%, -50%);
 
-  width: 80%;
   height: auto;
-  padding: 20px;
 
   background: $main-bgc;
   border-radius: 10px;
@@ -48,7 +65,7 @@
 
   @media screen and (min-width: 1280px) {
     max-height: 750px;
-    padding: 40px;
+    width: 80%;
   }
 }
 
@@ -87,16 +104,22 @@
 }
 
 .modal-content__title {
+  padding-top: 15px;
   display: flex;
   color: $footer-text;
-  text-align: center;
+
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: 26px;
   line-height: 1.17;
 
-  justify-content: center;
-  align-items: center;
+  @media screen and (max-width: 479px) {
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 480px) {
+    font-weight: 400;
+    font-size: 28px;
+  }
 
   @media screen and (min-width: 1280px) {
     font-weight: 600;
@@ -144,23 +167,31 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
-  gap: 15px;
-  margin-top: 15px;
+  margin-bottom: 20px;
 
   color: $footer-text;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 479px) {
+    margin-top: 15px;
+    gap: 15px;
+  }
+
+  @media screen and (min-width: 480px) {
+    margin-top: 25px;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
     justify-content: center;
+    margin-top: 30px;
     gap: 20px;
   }
 }
 
-.card-student__item > img {
+.card-student__img {
   width: 225px;
   object-fit: cover;
   height: 250px;
-  object-fit: cover;
 }
 
 .card-student__item {
