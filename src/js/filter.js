@@ -74,18 +74,18 @@ const getSearchGenre = async (page, genre) => {
 function eventYear(evn) {
   if (evn) {
     spinner.classList.remove('done');
-    page = 1;
+    let page = 1;
     localStorageAPI.save('page-pg', page);
-    year = evn.target.value;
+    let year = evn.target.value;
     console.log(year);
     localStorageAPI.save('year-pg', year);
     getSearchYear(page, year).then(data => {
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      if (data.total_pages > 500) {
-        const amountOfPages = 500;
-      } else {
-        amountOfPages = data.total_pages;
-      }
+      //   if (data.total_pages > 500) {
+      //     const amountOfPages = 500;
+      //   } else {
+      //     amountOfPages = data.total_pages;
+      //   }
       spinner.classList.add('done');
     });
   }
@@ -105,12 +105,12 @@ function eventGenre(evn) {
     getSearchGenre(page, genre).then(data => {
       console.log(data);
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      if (data.total_pages > 500) {
-        const amountOfPages = 500;
-      } else {
-        amountOfPages = data.total_pages;
-      }
-      localStorageAPI.save('total-pages', amountOfPages);
+      //   if (data.total_pages > 500) {
+      //     let amountOfPages = 500;
+      //   } else {
+      //     amountOfPages = data.total_pages;
+      //   }
+      //   localStorageAPI.save('total-pages', amountOfPages);
       spinner.classList.add('done');
     });
   }
@@ -119,20 +119,20 @@ function eventGenre(evn) {
 function eventSort(evn) {
   if (evn) {
     spinner.classList.remove('done');
-    page = 1;
+    let page = 1;
     localStorageAPI.save('page-pg', page);
-    sort = evn.target.value;
+    let sort = evn.target.value;
     console.log(sort);
     localStorageAPI.save('sort-pg', sort);
     getSearchSort(page, sort).then(data => {
       refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      if (data.total_pages > 500) {
-        const amountOfPages = 500;
-      } else {
-        amountOfPages = data.total_pages;
-      }
+      //   if (data.total_pages > 500) {
+      //     const amountOfPages = 500;
+      //   } else {
+      //     amountOfPages = data.total_pages;
+      //   }
 
-      localStorageAPI.save('total-pages', amountOfPages);
+      //   localStorageAPI.save('total-pages', amountOfPages);
       spinner.classList.add('done');
     });
   }
