@@ -14,65 +14,11 @@ import {
 
 const container = document.getElementById('pagination');
 
-
-// --------------- POPULAR ---------------
-//pagination options for trending movies request 
-const optionsTrending = {
-  totalItems: 20000,
-  itemsPerPage: 20,
-  visibleResults: 5,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn  pagination_button">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span>⋅⋅⋅</span>' +
-      '</a>',
-  },
-};
-
-const pagination = new Pagination(container, optionsTrending);
-
-pagination.on('afterMove', event => {
-  apiHomePagePagin(event.page).then(data => {
-    const normalFilmData = dataRevize(data.results, getGenres());
-    refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
-  });
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-export async function apiHomePagePagin(page) {
-  try {
-    const responce = await fetch(
-      `${TREND_URL}?api_key=${API_KEY}&page=${page}`
-    );
-    const data = await responce.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
 //pagination options for movies request 
 const options = {
   totalItems: 21,
   itemsPerPage: 20,
-  visibleResults: 5,
+  visiblePages: window.screen.width <= 450 ? 4 : 7,
   page: 1,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
@@ -96,6 +42,68 @@ const options = {
   },
 };
 
+//pagination options for trending movies request 
+const optionsTrending = {
+  totalItems: 20000,
+  itemsPerPage: 20,
+  visiblePages: window.screen.width <= 450 ? 4 : 7,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn  pagination_button">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span>⋅⋅⋅</span>' +
+      '</a>',
+  },
+};
+
+// --------------- POPULAR ---------------
+const pagination = new Pagination(container, optionsTrending);
+
+pagination.on('afterMove', event => {
+  apiHomePagePagin(event.page).then(data => {
+    const normalFilmData = dataRevize(data.results, getGenres());
+    refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+export async function apiHomePagePagin(page) {
+  try {
+    const responce = await fetch(
+      `${TREND_URL}?api_key=${API_KEY}&page=${page}`
+    );
+    const data = await responce.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// --------------- SEARCH ---------------
+export function paginationSearch(inputData) {
+  const pagination = new Pagination(container, options);
+  pagination.on('afterMove', async event => {
+    apiHomeSearch(inputData, event.page);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 // --------------- FILTER ---------------
 export function paginationFilter(genre, year, sort, page) {
   
@@ -107,16 +115,6 @@ export function paginationFilter(genre, year, sort, page) {
         markupSearchPage(data.results);
       })
       .catch(error => console.log(error));
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-// --------------- SEARCH ---------------
-export function paginationSearch(inputData) {
-  const pagination = new Pagination(container, options);
-  pagination.on('afterMove', async event => {
-    apiHomeSearch(inputData, event.page);
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
