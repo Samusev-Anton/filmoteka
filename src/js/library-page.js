@@ -6,19 +6,19 @@ import markupModal from './templates/markupModalLibrary.hbs';
 import { localStorageAPI } from './api/localStorageAPI';
 import { dataToYear } from './data/data-revize';
 import { ID_URL, API_KEY } from './api/api-parts';
+// import modalOleg from './modal-card';
+// console.dir(modalOleg);
 
 const libraryGallery = document.querySelector('.library-gallery');
 const btnQueue = document.querySelector('.js-queue');
 const btnWatched = document.querySelector('.js-watched');
 const libraryTitle = document.querySelector('.library-text');
 
-
 btnQueue.addEventListener('click', onClickQueue);
 btnWatched.addEventListener('click', onClickWatched);
 
-// let movieTitle;
 let listFilms;
-
+const arrId = {};
 markupLibrary('watched');
 
 function onClickQueue() {
@@ -43,7 +43,7 @@ function markupLibrary(key) {
   });
   const normalListFilms = dataToYear(listFilms);
 
-  const arrId = {};
+  // const arrId = {};
   normalListFilms.forEach(obj => {
     arrId[obj.id] = obj;
   });
@@ -59,8 +59,31 @@ function markupLibrary(key) {
   filmCard.addEventListener('click', clickOnMovie);
 }
 
-
-
+async function clickOnMovie(evt) {
+  evt.preventDefault();
+  if (evt.target.nodeName !== 'IMG') {
+    return;
+  }
+  const movieId = evt.target.dataset.id;
+  const resp = await apiModalDetails(movieId);
+  const instance = basicLightbox.create(markupModal(resp), {
+    onShow: instance => {
+      instance.element().querySelector('img').onclick = instance.close;
+    },
+  });
+  instance.show();
+  //____________________________________________________________________
+  const body = document.querySelector('body');
+  const light = document.querySelector('.basicLightbox');
+  light.classList.add('film-box');
+  body.classList.add('modal-open');
+  const modalBtnWatched = document.querySelector('.modal__button--watched');
+  const modalBtnQueue = document.querySelector('.modal__button--queue');
+  modalBtnWatched.addEventListener('click', onModalBtnWatched);
+  modalBtnWatched.addEventListener('click', onModalBtnQueue);
+  //_________________________________________________________________
+}
+//_______________________________________________________________
 async function apiModalDetails(movieId) {
   try {
     const responce = await fetch(
@@ -69,29 +92,9 @@ async function apiModalDetails(movieId) {
     const resp = await responce.json();
     console.log(resp);
     return resp;
-  } catch (Error) {
-   
-  }
+  } catch (Error) {}
 }
 
-async function clickOnMovie(evt) {
-  evt.preventDefault();
-  if (evt.target.nodeName !== "IMG") {
-    return
-  }
-  const movieId = evt.target.dataset.id;
-  apiModalDetails(movieId).then(resp => {
-  const instance = basicLightbox.create(
-  markupModal(resp),
-  {
-    onShow: instance => {
-      instance.element().querySelector('img').onclick = instance.close;
-    },
-  }
-);
-    instance.show();
-  });
-}
+function onModalBtnWatched() {}
 
-
-
+function onModalBtnQueue() {}
