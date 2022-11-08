@@ -3,11 +3,13 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
+import pagination from "./pagin";
 
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
 
 // const conteiner = document.querySelector('.gallery');
+const conteiner = document.querySelector('.gallery');
 const spinner = document.querySelector('.preloader');
 const toMainBtn = document.querySelector('.to_main__link');
 
@@ -43,16 +45,16 @@ function onButtonClick(evt) {
       //   //   }
       refs.form.reset();
       warningUnShown();
-      
       const allGenres = getGenres();
       const films = data.results;
+      pagination.reset(films);
+      pagination.setTotalItems(data.total_results);
+      pagination.reset();
       const normalFilmData = dataRevize(films, allGenres);
       refs.pagination.classList.remove('visually-hidden');
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
       localStorageAPI.save('query-pg', inputData);
-      
       spinner.classList.add('done');
-      
     });
     
   }
@@ -92,6 +94,7 @@ refs.logo.addEventListener('click', onLogoClick);
 
 function onLogoClick(e) {
   spinner.classList.remove('done');
+  pagination.reset();
   amountOfPages = 1000;
   page = 1;
   genre = '';
