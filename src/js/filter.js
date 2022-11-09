@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getGenres, dataRevize } from './data/data-revize';
 import {
   API_KEY,
   BASE_URL,
@@ -10,132 +11,66 @@ import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
 
-const genreForm = document.querySelector('#genreForm');
-const filterForm = document.querySelector('#filter-form');
-const yearForm = document.querySelector('#yearForm');
 const btnReset = document.querySelector('#btnResetFilter');
+
+//  получить данные со всей формы
+const btnSearch = document.querySelector('#filter-form');
+
+btnSearch.addEventListener('submit', onSearchSubmit);
+function onSearchSubmit(evt) {
+  evt.preventDefault();
+  let page = 1;
+  const genre = evt.currentTarget.elements.genreForm.value;
+  const year = evt.currentTarget.elements.yearForm.value;
+  const sort = evt.currentTarget.elements.sortForm.value;
+  getSearch(page, year, genre, sort).then(data => {
+    const allGenres = getGenres();
+    console.log(allGenres);
+    const films = data.data.results;
+    console.log(films);
+    const normalFilmData = dataRevize(films, allGenres);
+    normalFilmData.forEach(element => {
+      if (element.genre_ids.length > 3) {
+        element.genres.splice(2, 2, { name: 'Other' });
+      }
+    });
+    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+  });
+
+  //   console.log(genre);
+  //   console.log(year);
+  //   console.log(sort);
+}
+
+const getSearch = async (page, year, genre, sort) => {
+  let data = {};
+  if (year) {
+    data = await axios.get(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&page=${page}`
+    );
+  }
+  if (year && genre) {
+    data = await axios.get(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&page=${page}`
+    );
+  } else {
+    data = await axios.get(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
+    );
+  }
+  //   console.log(data.data.results);
+
+  localStorageAPI.save('moviesData', data.results);
+
+  return data;
+};
+
+//
+
 const spinner = document.querySelector('.preloader');
-const sortForm = document.querySelector('#sortForm');
-
-if (genreForm) {
-  genreForm.addEventListener('input', eventGenre);
-}
-
-if (yearForm) {
-  yearForm.addEventListener('input', eventYear);
-}
-if (sortForm) {
-  sortForm.addEventListener('input', eventSort);
-}
-
-if (btnReset) {
-  btnReset.addEventListener('click', submitResetFilter);
-}
 
 function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
-}
-
-//search year
-const getSearchYear = async (page, year) => {
-  let { data } = await axios.get(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&page=${page}`
-  );
-  console.log(data);
-
-  localStorageAPI.save('moviesData', data.results);
-
-  return data;
-};
-
-//search sort
-const getSearchSort = async (page, sort) => {
-  let { data } = await axios.get(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sort}&page=${page}`
-  );
-  console.log(data);
-
-  localStorageAPI.save('moviesData', data.results);
-
-  return data;
-};
-
-const getSearchGenre = async (page, genre) => {
-  let { data } = await axios.get(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
-  );
-  console.log(data);
-
-  localStorageAPI.save('moviesData', data.results);
-
-  return data;
-};
-
-function eventYear(evn) {
-  if (evn) {
-    spinner.classList.remove('done');
-    let page = 1;
-    localStorageAPI.save('page-pg', page);
-    let year = evn.target.value;
-    console.log(year);
-    localStorageAPI.save('year-pg', year);
-    getSearchYear(page, year).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      //   if (data.total_pages > 500) {
-      //     const amountOfPages = 500;
-      //   } else {
-      //     amountOfPages = data.total_pages;
-      //   }
-      spinner.classList.add('done');
-    });
-  }
-}
-
-function eventGenre(evn) {
-  if (evn) {
-    spinner.classList.remove('done');
-    const genre = evn.target.value;
-    console.log(genre);
-    const page = 1;
-    // query = '';
-    // year = '';
-    // sort = '';
-    localStorageAPI.save('page-pg', page);
-    localStorageAPI.save('genre-pg', genre);
-    getSearchGenre(page, genre).then(data => {
-      console.log(data);
-      refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      //   if (data.total_pages > 500) {
-      //     let amountOfPages = 500;
-      //   } else {
-      //     amountOfPages = data.total_pages;
-      //   }
-      //   localStorageAPI.save('total-pages', amountOfPages);
-      spinner.classList.add('done');
-    });
-  }
-}
-
-function eventSort(evn) {
-  if (evn) {
-    spinner.classList.remove('done');
-    let page = 1;
-    localStorageAPI.save('page-pg', page);
-    let sort = evn.target.value;
-    console.log(sort);
-    localStorageAPI.save('sort-pg', sort);
-    getSearchSort(page, sort).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data.results);
-      //   if (data.total_pages > 500) {
-      //     const amountOfPages = 500;
-      //   } else {
-      //     amountOfPages = data.total_pages;
-      //   }
-
-      //   localStorageAPI.save('total-pages', amountOfPages);
-      spinner.classList.add('done');
-    });
-  }
 }
 
 function submitResetFilter(evn) {

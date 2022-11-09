@@ -16,7 +16,9 @@
           >
         </li>
         <li class="header__list-item">
-          <a href="./library.html" class="header__list-link js-library"> MY LIBRARY </a>
+          <a href="./library.html" class="header__list-link js-library">
+            MY LIBRARY
+          </a>
         </li>
         <li class="header__list-item">
           <a href="./auth.html" class="header__list-link auth-btn">
@@ -59,7 +61,7 @@
     </p>
     <form class="filter_form" id="filter-form">
       <select class="filter_form__select" name="genreForm" id="genreForm">
-        <option value="start">Genre</option>
+        <option value="null">Genre</option>
         <option value="28">Action</option>
         <option value="12">Adventure</option>
         <option value="16">Animation</option>
@@ -81,7 +83,7 @@
         <option value="37">Western</option>
       </select>
       <select class="filter_form__select" name="yearForm" id="yearForm">
-        <option value="start">Year</option>
+        <option value="null">Year</option>
         <option value="2022">2022</option>
         <option value="2021">2021</option>
         <option value="2020">2020</option>
@@ -102,18 +104,21 @@
         <option value="2005">2005</option>
       </select>
       <select class="filter_form__select" name="sortForm" id="sortForm">
-            <option value="start">Sorting</option>
-            <option value="popularity.desc">Popularity (decreasing)</option>
-            <option value="popularity.asc">Popularity (increasing)</option>
-            <option value="primary_release_date.desc">
-              Release date (decreasing)
-            </option>
-            <option value="primary_release_date.asc">
-              Release date (ascending)
-            </option>
-            <option value="original_title.asc">Name (A-Z)</option>
-            <option value="original_title.desc">Name (Z-A)</option>
-          </select>
+        <option value="null">Sorting</option>
+        <option value="popularity.desc">Popularity (decreasing)</option>
+        <option value="popularity.asc">Popularity (increasing)</option>
+        <option value="primary_release_date.desc">
+          Release date (decreasing)
+        </option>
+        <option value="primary_release_date.asc">
+          Release date (ascending)
+        </option>
+        <option value="original_title.asc">Name (A-Z)</option>
+        <option value="original_title.desc">Name (Z-A)</option>
+      </select>
+      <button class="btnResetFilter" id="btnSearchFilter" type="submit">
+        Search
+      </button>
       <button class="btnResetFilter" id="btnResetFilter" type="submit">
         Reset
       </button>
