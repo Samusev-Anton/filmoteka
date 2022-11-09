@@ -3,6 +3,7 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
+import pagination from "./pagin";
 
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
@@ -58,6 +59,13 @@ function onButtonClick(evt) {
         refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
         refs.form.reset();
       }
+      //pagination
+      //reset results of trending movies
+      pagination.reset(data.results); 
+      //set total results of search movies
+      pagination.setTotalItems(data.total_results);
+      //reset pagination
+      pagination.reset(); 
     });
   }
 
@@ -98,6 +106,9 @@ refs.home.addEventListener('click', onHomeClick);
 
 function onHomeClick(e) {
   spinner.classList.remove('done');
+
+  //pagination reset 
+  pagination.reset(); 
 }
 
 export { inputData };
