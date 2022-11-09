@@ -183,19 +183,25 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 1.3;
-    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 100ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 100ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
     border: 1px solid rgb(121, 121, 121);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom: none;
     background-color: rgb(245, 245, 245);
+    opacity: 0;
+    visibility: hidden;
   }
 
   &:hover .modal__button-rotate {
+    opacity: 1;
+    visibility: visible;
     transform: translateY(-99%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 1s;
+    transition-delay: 2s;
   }
 
   &__button-backtoinfo {
@@ -239,6 +245,7 @@
 
   &__poster {
     width: 100%;
+    z-index: 3;
     border-radius: 5px;
     border: 1px solid rgb(121, 121, 121);
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
@@ -256,8 +263,8 @@
 .modal__backside {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 400px;
+  width: 280px;
+  height: 250px;
   top: 0;
   left: 0;
   background-color: #fff;
@@ -271,6 +278,10 @@
   @media screen and (min-width: 1280px) {
     width: 806px;
     height: 641.5px;
+  }
+  &:hover .modal__button-rotate {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -324,4 +335,40 @@
 .modal__button-close:hover .modal-close__svg__path,
 .modal__button-close:focus .modal-close__svg__path {
   stroke: $orange-hover;
+}
+
+.animate-motion {
+  animation: animate_motion 5s 0s both infinite;
+}
+.animate-motion:hover {
+  animation: none;
+}
+
+@keyframes animate_motion {
+  0%,
+  20% {
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  14%,
+  18%,
+  2%,
+  6% {
+    transform: translate3d(-7px, 0, 0);
+  }
+  12%,
+  16%,
+  4%,
+  8% {
+    transform: translate3d(7px, 0, 0);
+  }
+}
+
+.blank {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 0;
 }

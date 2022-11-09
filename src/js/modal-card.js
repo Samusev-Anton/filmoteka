@@ -55,24 +55,37 @@ function onOpenModal() {
 function onUnRotateModal() {
   const modal = document.querySelector('.modal');
   const modalBackSide = document.querySelector('.modal__backside');
-
+  const iframe = document.querySelector('iframe');
   modal.classList.remove('rotated');
   modalBackSide.classList.remove('rotated360');
+  setTimeout(() => {
+    const rotateModal = document.querySelector('.modal__button-rotate');
+    rotateModal.style.display = 'flex';
+  }, 700);
+  if (modalBackSide.lastElementChild === iframe) {
+    setTimeout(() => {
+      iframe.remove();
+    }, 700);
+  }
 }
 
 function onRotateModal() {
   const modal = document.querySelector('.modal');
   const modalBackSide = document.querySelector('.modal__backside');
+  setTimeout(() => {
+    const rotateModal = document.querySelector('.modal__button-rotate');
+    rotateModal.style.display = 'none';
+  }, 700);
   modal.classList.add('rotated');
   modalBackSide.classList.add('rotated360');
-  const iframe = document.querySelector('iframe');
-  iframe.remove();
 }
 
 function onCloseModal() {
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
+  const modalBackSide = document.querySelector('.modal__backside');
+  const iframe = document.querySelector('iframe');
   document.body.classList.remove('modal-open');
   refs.filmBox.classList.add('visually-hidden');
   rotateModal.removeEventListener('click', onRotateModal);
@@ -82,6 +95,9 @@ function onCloseModal() {
   document.body.removeEventListener('click', handleClick);
   closeModalBtn.removeEventListener('click', onCloseModal);
   iD = [];
+  if (modalBackSide.lastElementChild === iframe) {
+    iframe.remove();
+  }
 }
 
 function onEscButton(evt) {
@@ -101,7 +117,7 @@ function handleClick(event) {
     addQueueBtnref.disabled = true;
     addWatchedBtn(STORAGE_KEY_WATCHED, response);
   }
-  
+
   if (event.target === refs.filmBox) {
     onCloseModal();
   }
@@ -115,10 +131,10 @@ function watchTrailer() {
 
 function createPlayer(videoKey) {
   const modalBackSide = document.querySelector('.modal__backside');
-  const player = `<iframe class="youtube-player"
+  const player = `<iframe class="youtube-player" id="player"
   width="100%"
   height="100%"
-  src="https://www.youtube.com/embed/${videoKey}"
+  src="https://www.youtube.com/embed/${videoKey}?enablejsapi=1"
   title="YouTube video player"
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
