@@ -3,6 +3,7 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
+import pagination from "./pagin";
 
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
@@ -51,6 +52,14 @@ function onButtonClick(evt) {
       localStorageAPI.save('query-pg', inputData);
 
       spinner.classList.add('done');
+
+      //pagination
+      //reset results of trending movies
+      pagination.reset(data.results); 
+      //set total results of search movies
+      pagination.setTotalItems(data.total_results);
+      //reset pagination
+      pagination.reset(); 
     });
   }
 
