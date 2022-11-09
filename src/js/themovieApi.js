@@ -89,7 +89,7 @@ export async function apiMovieDetails(movieId) {
       `${ID_URL}/${movieId}/videos?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
-    console.log('resp :>> ', resp);
+    // console.log('resp :>> ', resp);
     return resp;
   } catch (Error) {
     //   Notiflix.Notify.failure(
