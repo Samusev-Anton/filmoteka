@@ -89,8 +89,8 @@ export async function apiMovieDetails(movieId) {
       `${ID_URL}/${movieId}/videos?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
-
-    return resp.results[0].key;
+    console.log('resp :>> ', resp);
+    return resp;
   } catch (Error) {
     //   Notiflix.Notify.failure(
     //     'Sorry, there are no trailer for this movie on Youtube. Please try again.'
