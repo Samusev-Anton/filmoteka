@@ -395,10 +395,38 @@
 }
 
 .blank {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
   position: absolute;
+  display: flex;
   width: 100%;
   height: 100%;
   background-color: #fff;
   border-radius: 5px;
   z-index: 0;
+}
+
+
+//__________________MY LIBRARY page
+.modal_button-close{
+   position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.button-accent {
+    background-color: #ff6b01;
+    border-color: #ff6b01;
+}
+
+.library-text {
+  color: grey;
 }

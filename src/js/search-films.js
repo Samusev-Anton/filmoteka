@@ -4,6 +4,8 @@ import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
 import { trailerBtnVisible } from './trailer';
+import pagination from './pagin';
+
 
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
@@ -23,7 +25,7 @@ if (toMainBtn) {
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  page = 1;
+  let page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
@@ -34,13 +36,6 @@ function onButtonClick(evt) {
     localStorageAPI.save('query-pg', inputData);
   } else {
     apiHomeSearch(inputData).then(data => {
-      //   //   if (data.hits.length === 0) {
-      //   //     homeGallary.innerHTML = '';
-      //   //     // Notiflix.Notify.failure(
-      //   //     //   'Sorry, there are no images matching your search query. Please try again.'
-      //   //     // );
-      //   //     return;
-      //   //   }
       refs.form.reset();
       warningUnShown();
 
@@ -53,24 +48,30 @@ function onButtonClick(evt) {
 
       spinner.classList.add('done');
       trailerBtnVisible();
+
+
+      if (data.results.length < 1) {
+        warningShown();
+        refs.pagination.classList.add('visually-hidden');
+        refs.form.reset();
+        inputData = '';
+        localStorageAPI.save('query-pg', inputData);
+        spinner.classList.add('done');
+      } else {
+        warningUnShown();
+        refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+        refs.form.reset();
+      }
+      //pagination
+      //reset results of trending movies
+      pagination.reset(data.results);
+      //set total results of search movies
+      pagination.setTotalItems(data.total_results);
+      //reset pagination
+      pagination.reset();
+
     });
   }
-
-  // apiHomeSearch(inputData).then(data => {
-  //   //   if (data.hits.length === 0) {
-  //   //     homeGallary.innerHTML = '';
-  //   //     // Notiflix.Notify.failure(
-  //   //     //   'Sorry, there are no images matching your search query. Please try again.'
-  //   //     // );
-  //   //     return;
-  //   //   }
-  //   const allGenres = getGenres();
-  //   const films = data.results;
-  //   const normalFilmData = dataRevize(films, allGenres);
-
-  //   refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
-  //   // spinner.classList.add('done');
-  // });
 }
 
 function warningShown() {
@@ -107,6 +108,9 @@ refs.home.addEventListener('click', onHomeClick);
 
 function onHomeClick(e) {
   spinner.classList.remove('done');
+
+  //pagination reset
+  pagination.reset();
 }
 
 export { inputData };

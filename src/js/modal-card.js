@@ -55,16 +55,16 @@ function onOpenModal() {
 function onUnRotateModal() {
   const modal = document.querySelector('.modal');
   const modalBackSide = document.querySelector('.modal__backside');
-  const iframe = document.querySelector('iframe');
+  const youtubePlayer = document.querySelector('.youtube-player');
   modal.classList.remove('rotated');
   modalBackSide.classList.remove('rotated360');
   setTimeout(() => {
     const rotateModal = document.querySelector('.modal__button-rotate');
     rotateModal.style.display = 'flex';
   }, 700);
-  if (modalBackSide.lastElementChild === iframe) {
+  if (modalBackSide.lastElementChild === youtubePlayer) {
     setTimeout(() => {
-      iframe.remove();
+      youtubePlayer.remove();
     }, 700);
   }
 }
@@ -85,7 +85,7 @@ function onCloseModal() {
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
   const modalBackSide = document.querySelector('.modal__backside');
-  const iframe = document.querySelector('iframe');
+  const youtubePlayer = document.querySelector('.youtube-player');
   document.body.classList.remove('modal-open');
   refs.filmBox.classList.add('visually-hidden');
   rotateModal.removeEventListener('click', onRotateModal);
@@ -95,8 +95,8 @@ function onCloseModal() {
   document.body.removeEventListener('click', handleClick);
   closeModalBtn.removeEventListener('click', onCloseModal);
   iD = [];
-  if (modalBackSide.lastElementChild === iframe) {
-    iframe.remove();
+  if (modalBackSide.lastElementChild === youtubePlayer) {
+    youtubePlayer.remove();
   }
 }
 
