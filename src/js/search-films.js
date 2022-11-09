@@ -23,7 +23,7 @@ if (toMainBtn) {
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  // let page = 1;
+  let page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
