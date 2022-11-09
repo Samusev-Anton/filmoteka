@@ -137,7 +137,7 @@ function removeQueue(e) {
 //____________________________________________________remove movie from localStorage
 function deleteMovie(key) {
   instance.close();
-  normalist = localStorageAPI.load(key);
+  let normalist = localStorageAPI.load(key);
   const renderList = normalist;
   normalist.forEach((obj, index) => {
     if (obj.id == movieId) {
