@@ -1,5 +1,11 @@
 <div class="backdrop is-hidden" data-modal>
   <div class="modal-students">
+    <button type="button" class="iframe-close">
+      <svg width="30" height="30">
+        <use href="./images/students-card/symbol-defs.svg#icon-close"></use>
+      </svg>
+    </button>
+
     <div class="title-box">
       <button type="button" class="modal-students-close" data-modal-close>
         <svg class="button-close__icon" width="30" height="30">
@@ -75,16 +81,27 @@
               ></a>
             </li>
             <li class="social-list__item">
-              <a href=""
+              <a href="" favorite-movie-js
                 ><svg class="social-list__icon" width="20" height="20">
                   <use
                     href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                  ></use></svg
-              ></a>
+                  ></use>
+                </svg>
+              </a>
             </li>
           </ul>
         </div>
       </li>
+      <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/-9HT0l9HV4c"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
 
       <li class="card-student__item">
         <picture>
@@ -145,6 +162,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/IjHgzkQM2Sg"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -206,6 +232,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="640"
+        height="360"
+        src="https://www.youtube.com/embed/9ix7TUGVYIo"
+        title="The Matrix Resurrections – Official Trailer 1"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -284,6 +319,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/YWwAOutgWBQ"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -345,6 +389,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/7UzSekc0LoQ"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -406,6 +459,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/vm_kACNrF3E"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -476,14 +538,49 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/vgqG3ITMv1Q"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
-        <img
-          class="card-student__img"
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200.jpg    1x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768.jpg    1x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768@2x.jpg 2x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480.jpg    1x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480@2x.jpg 2x,
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Maksym Nerodenko</h3>
           <p class="card-student__role">Developer</p>
@@ -511,6 +608,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/tGpTpVyI_OQ"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -571,6 +677,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/5PSNL1qE6VY"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -681,41 +796,61 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/_nZdmwHrcnw"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
 
       <li class="card-student__item">
-        <img
-          class="card-student__img"
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200.jpg    1x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768.jpg    1x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480.jpg    1x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480@2x.jpg 2x,
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Serhii Kravchak</h3>
           <p class="card-student__role">Developer</p>
-          <p class="card-student__text"></p>
+          <p class="card-student__text">
+            Реалізував реєстрацію/автентифікацію користувача через Firebase
+          </p>
           <ul class="social-list">
             <li class="social-list__item">
-              <a href="">
-                <svg class="social-list__icon" width="20" height="20">
-                  <use
-                    href="./images/students-card/symbol-defs.svg#icon-facebook2"
-                  ></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item">
-              <a href=""
+              <a href="https://github.com/serhiikravchak"
                 ><svg class="social-list__icon" width="20" height="20">
                   <use
                     href="./images/students-card/symbol-defs.svg#icon-github"
-                  ></use></svg
-              ></a>
-            </li>
-            <li class="social-list__item">
-              <a href=""
-                ><svg class="social-list__icon" width="20" height="20">
-                  <use
-                    href="./images/students-card/symbol-defs.svg#icon-linkedin"
                   ></use></svg
               ></a>
             </li>
@@ -730,6 +865,15 @@
           </ul>
         </div>
       </li>
+      <!-- <iframe
+        class="students-movie__iframe is-hidden"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/4TLppsfzQH8"
+        title="YouTube video player"
+        frameborder="0"
+        allowfullscreen
+      ></iframe> -->
     </ul>
   </div>
 </div>

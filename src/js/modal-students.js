@@ -6,11 +6,12 @@
   };
 
   refs.openModalBtn.addEventListener('click', onModal);
-  refs.closeModalBtn.addEventListener('click', onModal);
+  refs.closeModalBtn.addEventListener('click', closeModal);
 
   function onModal(event) {
     event.preventDefault();
     refs.modal.classList.toggle('is-hidden');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
