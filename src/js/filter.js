@@ -10,6 +10,7 @@ import {
 import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
+import pagination from "./pagin";
 
 const btnReset = document.querySelector('#btnResetFilter');
 
@@ -28,13 +29,23 @@ function onSearchSubmit(evt) {
     console.log(allGenres);
     const films = data.data.results;
     console.log(films);
+
     const normalFilmData = dataRevize(films, allGenres);
     normalFilmData.forEach(element => {
       if (element.genre_ids.length > 3) {
         element.genres.splice(2, 2, { name: 'Other' });
       }
     });
-    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);     
+
+    //pagination
+    //reset results 
+    pagination.reset(data.data.results); 
+    //set total results of filtered movies
+    pagination.setTotalItems(data.data.total_results);
+    console.log('Total pages: ', data.data.total_pages);
+    //reset pagination
+    pagination.reset(); 
   });
 
   //   console.log(genre);
@@ -42,7 +53,7 @@ function onSearchSubmit(evt) {
   //   console.log(sort);
 }
 
-const getSearch = async (page, year, genre, sort) => {
+export const getSearch = async (page, year, genre, sort) => {
   let data = {};
   if (year) {
     data = await axios.get(
@@ -65,7 +76,6 @@ const getSearch = async (page, year, genre, sort) => {
   return data;
 };
 
-//
 
 const spinner = document.querySelector('.preloader');
 

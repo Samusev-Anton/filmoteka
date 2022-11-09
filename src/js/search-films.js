@@ -67,6 +67,7 @@ function onButtonClick(evt) {
       pagination.reset(data.results);
       //set total results of search movies
       pagination.setTotalItems(data.total_results);
+      console.log('Total pages: ', data.data.total_pages);
       //reset pagination
       pagination.reset();
 
