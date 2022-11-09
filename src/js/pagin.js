@@ -2,6 +2,9 @@ import Pagination from 'tui-pagination';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import markupHomePage from './templates/markupHomePage.hbs';
+import markupSearchPage from '../js/templates/markupHomePage.hbs';
+import { getSearch } from "./filter";
+import { apiHomeSearch } from './themovieApi';
 import {
   API_KEY,
   BASE_URL,
@@ -100,16 +103,17 @@ export function paginationSearch(inputData) {
     });
   }
 
+
 // ------------ FILTER ------------
-export function paginationFilter(genre, year, sort, page) {
+export function paginationFilter(page, year, genre, sort) {
 const pagination = new Pagination(container, options);
-  pagination.on('afterMove', async event => {
-    getSearchForm(genre, year, event.page, sort)
+    pagination.on('afterMove', async event => {
+      getSearch(event.page, year, genre, sort)
       .then(data => {
-        markupSearchPage(data.results);
+        markupSearchPage(data.data.results);
       })
-      .catch(error => console.log(error));
-    windowScroll();
+      .catch(error => console.log(error));;
+      windowScroll()
   });
 }
 
