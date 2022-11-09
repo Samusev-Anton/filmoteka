@@ -23,13 +23,14 @@
     padding: 40px 0 40px 0;
     display: none;
     align-items: center;
-    justify-content: space-between;
-
+    justify-content: center;
+    font-size: 12px;
     @media screen and (min-width: 768px) {
-        width: 450px;
+        width: 500px;
         padding: 0 0 0 0;
         margin-left: auto;
         margin-right: auto;
+        font-size: 16px;
     }
 }
 
@@ -37,8 +38,12 @@
 .tui-page-btn:hover,
 .tui-page-btn:visited,
 .tui-page-btn:active {
-    text-decoration: none;
-    
+    text-decoration: none; 
+}
+
+.tui-page-btn:hover,
+.tui-page-btn:focus {
+    font-weight: 500; 
 }
 
 .tui-page-btn {
@@ -55,6 +60,7 @@
 .tui-pagination strong {
     color: #ffffff;
     background: #ff6b08;
+    font-weight: 500;
     cursor: default;
 }
 
@@ -62,7 +68,8 @@
 .tui-page-btn.tui-last {
     background-color: #f7f7f7;
     border-radius: 5px;
-
+    overflow: hidden;
+    white-space: nowrap;
     @media screen and (max-width: 768px) {
         display: none;
     }
@@ -72,6 +79,18 @@
     background-color: #ff6b08;
     border-radius: 5px;
     color: #ffffff;
+}
+
+.tui-pagination .tui-page-btn:hover,
+.tui-pagination .tui-page-btn:focus {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    font-weight: 500; 
+}
+.tui-pagination .tui-is-selected:hover,
+.tui-pagination .tui-is-selected:focus {
+    background-color: #ff6b08;
+    font-weight: 500; 
 }
 
 .tui-pagination .tui-ico-first,
@@ -96,6 +115,7 @@
     background-position: -13px -24px;
 }
 
+
 .tui-pagination .tui-ico-prev {
     width: 6px;
     height: 10px;
@@ -116,17 +136,48 @@
 
 .tui-next {
     background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
 .tui-prev {
     background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-right: 5px;
 }
 
-.tui-page-btn.tui-next-is-ellip,
-.tui-page-btn.tui-prev-is-ellip {
-    background-color: #f7f7f7;
-
+.tui-page-btn.tui-next-is-ellip.tui-last-child,
+.tui-page-btn.tui-prev-is-ellip.tui-first-child {
+    background-color: none;
     @media screen and (max-width: 768px) {
         display: none;
     }
+}
+
+.tui-page-btn.tui-next-is-ellip.tui-last-child:hover,
+.tui-page-btn.tui-prev-is-ellip.tui-first-child:hover {
+    @media screen and (max-width: 768px) {
+        font-weight: 600;
+    }
+}
+.tui-page-btn.tui-prev-is-ellip {
+    @media screen and (max-width: 768px) {
+        margin-left: 4px;
+    }
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-prev {
+    background-position: -26px -12px
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-first {
+    background-position: -13px 0px
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-next {
+    background-position: -21px -24px
+}
+
+.tui-pagination .tui-is-disabled .tui-ico-last {
+    background-position: -13px -12px
 }
