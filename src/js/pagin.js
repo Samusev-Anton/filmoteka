@@ -15,7 +15,7 @@ import {
   SEARCH_URL,
   ID_URL,
 } from './api/api-parts';
-
+const spinner = document.querySelector('.preloader');
 // ----- POPULAR -----
 const container = document.getElementById('pagination');
 const optionsTrending = {
@@ -49,12 +49,13 @@ console.log(paginationPage);
 
 pagination.on('afterMove', function (event) {
   // console.log("currentPage", event.page);
-
+spinner.classList.remove('done');
   apiHomePagePagin(event.page).then(data => {
     const allGenres = getGenres();
     const films = data.results;
     const normalFilmData = dataRevize(films, allGenres);
     refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
+    spinner.classList.add('done');
   });
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
