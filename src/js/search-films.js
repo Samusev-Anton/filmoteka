@@ -3,6 +3,7 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
+import { trailerBtnVisible } from './trailer';
 
 let inputData = '';
 refs.form.addEventListener('submit', onButtonClick);
@@ -51,6 +52,7 @@ function onButtonClick(evt) {
       localStorageAPI.save('query-pg', inputData);
 
       spinner.classList.add('done');
+      trailerBtnVisible();
     });
   }
 
