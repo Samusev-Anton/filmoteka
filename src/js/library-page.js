@@ -81,8 +81,8 @@ async function clickOnMovie(evt) {
     },
   });
   instance.show();
-  constBtnCloseModal = document.querySelector('.modal_button-close');
-  constBtnCloseModal.addEventListener('click', () => instance.close());
+  const BtnCloseModal = document.querySelector('.modal_button-close');
+  BtnCloseModal.addEventListener('click', () => instance.close());
 
   const body = document.querySelector('body');
   body.classList.add('modal-open');
