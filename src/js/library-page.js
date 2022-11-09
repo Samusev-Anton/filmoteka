@@ -21,6 +21,7 @@ const KEY_WATCHED = 'watched';
 const KEY_QUEUE = 'queue';
 let modalBtnWatched;
 let modalBtnQueue;
+let instance;
 //_________________________________________________________default markup is WATCHED
 markupLibrary(KEY_WATCHED);
 
@@ -42,7 +43,6 @@ function markupLibrary(key) {
   if (normalListFilms.length >= 1) {
     libraryTitle.classList.add('is-hidden');
   }
-  console.log(normalListFilms);
   libraryGallery.innerHTML = markupLibraryPage(normalListFilms);
 
   const filmCard = document.querySelector('.film-list');
