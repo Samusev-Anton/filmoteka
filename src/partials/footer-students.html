@@ -1,6 +1,6 @@
 <div class="backdrop is-hidden" data-modal>
   <div class="modal-students">
-    <button type="button" class="iframe-close">
+    <button type="button" class="iframe-close is-hidden">
       <svg width="30" height="30">
         <use href="./images/students-card/symbol-defs.svg#icon-close"></use>
       </svg>
@@ -55,16 +55,18 @@
         </picture>
 
         <div class="students-movie__iframe is-hidden">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/-9HT0l9HV4c"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            preload="none"
-          ></iframe>
+          <div class="iframe-backdrop">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/-9HT0l9HV4c"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              preload="none"
+            ></iframe>
+          </div>
         </div>
 
         <div class="card-student__wrap">
