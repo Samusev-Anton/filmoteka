@@ -124,7 +124,8 @@ function handleClick(event) {
 
 function watchTrailer() {
   apiMovieDetails(iD).then(resp => {
-    createPlayer(resp.results[0].key);
+    console.log(resp);
+    createPlayer(resp);
   });
 }
 
