@@ -2,18 +2,21 @@
 .modal {
   position: absolute;
   width: 280px;
-
   padding-top: 48px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
   background-color: $main-bgc;
   z-index: 5;
-  transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 3000ms cubic-bezier(0.4, 0, 0.2, 1);
   backface-visibility: hidden;
   @media screen and (max-width: 767px) {
-    left: 50%;
-    transform: translate(-50%);
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
   }
   @media screen and (min-width: 768px) {
     display: flex;
@@ -296,12 +299,14 @@
   flex-direction: column;
   width: 280px;
   height: 250px;
-  top: 0;
-  left: 0;
   background-color: #fff;
   transform: rotateY(180deg);
   backface-visibility: hidden;
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    top: 20px;
+  }
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 475px;
@@ -317,9 +322,14 @@
 }
 
 .rotated {
-  transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1),
+    height 900ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: perspective(1300px) rotateY(180deg);
+  @media screen and (max-width: 767px) {
+    height: 250px;
+  }
 }
+
 .rotated360 {
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: perspective(1300px) rotateY(360deg);
@@ -333,10 +343,12 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  align-items: flex-start;
+  // padding-top: 20px;
+  // padding-bottom: 20px;
   z-index: 0;
   opacity: 1;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
