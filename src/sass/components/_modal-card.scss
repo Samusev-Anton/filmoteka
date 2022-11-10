@@ -220,9 +220,9 @@
     border-bottom: none;
     background-color: rgb(245, 245, 245);
     animation-name: animation-button-rotate;
-    animation-duration: 350ms;
-    animation-delay: 3s;
-    transition-delay: 3s;
+    animation-duration: 1000ms;
+    // animation-delay: 3s;
+    // transition-delay: 3s;
     transform: translateY(-99%);
   }
 
