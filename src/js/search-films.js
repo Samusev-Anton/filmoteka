@@ -8,6 +8,7 @@ import pagination from './pagin';
 
 
 let inputData = '';
+let page = 1;
 refs.form.addEventListener('submit', onButtonClick);
 
 // const conteiner = document.querySelector('.gallery');
@@ -25,14 +26,14 @@ if (toMainBtn) {
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  let page = 1;
+  page = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
     refs.pagination.classList.add('visually-hidden');
     spinner.classList.add('done');
     refs.form.reset();
-    inputData === '';
+    
     localStorageAPI.save('query-pg', inputData);
   } else {
     apiHomeSearch(inputData).then(data => {
