@@ -10,15 +10,21 @@ import {
 import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
+import { apiHomeSearch } from './themovieApi';
+import { inputData } from './search-films';
 import pagination from "./pagin";
 
-const btnReset = document.querySelector('#btnResetFilter');
 
+const btnReset = document.querySelector('#btnResetFilter');
+const spinner = document.querySelector('.preloader');
+
+btnReset.addEventListener('click', submitResetFilter);
 //  получить данные со всей формы
 const btnSearch = document.querySelector('#filter-form');
 
 btnSearch.addEventListener('submit', onSearchSubmit);
 function onSearchSubmit(evt) {
+  spinner.classList.remove('done');  
   evt.preventDefault();
   let page = 1;
   const genre = evt.currentTarget.elements.genreForm.value;
@@ -36,6 +42,14 @@ function onSearchSubmit(evt) {
         element.genres.splice(2, 2, { name: 'Other' });
       }
     });
+
+      refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+      localStorageAPI.save('genre-pg', genre);
+      localStorageAPI.save('year-pg', year);
+      localStorageAPI.save('sort-pg', sort);
+      localStorageAPI.save('page-pg', page);
+      spinner.classList.add('done');
+
     refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);     
 
     //pagination
@@ -46,6 +60,7 @@ function onSearchSubmit(evt) {
     console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset(); 
+
   });
 
   //   console.log(genre);
@@ -67,8 +82,17 @@ export const getSearch = async (page, year, genre, sort) => {
   } else {
     data = await axios.get(
       `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
-    );
-  }
+      );
+    }
+    if (year && genre && sort) {
+      data = await axios.get(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&sort_by=${sort}&page=${page}`
+      );
+    } else {
+      data = await axios.get(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sort}&page=${page}`
+      );
+    }
   //   console.log(data.data.results);
 
   localStorageAPI.save('moviesData', data.results);
@@ -77,7 +101,7 @@ export const getSearch = async (page, year, genre, sort) => {
 };
 
 
-const spinner = document.querySelector('.preloader');
+
 
 function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
@@ -86,27 +110,31 @@ function moviesDataUpdate(data) {
 function submitResetFilter(evn) {
   spinner.classList.remove('done');
   evn.preventDefault();
-  filterForm[0].options.selectedIndex = 0;
-  filterForm[1].options.selectedIndex = 0;
-  filterForm[2].options.selectedIndex = 0;
+  btnSearch[0].options.selectedIndex = 0;
+  btnSearch[1].options.selectedIndex = 0;
+  btnSearch[2].options.selectedIndex = 0;
   genre = '';
   year = '';
   sort = '';
   page = 1;
-  if (query === '') {
-    amountOfPages = 1000;
-  } else {
-    amountOfPages = localStorageAPI.load('total-pages');
-  }
   localStorageAPI.save('genre-pg', genre);
   localStorageAPI.save('year-pg', year);
   localStorageAPI.save('sort-pg', sort);
   localStorageAPI.save('page-pg', page);
-  localStorageAPI.save('total-pages', amountOfPages);
-  getSearchForm(page, query, genre, year, sort).then(data => {
-    refs.homeGallery.innerHTML = markupSearchPage(data.results);
-    moviesDataUpdate(data.results);
-    localStorageAPI.save('total-pages', amountOfPages);
+ 
+  getSearch(page, year, genre, sort).then(data => {
+    const allGenres = getGenres();
+    console.log(allGenres);
+    const films = data.data.results;
+    console.log(films);
+    const normalFilmData = dataRevize(films, allGenres);
+    normalFilmData.forEach(element => {
+      if (element.genre_ids.length > 3) {
+        element.genres.splice(2, 2, { name: 'Other' });
+      }
+    });
+      refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+      moviesDataUpdate(data);
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);

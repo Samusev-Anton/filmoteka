@@ -352,6 +352,7 @@
 
 .btnResetFilter {
   margin: 0 auto;
+  margin-left: 10px;
   width: 45px;
   outline: none;
   border: none;
@@ -360,4 +361,10 @@
   background-color: inherit;
   cursor: pointer;
   text-align: center;
+  &:hover
+   {
+    transform: scale(1.15);
+    color: $orange-hover;
+    border-bottom: 1px solid $orange-hover;
+  }
 }

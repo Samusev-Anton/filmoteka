@@ -4,6 +4,7 @@
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -161,7 +162,7 @@ a {
     background-image: url(/src/images/mobile/main-background-mobile@2x.png);
   }
 }
-@media screen and (min-device-pixel-ratio: 3), screen and (-webkit-min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
+@media screen and (min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/mobile/main-background-mobile@3x.png);
   }
@@ -178,7 +179,7 @@ a {
     background-image: url(/src/images/tablet/main-background-tablet@2x.png);
   }
 }
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/tablet/main-background-tablet@3x.png);
   }
@@ -194,7 +195,7 @@ a {
     background-image: url(/src/images/desktop/main-background-desktop@2x.png);
   }
 }
-@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
   .header {
     background-image: url(/src/images/desktop/main-background-desktop@3x.png);
   }
@@ -217,23 +218,10 @@ a {
 }
 
 .header__icon_logo {
-  -webkit-animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-          animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
   stroke-width: 3px;
   stroke: white;
   fill: transparent;
-}
-
-@-webkit-keyframes animate360 {
-  0% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
 }
 
 @keyframes animate360 {
@@ -336,23 +324,7 @@ a {
   outline: none;
 }
 
-.header__form-input:not(:-moz-placeholder-shown) {
-  color: #ffffff;
-}
-
-.header__form-input:not(:-ms-input-placeholder) {
-  color: #ffffff;
-}
-
 .header__form-input:not(:placeholder-shown) {
-  color: #ffffff;
-}
-
-.header__form-input::-moz-placeholder {
-  color: #ffffff;
-}
-
-.header__form-input:-ms-input-placeholder {
   color: #ffffff;
 }
 
@@ -453,14 +425,6 @@ a {
   border-bottom-color: rgb(220, 71, 11);
 }
 
-.header__form-input:hover.header__form-input::-moz-placeholder {
-  color: rgb(220, 71, 11);
-}
-
-.header__form-input:hover.header__form-input:-ms-input-placeholder {
-  color: rgb(220, 71, 11);
-}
-
 .header__form-input:hover.header__form-input::placeholder {
   color: rgb(220, 71, 11);
 }
@@ -512,6 +476,7 @@ a {
 
 .btnResetFilter {
   margin: 0 auto;
+  margin-left: 10px;
   width: 45px;
   outline: none;
   border: none;
@@ -520,6 +485,11 @@ a {
   background-color: inherit;
   cursor: pointer;
   text-align: center;
+}
+.btnResetFilter:hover {
+  transform: scale(1.15);
+  color: rgb(220, 71, 11);
+  border-bottom: 1px solid rgb(220, 71, 11);
 }
 
 .lib-header {
@@ -536,7 +506,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/mobile/library-background-mobile@2x.jpg);
   }
 }
-@media screen and (min-device-pixel-ratio: 3), screen and (-webkit-min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
+@media screen and (min-device-pixel-ratio: 3), screen and (min-resolution: 288dpi), screen and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/mobile/library-background-mobile@3x.jpg);
   }
@@ -565,7 +535,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/tablet/library-background-tablet@2x.jpg);
   }
 }
-@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 3), screen and (min-width: 768px) and (min-resolution: 288dpi), screen and (min-width: 768px) and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/tablet/library-background-tablet@3x.jpg);
   }
@@ -581,7 +551,7 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/desktop/library-background-desktop@2x.jpg);
   }
 }
-@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
+@media screen and (min-width: 1280px) and (min-device-pixel-ratio: 3), screen and (min-width: 1280px) and (min-resolution: 288dpi), screen and (min-width: 1280px) and (min-resolution: 3dppx) {
   .lib-header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/desktop/library-background-desktop@3x.jpg);
   }
@@ -846,23 +816,7 @@ main {
 }
 
 .footer__icon {
-  -webkit-animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-          animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-}
-
-@-webkit-keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.4);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
+  animation: heartbeat 1250ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
 
 @keyframes heartbeat {
@@ -889,8 +843,7 @@ main {
   background-color: #ffffff;
   z-index: 5;
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 @media screen and (max-width: 767px) {
   .modal {
@@ -1160,8 +1113,7 @@ main {
   left: 0;
   background-color: #fff;
   transform: rotateY(180deg);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   transition: transform 2000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media screen and (min-width: 768px) {
@@ -1237,25 +1189,11 @@ main {
 }
 
 .animate-motion {
-  -webkit-animation: animate_motion 5s 0s both infinite;
-          animation: animate_motion 5s 0s both infinite;
+  animation: animate_motion 5s 0s both infinite;
 }
 
 .animate-motion:hover {
-  -webkit-animation: none;
-          animation: none;
-}
-
-@-webkit-keyframes animate_motion {
-  0%, 20% {
-    transform: translate3d(0, 0, 0);
-  }
-  10%, 14%, 18%, 2%, 6% {
-    transform: translate3d(-7px, 0, 0);
-  }
-  12%, 16%, 4%, 8% {
-    transform: translate3d(7px, 0, 0);
-  }
+  animation: none;
 }
 
 @keyframes animate_motion {
@@ -1328,7 +1266,6 @@ main {
 
 .title-box {
   width: auto;
-  position: -webkit-sticky;
   position: sticky;
   top: -1px;
   z-index: 6;
@@ -1431,14 +1368,10 @@ main {
   background-color: transparent;
   display: flex;
   margin-left: 8px;
-  -webkit-animation-name: spinning;
-          animation-name: spinning;
-  -webkit-animation-duration: 3s;
-          animation-duration: 3s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-name: spinning;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 @media screen and (max-width: 479px) {
   .title__icon {
@@ -1454,17 +1387,6 @@ main {
 @media screen and (min-width: 1280px) {
   .title__icon {
     margin-left: 10px;
-  }
-}
-
-@-webkit-keyframes spinning {
-  0% {
-    transform: rotate(0deg);
-    fill: #545454;
-  }
-  100% {
-    transform: rotate(360deg);
-    fill: #ff6b08;
   }
 }
 
@@ -1507,8 +1429,7 @@ main {
 
 .card-student__img {
   width: 225px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   height: 250px;
 }
 
