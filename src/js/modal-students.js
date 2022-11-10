@@ -16,6 +16,7 @@
 
   function closeModal() {
     refs.modal.classList.toggle('is-hidden');
+    document.body.style.overflow = 'auto';
   }
 
   document.addEventListener('keydown', event => {
