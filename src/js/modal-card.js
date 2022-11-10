@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix';
 import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
@@ -30,9 +31,21 @@ async function clickOnMovie(evt) {
     response = resp;
     //--------------------------
     // console.log(resp);
-    refs.filmBox.innerHTML = markupModal(resp);
-    onOpenModal();
+    if (resp !== undefined) {
+      refs.filmBox.innerHTML = markupModal(resp);
+      onOpenModal();
+    } else {
+      Notify.failure(
+        'Sorry, there is no information for this movie. Please try another movie.'
+      );
+    }
     iD.push(movieId);
+    apiMovieDetails(iD[0]).then(resp => {
+      if (resp === undefined) {
+        const rotateModal = document.querySelector('.modal__button-rotate');
+        rotateModal.classList.add('visually-hidden');
+      }
+    });
   });
 }
 
@@ -124,7 +137,7 @@ function handleClick(event) {
 
 function watchTrailer() {
   apiMovieDetails(iD).then(resp => {
-    console.log(resp);
+    // console.log(resp);
     createPlayer(resp);
   });
 }
