@@ -81,8 +81,8 @@ async function clickOnMovie(evt) {
     },
   });
   instance.show();
-  constBtnCloseModal = document.querySelector('.modal_button-close');
-  constBtnCloseModal.addEventListener('click', () => instance.close());
+  const BtnCloseModal = document.querySelector('.modal_button-close');
+  BtnCloseModal.addEventListener('click', () => instance.close());
 
   const body = document.querySelector('body');
   body.classList.add('modal-open');
@@ -137,7 +137,7 @@ function removeQueue(e) {
 //____________________________________________________remove movie from localStorage
 function deleteMovie(key) {
   instance.close();
-  normalist = localStorageAPI.load(key);
+  let normalist = localStorageAPI.load(key);
   const renderList = normalist;
   normalist.forEach((obj, index) => {
     if (obj.id == movieId) {

@@ -5,7 +5,6 @@
         <use href="./images/students-card/symbol-defs.svg#icon-close"></use>
       </svg>
     </button>
-
     <div class="title-box">
       <button type="button" class="modal-students-close" data-modal-close>
         <svg class="button-close__icon" width="30" height="30">
@@ -55,6 +54,19 @@
           />
         </picture>
 
+        <div class="students-movie__iframe is-hidden">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/-9HT0l9HV4c"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            preload="none"
+          ></iframe>
+        </div>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Anton Samusiev</h3>
           <p class="card-student__role">Team Leader</p>
@@ -92,16 +104,6 @@
           </ul>
         </div>
       </li>
-      <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/-9HT0l9HV4c"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
 
       <li class="card-student__item">
         <picture>
@@ -162,15 +164,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/IjHgzkQM2Sg"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -232,15 +225,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="640"
-        height="360"
-        src="https://www.youtube.com/embed/9ix7TUGVYIo"
-        title="The Matrix Resurrections – Official Trailer 1"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -319,15 +303,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/YWwAOutgWBQ"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -389,15 +364,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/7UzSekc0LoQ"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -459,15 +425,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/vm_kACNrF3E"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -538,15 +495,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/vgqG3ITMv1Q"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -608,15 +556,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/tGpTpVyI_OQ"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -677,15 +616,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/5PSNL1qE6VY"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -757,12 +687,38 @@
       </li>
 
       <li class="card-student__item">
-        <img
-          class="card-student__img"
-          src="./images/students-card/default-avatar.jpeg"
-          alt="students photo"
-          width="200px"
-        />
+        <picture>
+          <source
+            srcset="
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200.jpg    1x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200@2x.jpg 2x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200@3x.jpg 3x
+            "
+            media="(min-width: 1200px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768.jpg    1x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768@2x.jpg 2x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768@3x.jpg 3x
+            "
+            media="(min-width: 768px)"
+          />
+          <source
+            srcset="
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480.jpg    1x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480@2x.jpg 2x,
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480@3x.jpg 3x
+            "
+            media="(min-width: 480px)"
+          />
+          <img
+            class="card-student__img"
+            src="./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480.jpg"
+            alt="students photo"
+            width="200px"
+          />
+        </picture>
         <div class="card-student__wrap">
           <h3 class="card-student__name">Ostrynska Kateryna</h3>
           <p class="card-student__role">Developer</p>
@@ -796,15 +752,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/_nZdmwHrcnw"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
 
       <li class="card-student__item">
         <picture>
@@ -865,15 +812,6 @@
           </ul>
         </div>
       </li>
-      <!-- <iframe
-        class="students-movie__iframe is-hidden"
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/4TLppsfzQH8"
-        title="YouTube video player"
-        frameborder="0"
-        allowfullscreen
-      ></iframe> -->
     </ul>
   </div>
 </div>

@@ -12,6 +12,8 @@ import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { apiHomeSearch } from './themovieApi';
 import { inputData } from './search-films';
+import pagination from "./pagin";
+
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -33,18 +35,32 @@ function onSearchSubmit(evt) {
     console.log(allGenres);
     const films = data.data.results;
     console.log(films);
+
     const normalFilmData = dataRevize(films, allGenres);
     normalFilmData.forEach(element => {
       if (element.genre_ids.length > 3) {
         element.genres.splice(2, 2, { name: 'Other' });
       }
     });
+
       refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
       localStorageAPI.save('genre-pg', genre);
       localStorageAPI.save('year-pg', year);
       localStorageAPI.save('sort-pg', sort);
       localStorageAPI.save('page-pg', page);
       spinner.classList.add('done');
+
+    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);     
+
+    //pagination
+    //reset results 
+    pagination.reset(data.data.results); 
+    //set total results of filtered movies
+    pagination.setTotalItems(data.data.total_results);
+    console.log('Total pages: ', data.data.total_pages);
+    //reset pagination
+    pagination.reset(); 
+
   });
 
   //   console.log(genre);
@@ -52,7 +68,7 @@ function onSearchSubmit(evt) {
   //   console.log(sort);
 }
 
-const getSearch = async (page, year, genre, sort) => {
+export const getSearch = async (page, year, genre, sort) => {
   let data = {};
   if (year) {
     data = await axios.get(
@@ -84,7 +100,6 @@ const getSearch = async (page, year, genre, sort) => {
   return data;
 };
 
-//
 
 
 
