@@ -360,8 +360,7 @@
 
 .btnResetFilter {
   margin: 0 auto;
-  margin-left: 10px;
-  width: 45px;
+  width: 50px;
   outline: none;
   border: none;
   border-bottom: 1px solid #fff;
@@ -376,5 +375,11 @@
     // transform: scale(1.15);
     color: $orange-hover;
     border-bottom: 1px solid $orange-hover;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 10px;
   }
 }

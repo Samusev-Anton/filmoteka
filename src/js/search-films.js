@@ -96,18 +96,6 @@ refs.logo.addEventListener('click', onLogoClick);
 
 function onLogoClick(e) {
   spinner.classList.remove('done');
-  amountOfPages = 1000;
-  page = 1;
-  genre = '';
-  year = '';
-  query = '';
-  sort = '';
-  localStorageAPI.save('page-pg', page);
-  localStorageAPI.save('genre-pg', genre);
-  localStorageAPI.save('year-pg', year);
-  localStorageAPI.save('total-pages', amountOfPages);
-  localStorageAPI.save('query-pg', query);
-  localStorageAPI.save('sort-pg', sort);
 }
 
 refs.home.addEventListener('click', onHomeClick);

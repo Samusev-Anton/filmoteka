@@ -483,8 +483,7 @@ a {
 
 .btnResetFilter {
   margin: 0 auto;
-  margin-left: 10px;
-  width: 45px;
+  width: 50px;
   outline: none;
   border: none;
   border-bottom: 1px solid #fff;
@@ -498,6 +497,16 @@ a {
 .btnResetFilter:hover {
   color: rgb(220, 71, 11);
   border-bottom: 1px solid rgb(220, 71, 11);
+}
+@media screen and (min-width: 768px) {
+  .btnResetFilter {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .btnResetFilter {
+    margin-top: 10px;
+  }
 }
 
 .to_main__div {
@@ -842,9 +851,7 @@ main {
   border-bottom: none;
   background-color: rgb(245, 245, 245);
   animation-name: animation-button-rotate;
-  animation-duration: 350ms;
-  animation-delay: 3s;
-  transition-delay: 3s;
+  animation-duration: 1000ms;
   transform: translateY(-99%);
 }
 @keyframes animation-button-rotate {
@@ -1055,7 +1062,8 @@ main {
   color: grey;
 }
 
-.backdrop {
+.backdrop,
+.iframe-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -1065,13 +1073,14 @@ main {
 }
 
 .backdrop.is-hidden .modal-students {
-  transform: translate(-50%, -50%) scale(0);
+  transform: perspective(250px) translate(-50%, -100%) scale(1);
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: all 350ms ease 0s;
 }
 
 .title-box {
@@ -1099,7 +1108,7 @@ main {
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 1px 1px black;
-  transition: transform 450ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  transition: all 350ms ease 0s;
 }
 @media screen and (max-width: 479px) {
   .modal-students {
@@ -1298,10 +1307,21 @@ main {
 }
 .social-list__item:last-child {
   margin-right: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+@media screen and (min-width: 768px) {
+  .social-list__item:last-child {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
-.students-movie__iframe.is-hidden {
-  display: none;
+.students-movie__iframe.is-hidden,
+.iframe-close .is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 350ms ease 0s;
 }
 
 .students-movie__iframe {
@@ -1309,25 +1329,29 @@ main {
   position: absolute;
 }
 
+.students-movie__iframe.is-hidden iframe {
+  transform: perspective(250px) translate(-50%, -100%) scale(1);
+}
+
 .students-movie__iframe iframe {
   z-index: 9;
+  margin-top: 38px;
   height: 80%;
-  width: 80%;
+  width: 90%;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all 350ms ease 0s;
 }
 
 .iframe-close {
   z-index: 10;
   stroke: white;
   position: absolute;
-  top: 50%;
-  left: 0;
-  margin-left: 80px;
+  top: 70px;
+  right: 0;
   padding: 0;
-  display: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
