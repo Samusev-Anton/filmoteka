@@ -79,10 +79,10 @@ spinner.classList.remove('done');
   windowScroll();
 });
 
-export async function apiHomePagePagin(page) {
+export async function apiHomePagePagin(totalPages) {
   try {
     const responce = await fetch(
-      `${TREND_URL}?api_key=${API_KEY}&page=${page}`
+      `${TREND_URL}?api_key=${API_KEY}&page=${totalPages}`
     );
     const data = await responce.json();
     return data;
