@@ -90,7 +90,7 @@ export async function apiMovieDetails(movieId) {
     );
     const resp = await responce.json();
     // console.log('resp :>> ', resp);
-    return resp;
+    return resp.results[0].key;
   } catch (Error) {
     //   Notiflix.Notify.failure(
     //     'Sorry, there are no trailer for this movie on Youtube. Please try again.'
