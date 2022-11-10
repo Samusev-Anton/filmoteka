@@ -1,23 +1,16 @@
-(() => {
-  const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+const refs = {
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal]'),
+};
 
-  refs.openModalBtn.addEventListener('click', onModal);
-  refs.closeModalBtn.addEventListener('click', closeModal);
+refs.openModalBtn.addEventListener('click', onModal);
+refs.closeModalBtn.addEventListener('click', closeModal);
 
-  function onModal(event) {
-    event.preventDefault();
-    refs.modal.classList.toggle('is-hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    refs.modal.classList.toggle('is-hidden');
-    document.body.style.overflow = 'auto';
-  }
+function onModal(event) {
+  event.preventDefault();
+  refs.modal.classList.toggle('is-hidden');
+  document.body.style.overflow = 'hidden';
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
@@ -30,4 +23,9 @@
       refs.modal.classList.add('is-hidden');
     }
   });
-})();
+}
+
+function closeModal() {
+  refs.modal.classList.toggle('is-hidden');
+  document.body.style.overflow = 'auto';
+}

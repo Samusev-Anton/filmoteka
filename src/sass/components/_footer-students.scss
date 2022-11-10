@@ -1,4 +1,5 @@
-.backdrop {
+.backdrop,
+.iframe-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,13 +9,14 @@
 }
 
 .backdrop.is-hidden .modal-students {
-  transform: translate(-50%, -50%) scale(0);
+  transform: perspective(250px) translate(-50%, -100%) scale(1);
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: all 350ms ease 0s;
 }
 
 .title-box {
@@ -51,7 +53,8 @@
 
   border-radius: 10px;
   box-shadow: 0px 1px 1px black;
-  transition: transform 450ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+  transition: all 350ms ease 0s;
 
   @media screen and (max-width: 479px) {
     width: 70%;
@@ -204,6 +207,7 @@
   //   transform: scale(1.05);
   // }
 }
+
 .card-student__wrap {
   width: 225px;
   padding: 10px;
@@ -257,13 +261,23 @@
 
   &:last-child {
     margin-right: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    @media screen and (min-width: 768px) {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
 
 // iframe //
 
-.students-movie__iframe.is-hidden {
-  display: none;
+.students-movie__iframe.is-hidden,
+.iframe-close .is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 350ms ease 0s;
 }
 
 .students-movie__iframe {
@@ -271,15 +285,23 @@
   position: absolute;
 }
 
+.students-movie__iframe.is-hidden iframe {
+  transform: perspective(250px) translate(-50%, -100%) scale(1);
+}
+
 .students-movie__iframe iframe {
   z-index: 9;
+  margin-top: 38px;
+
   height: 80%;
-  width: 80%;
+  width: 90%;
   position: fixed;
+
   top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
+  transition: all 350ms ease 0s;
 }
 
 .iframe-close {
@@ -287,15 +309,11 @@
   stroke: white;
 
   position: absolute;
-  // left: 50%;
-  // top: 50%;
-  // transform: translate(-50%, -50%);
-  top: 50%;
-  left: 0;
-  margin-left: 80px;
+
+  top: 70px;
+  right: 0;
   padding: 0;
 
-  display: none;
   border: none;
   background-color: transparent;
 
