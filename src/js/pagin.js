@@ -98,7 +98,11 @@ export async function apiHomePagePagin(page) {
 export function paginationSearch(inputData) {
   const pagination = new Pagination(container, options);
     pagination.on('afterMove', async event => {
-    apiHomeSearch(inputData, event.page);
+    apiHomeSearch(inputData, event.page)
+    .then(data => {
+      markupSearchPage(data.results);
+    })
+    .catch(error => console.log(error));;
     windowScroll();
     });
   }
