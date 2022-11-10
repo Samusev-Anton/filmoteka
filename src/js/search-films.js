@@ -23,10 +23,14 @@ if (toMainBtn) {
   });
 }
 
+function moviesDataUpdate(data) {
+  localStorage.setItem('moviesData', JSON.stringify(data.results));
+}
+let searchPage = 1;
 function onButtonClick(evt) {
   spinner.classList.remove('done');
   evt.preventDefault();
-  page = 1;
+  searchPage = 1;
   inputData = evt.target.elements.serch_film.value.trim().toLowerCase();
   if (inputData.length < 1 || inputData === '') {
     warningShown();
@@ -36,10 +40,12 @@ function onButtonClick(evt) {
     
     localStorageAPI.save('query-pg', inputData);
   } else {
-    apiHomeSearch(inputData).then(data => {
+    apiHomeSearch(inputData, searchPage).then(data => {
       refs.form.reset();
       warningUnShown();
-
+      moviesDataUpdate(data);
+      amountOfPages = data.total_pages;
+      localStorageAPI.save('total-pages', amountOfPages);
       const allGenres = getGenres();
       const films = data.results;
       const normalFilmData = dataRevize(films, allGenres);
@@ -49,7 +55,6 @@ function onButtonClick(evt) {
 
       spinner.classList.add('done');
       trailerBtnVisible();
-
 
       if (data.results.length < 1) {
         warningShown();
@@ -68,10 +73,9 @@ function onButtonClick(evt) {
       pagination.reset(data.results);
       //set total results of search movies
       pagination.setTotalItems(data.total_results);
-      console.log('Total pages: ', data.data.total_pages);
+      // console.log('Total pages: ', data.data.total_pages);
       //reset pagination
       pagination.reset();
-
     });
   }
 }

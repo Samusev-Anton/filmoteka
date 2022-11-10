@@ -109,16 +109,21 @@ function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
 }
 
+let genre = '';
+let year = '';
+let sort = '';
+let page = 1;
+
 function submitResetFilter(evn) {
   spinner.classList.remove('done');
   evn.preventDefault();
   btnSearch[0].options.selectedIndex = 0;
   btnSearch[1].options.selectedIndex = 0;
   btnSearch[2].options.selectedIndex = 0;
-  genre = '';
-  year = '';
-  sort = '';
-  page = 1;
+//   genre = '';
+//   year = '';
+//   sort = '';
+//   page = 1;
   localStorageAPI.save('genre-pg', genre);
   localStorageAPI.save('year-pg', year);
   localStorageAPI.save('sort-pg', sort);
