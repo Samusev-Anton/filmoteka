@@ -86,10 +86,11 @@ export async function takeGenresList() {
 export async function apiMovieDetails(movieId) {
   try {
     const responce = await fetch(
-      `${ID_URL}/${movieId}/videos?api_key=${API_KEY}&language=en-US`
+      `${ID_URL}${movieId}/videos?api_key=${API_KEY}&language=en-US`
     );
     const resp = await responce.json();
     // console.log('resp :>> ', resp);
+    // console.log(resp.results[0].key);
     return resp.results[0].key;
   } catch (Error) {
     //   Notiflix.Notify.failure(

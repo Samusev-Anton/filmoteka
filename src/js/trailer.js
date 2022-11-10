@@ -11,14 +11,15 @@ refs.filmBox.addEventListener('DOMContentLoaded', trailerBtnVisible);
 export function trailerBtnVisible() {
   const listTrailerBtn = document.querySelectorAll('.button__trailer');
 
-  listTrailerBtn.forEach(item => {
-    const movieID = item.dataset.id;
-    apiMovieDetails(movieID).then(resp => {
-      if (resp.results.length === 0) {
-        item.classList.add('is-hidden');
-      }
-    });
-  });
+  // listTrailerBtn.forEach(item => {
+  //   const movieID = item.dataset.id;
+  //   apiMovieDetails(movieID).then(resp => {
+  //     console.log(resp);
+  //     if (resp.results.length === 0) {
+  //       item.classList.add('is-hidden');
+  //     }
+  //   });
+  // });
 }
 
 function watchTrailer(event) {
@@ -27,7 +28,8 @@ function watchTrailer(event) {
   if (target.classList.contains('button__trailer')) {
     const movieID = target.dataset.id;
     apiMovieDetails(movieID).then(resp => {
-      createPlayer(resp.results[0].key);
+      console.log(resp);
+      createPlayer(resp);
     });
   }
 }
