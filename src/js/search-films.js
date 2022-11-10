@@ -6,7 +6,6 @@ import { localStorageAPI } from './api/localStorageAPI';
 import { trailerBtnVisible } from './trailer';
 import pagination from './pagin';
 
-
 let inputData = '';
 let page = 1;
 refs.form.addEventListener('submit', onButtonClick);
@@ -37,14 +36,14 @@ function onButtonClick(evt) {
     refs.pagination.classList.add('visually-hidden');
     spinner.classList.add('done');
     refs.form.reset();
-    
+
     localStorageAPI.save('query-pg', inputData);
   } else {
     apiHomeSearch(inputData, searchPage).then(data => {
       refs.form.reset();
       warningUnShown();
       moviesDataUpdate(data);
-      amountOfPages = data.total_pages;
+      let amountOfPages = data.total_pages;
       localStorageAPI.save('total-pages', amountOfPages);
       const allGenres = getGenres();
       const films = data.results;
@@ -73,7 +72,9 @@ function onButtonClick(evt) {
       pagination.reset(data.results);
       //set total results of search movies
       pagination.setTotalItems(data.total_results);
-      // console.log('Total pages: ', data.data.total_pages);
+      // console.log('Total pages: ', data.total_pages);
+      // console.log('Total results: ', data.total_results);
+
       //reset pagination
       pagination.reset();
     });
