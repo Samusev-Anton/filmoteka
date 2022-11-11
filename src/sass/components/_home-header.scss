@@ -133,9 +133,9 @@
   margin-right: 40px;
 }
 
-.header__list-item:last-child {
-  margin-right: 0px;
-}
+// .header__list-item:last-child {
+//   margin-right: 0px;
+// }
 .header__list-link {
   color: $white-text;
   font-size: 12px;
@@ -382,4 +382,11 @@
   @media screen and (max-width: 767px) {
     margin-top: 10px;
   }
+}
+
+
+.auth-btn{
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }

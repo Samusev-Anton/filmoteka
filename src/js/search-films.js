@@ -34,7 +34,6 @@ function onButtonClick(evt) {
   if (inputData.length < 1 || inputData === '') {
     warningShown();
     refs.pagination.classList.add('visually-hidden');
-    spinner.classList.add('done');
     refs.form.reset();
 
     localStorageAPI.save('query-pg', inputData);
