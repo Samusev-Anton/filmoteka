@@ -1,4 +1,4 @@
-<div class="backdrop is-hidden" data-modal>
+<dialog class="backdrop is-hidden" data-modal>
   <div class="modal-students">
     <button type="button" class="iframe-close is-hidden">
       <svg width="30" height="30">
@@ -25,24 +25,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200.jpg    1x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200@3x.jpg 3x
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768.jpg    1x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768@3x.jpg 3x
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480.jpg    1x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480@3x.jpg 3x
+              ./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -51,23 +48,9 @@
             src="./images/students-card/students_photo/AntonSamusiev/AntonSamusiev_480.jpg"
             alt="students photo"
             width="200"
+            loading="lazy"
           />
         </picture>
-
-        <div class="students-movie__iframe is-hidden">
-          <div class="iframe-backdrop">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/-9HT0l9HV4c"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              preload="none"
-            ></iframe>
-          </div>
-        </div>
 
         <div class="card-student__wrap">
           <h3 class="card-student__name">Anton Samusiev</h3>
@@ -105,6 +88,20 @@
             </li>
           </ul>
         </div>
+
+        <div class="students-movie__iframe is-hidden">
+          <div class="iframe-backdrop">
+            <iframe
+              loading="lazy"
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/-9HT0l9HV4c"
+              title="YouTube video player"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
       </li>
 
       <li class="card-student__item">
@@ -112,24 +109,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200.jpg    1x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200@3x.jpg 3x
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768.jpg    1x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768@2x.jpg 2x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768@3x.jpg 3x
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480.jpg    1x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480@2x.jpg 2x,
-              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480@3x.jpg 3x
+              ./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -138,8 +132,10 @@
             src="./images/students-card/students_photo/AlevtynaAharkova/AlevtynaAharkova-480.jpg"
             alt="students photo"
             width="200"
+            loading="lazy"
           />
         </picture>
+
         <div class="card-student__wrap">
           <h3 class="card-student__name">Alevtyna Aharkova</h3>
           <p class="card-student__role">Scrum Master</p>
@@ -156,12 +152,13 @@
               ></a>
             </li>
             <li class="social-list__item">
-              <a href=""
+              <a href="" favorite-movie-js
                 ><svg class="social-list__icon" width="20" height="20">
                   <use
                     href="./images/students-card/symbol-defs.svg#icon-video-camera"
-                  ></use></svg
-              ></a>
+                  ></use>
+                </svg>
+              </a>
             </li>
           </ul>
         </div>
@@ -172,24 +169,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200.jpg    1x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200@3x.jpg 3x
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768.jpg    1x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768@3x.jpg 3x
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480.jpg    1x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480@2x.jpg 2x,
-              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480@3x.jpg 3x
+              ./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -198,6 +192,7 @@
             src="./images/students-card/students_photo/AntonZmiievskyi/AntonZmiievskyi-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
 
@@ -217,7 +212,7 @@
               ></a>
             </li>
             <li class="social-list__item">
-              <a href=""
+              <a href="" favorite-movie-js
                 ><svg class="social-list__icon" width="20" height="20">
                   <use
                     href="./images/students-card/symbol-defs.svg#icon-video-camera"
@@ -233,24 +228,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200.jpg    1x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200@3x.jpg 3x
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768.jpg    1x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768@2x.jpg 2x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768@3x.jpg 3x
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480.jpg    1x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480@2x.jpg 2x,
-              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480@3x.jpg 3x
+              ./images/students-card/students_photo/OlegAndreev/OlegAndreev-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -259,6 +251,7 @@
             src="./images/students-card/students_photo/OlegAndreev/OlegAndreev-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
 
@@ -311,24 +304,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200.jpg    1x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200@3x.jpg 3x
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768.jpg    1x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768@2x.jpg 2x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768@3x.jpg 3x
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480.jpg    1x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480@2x.jpg 2x,
-              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480@3x.jpg 3x
+              ./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -337,6 +327,7 @@
             src="./images/students-card/students_photo/NataliiaSvystula/NataliiaSvystula-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -372,24 +363,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200.jpg    1x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200@3x.jpg 3x
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768.jpg    1x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768@2x.jpg 2x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768@3x.jpg 3x
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480.jpg    1x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480@2x.jpg 2x,
-              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480@3x.jpg 3x
+              ./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -398,6 +386,7 @@
             src="./images/students-card/students_photo/AndriiHonchar/AndriiHonchar-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
 
@@ -433,24 +422,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200.jpg    1x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200@3x.jpg 3x
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768.jpg    1x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768@2x.jpg 2x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768@3x.jpg 3x
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480.jpg    1x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480@2x.jpg 2x,
-              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480@3x.jpg 3x
+              ./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -459,6 +445,7 @@
             src="./images/students-card/students_photo/VasylynaShvets/VasylynaShvets-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
 
@@ -503,24 +490,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200.jpg    1x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200@3x.jpg 3x
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768.jpg    1x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768@2x.jpg 2x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768@3x.jpg 3x
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480.jpg    1x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480@2x.jpg 2x,
-              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480@3x.jpg 3x
+              ./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -529,6 +513,7 @@
             src="./images/students-card/students_photo/NerodenkoMaksym/NerodenkoMaksym-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -564,24 +549,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200.jpg    1x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768.jpg    1x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480.jpg    1x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -590,6 +572,7 @@
             src="./images/students-card/students_photo/SerhiiYehorov/SerhiiYehorov-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -624,24 +607,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200.jpg    1x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200@2x.jpg 2x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200@3x.jpg 3x
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768.jpg    1x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768@2x.jpg 2x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768@3x.jpg 3x
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480.jpg    1x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480@2x.jpg 2x,
-              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480@3x.jpg 3x
+              ./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -650,6 +630,7 @@
             src="./images/students-card/students_photo/ViktoriiaOstrozhynska/ViktoriiaOstrozhynska_480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -693,24 +674,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200.jpg    1x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200@3x.jpg 3x
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768.jpg    1x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768@2x.jpg 2x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768@3x.jpg 3x
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480.jpg    1x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480@2x.jpg 2x,
-              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480@3x.jpg 3x
+              ./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -719,6 +697,7 @@
             src="./images/students-card/students_photo/KaterynaOstrynska/KaterynaOstrynska-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -760,24 +739,21 @@
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200.jpg    1x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-1200@2x.jpg 2x
             "
             media="(min-width: 1200px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768.jpg    1x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-768@2x.jpg 2x
             "
             media="(min-width: 768px)"
           />
           <source
             srcset="
               ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480.jpg    1x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480@2x.jpg 2x,
-              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480@3x.jpg 3x
+              ./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480@2x.jpg 2x
             "
             media="(min-width: 480px)"
           />
@@ -786,6 +762,7 @@
             src="./images/students-card/students_photo/SerhiiKravchak/SerhiiKravchak-480.jpg"
             alt="students photo"
             width="200px"
+            loading="lazy"
           />
         </picture>
         <div class="card-student__wrap">
@@ -816,4 +793,4 @@
       </li>
     </ul>
   </div>
-</div>
+</dialog>

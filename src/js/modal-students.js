@@ -9,6 +9,8 @@ refs.closeModalBtn.addEventListener('click', closeModal);
 
 function onModal(event) {
   event.preventDefault();
+  refs.modal.show();
+
   refs.modal.classList.toggle('is-hidden');
   document.body.style.overflow = 'hidden';
 
@@ -26,6 +28,7 @@ function onModal(event) {
 }
 
 function closeModal() {
+  refs.modal.close();
   refs.modal.classList.toggle('is-hidden');
   document.body.style.overflow = 'auto';
 }
