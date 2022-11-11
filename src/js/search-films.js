@@ -35,7 +35,7 @@ function onButtonClick(evt) {
     warningShown();
     refs.pagination.classList.add('visually-hidden');
     refs.form.reset();
-
+    spinner.classList.add('done');
     localStorageAPI.save('query-pg', inputData);
   } else {
     apiHomeSearch(inputData, searchPage).then(data => {
