@@ -3,8 +3,8 @@ import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import markupHomePage from './templates/markupHomePage.hbs';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
-import { getSearch } from "./filter";
-import { apiHomeSearch } from './themovieApi';
+// import { getSearch } from "./filter";
+import { apiHomeSearch, getSearch } from './themovieApi';
 import {
   API_KEY,
   BASE_URL,
