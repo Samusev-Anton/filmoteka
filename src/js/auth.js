@@ -3,9 +3,13 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from "firebase/auth";
 import { Notify } from "notiflix";
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC1UwR2UZgcLB74wYfECqB18_hZyQvzmHU",
@@ -23,16 +27,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const refs = {
+
+const refs = {  
   emailInput: document.querySelector('#login-email'),
   passwordInput: document.querySelector('#login-password'),
+  
   loginBtn: document.querySelector('.login-btn'),
-  signUpBtn: document.querySelector('.signup-btn')
+  signUpBtn: document.querySelector('.signup-btn'),
+  logoutBtn: document.querySelector('[data-logout]'),
+  openAuthModalBtn: document.querySelector('[data-auth-modal-open]')
 }
 
-refs.loginBtn.addEventListener("click", onLogin)
-refs.signUpBtn.addEventListener('click', onSignUp)
-
+refs.loginBtn.addEventListener("click", onLogin);
+refs.signUpBtn.addEventListener('click', onSignUp);
+refs.logoutBtn.addEventListener('click', onLogOut);
 
 async function onLogin() {
   const email = refs.emailInput.value;
@@ -44,7 +52,7 @@ async function onLogin() {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password) 
     console.log(userCredential.user)
-    window.location.href='library.html'
+    window.location.href='index.html'
   }
   catch (error) {
     if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
@@ -67,6 +75,7 @@ async function onSignUp() {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password)
     Notify.success('Succes! New user created')
     console.log(userCredential.user)
+    
   }
   catch (error) {
     if (error.code === "auth/email-already-in-use") {
@@ -79,15 +88,28 @@ async function onSignUp() {
   
 }
 
-// const authStatus = async () => {
-//   onAuthStateChanged(auth, user => {
-//     if (user) {
-      
-//     }
-//     else {
-//       console.log('you are not logged');
-//     }
-//   });
-// }
 
-// authStatus();
+
+
+async function authStatus ()  {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      refs.openAuthModalBtn.setAttribute("hidden", "hidden")
+      refs.logoutBtn.removeAttribute("hidden")
+    }
+    // else {
+    //  refs.logoutBtn.setAttribute("hidden", "hidden")
+    //   refs.openAuthModalBtn.removeAttribute("hidden")
+    // }
+  });
+}
+
+authStatus();
+
+
+async function onLogOut() {
+  await signOut(auth);
+  Notify.info('See you');
+  window.location.href='index.html'
+  
+}
