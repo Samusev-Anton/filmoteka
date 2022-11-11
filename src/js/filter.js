@@ -1,12 +1,13 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { getGenres, dataRevize } from './data/data-revize';
-import { API_KEY, BASE_URL } from './api/api-parts';
+// import { API_KEY, BASE_URL } from './api/api-parts';
 import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
-import { apiHomePage } from './themovieApi';
+import { apiHomePage, getSearch } from './themovieApi';
 import { inputData } from './search-films';
 import pagination from './pagin';
+
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -63,44 +64,7 @@ btnSearch[2].options.selectedIndex = 0;
   //   console.log(sort);
 }
 
-export const getSearch = async (page, year, genre, sort) => {
-  let data = {};
-  // if (year && genre && sort) {
-  data = await axios.get(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&sort_by=${sort}&page=${page}`
-  );
-  // } else if (year && genre && sort === null) {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&page=${page}`
-  //   );
-  // } else if (year && sort && genre === null) {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&sort_by=${sort}&page=${page}`
-  //   );
-  // } else if (sort && genre && year===0) {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&sort_by=${sort}&page=${page}`
-  //   );
-  // } else if (genre) {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
-  //   );
-  // } else if (year) {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&page=${page}`
-  //   );
-  // } else {
-  //   data = await axios.get(
-  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sort}&page=${page}`
-  //   );
-  // }
 
-  //   console.log(data.data.results);
-
-  localStorageAPI.save('moviesData', data.data.results);
-
-  return data;
-};
 
 function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
