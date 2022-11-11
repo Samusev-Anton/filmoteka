@@ -28,8 +28,8 @@ function watchTrailer(event) {
   if (target.classList.contains('button__trailer')) {
     const movieID = target.dataset.id;
     apiMovieDetails(movieID).then(resp => {
-      console.log(resp);
-      createPlayer(resp);
+      console.log(resp.results[0].key);
+      createPlayer(resp.results[0].key);
     });
   }
 }
