@@ -2,7 +2,6 @@ import { Notify } from 'notiflix';
 import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
-// import addWatched from './my-library';
 import { addWatchedBtn, addQueueBtn } from './modal-card-btn';
 
 const STORAGE_KEY_WATCHED = 'watched';
@@ -12,8 +11,8 @@ refs.homeGallery.addEventListener('click', clickOnMovie);
 
 // variable for localstorage
 let response;
-let addWathedBtnref = null;
-let addQueueBtnref = null;
+export let addWathedBtnref = null;
+export let addQueueBtnref = null;
 let iD = [];
 // -------------------------
 // Click Handler Function
@@ -121,12 +120,13 @@ function onEscButton(evt) {
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--queue') {
-    console.log(addWathedBtnref);
+    addQueueBtnref.innerText = 'ADDED TO VIEW';    
     addWathedBtnref.disabled = true;
     addQueueBtn(STORAGE_KEY_QUEUE, response);
   }
   if (event.target.className === 'modal__button--watched') {
-    addQueueBtnref.disabled = true;
+    addWathedBtnref.innerText = 'ADDED IN REVISED';
+    addQueueBtnref.disabled = true;    
     addWatchedBtn(STORAGE_KEY_WATCHED, response);
   }
 

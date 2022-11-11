@@ -1,5 +1,6 @@
 import { Notify } from 'notiflix';
 import { localStorageAPI } from './api/localStorageAPI';
+import { addWathedBtnref, addQueueBtnref } from './modal-card';
 
 let storageWatched = [];
 let storageQueue = [];
@@ -8,6 +9,7 @@ export function addWatchedBtn(key, obj) {
   let arrWatched = localStorage.getItem(key);
   if (storageWatched.includes(obj)) {
     errorNotify();
+    addWathedBtnref.innerText = 'ADDED IN REVISED'; 
     return;
   } else if (arrWatched === null) {
     storageWatched.push(obj);
@@ -36,6 +38,7 @@ export function addQueueBtn(key, obj) {
   let arrQueue = localStorage.getItem(key); // console.dir(obj.id);
   if (storageQueue.includes(obj)) {
     Notify.failure('we have alredy added that movie');
+    addQueueBtnref.innerText = 'ADDED TO VIEW'; 
     return;
   } else if (arrQueue === null) {
     storageQueue.push(obj); // console.dir(storageQueue[0].id);
