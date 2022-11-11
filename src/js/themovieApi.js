@@ -5,7 +5,7 @@
 
 // API Read Access Token (v4 auth)
 // eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyN2E3NmYwODY5YWZkNTllYWZjY2VmN2Q2ZDk4NmMyMCIsInN1YiI6IjYzNWFjODY2MTUxMWFhMDA3ZTlkMjA0OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.u4oo3dqnEhbq4-mU65_77HUxgSjunDdlP98tEZ8BJ8w
-
+import axios from 'axios';
 import {
   API_KEY,
   BASE_URL,
@@ -98,3 +98,42 @@ export async function apiMovieDetails(movieId) {
     //   );
   }
 }
+
+export const getSearch = async (page, year, genre, sort) => {
+  let data = {};
+  // if (year && genre && sort) {
+  data = await axios.get(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&sort_by=${sort}&page=${page}`
+  );
+  // } else if (year && genre && sort === null) {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&with_genres=${genre}&page=${page}`
+  //   );
+  // } else if (year && sort && genre === null) {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&sort_by=${sort}&page=${page}`
+  //   );
+  // } else if (sort && genre && year===0) {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&sort_by=${sort}&page=${page}`
+  //   );
+  // } else if (genre) {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=${genre}&page=${page}`
+  //   );
+  // } else if (year) {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&primary_release_year=${year}&page=${page}`
+  //   );
+  // } else {
+  //   data = await axios.get(
+  //     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${sort}&page=${page}`
+  //   );
+  // }
+
+  //   console.log(data.data.results);
+
+  // localStorageAPI.save('moviesData', data.data.results);
+
+  return data;
+};
