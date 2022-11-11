@@ -1,16 +1,10 @@
 import axios from 'axios';
 import { getGenres, dataRevize } from './data/data-revize';
-import {
-  API_KEY,
-  BASE_URL,
-  TREND_URL,
-  SEARCH_URL,
-  ID_URL,
-} from './api/api-parts';
+import { API_KEY, BASE_URL } from './api/api-parts';
 import { refs } from './refs';
 import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
-import { apiHomeSearch } from './themovieApi';
+import { apiHomePage } from './themovieApi';
 import { inputData } from './search-films';
 import pagination from './pagin';
 
@@ -100,7 +94,7 @@ export const getSearch = async (page, year, genre, sort) => {
 
   //   console.log(data.data.results);
 
-  localStorageAPI.save('moviesData', data.results);
+  localStorageAPI.save('moviesData', data.data.results);
 
   return data;
 };
@@ -120,28 +114,22 @@ function submitResetFilter(evn) {
   btnSearch[0].options.selectedIndex = 0;
   btnSearch[1].options.selectedIndex = 0;
   btnSearch[2].options.selectedIndex = 0;
-//   genre = '';
-//   year = '';
-//   sort = '';
-//   page = 1;
   localStorageAPI.save('genre-pg', genre);
   localStorageAPI.save('year-pg', year);
   localStorageAPI.save('sort-pg', sort);
   localStorageAPI.save('page-pg', page);
 
-  getSearch(page, year, genre, sort).then(data => {
-    const allGenres = getGenres();
-    console.log(allGenres);
-    const films = data.data.results;
-    console.log(films);
-    const normalFilmData = dataRevize(films, allGenres);
-    normalFilmData.forEach(element => {
-      if (element.genre_ids.length > 3) {
-        element.genres.splice(2, 2, { name: 'Other' });
-      }
-    });
-    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+  apiHomePage(page, year, genre, sort).then(data => {
     moviesDataUpdate(data);
+    amountOfPages = data.total_pages;
+    localStorageAPI.save('total-pages', amountOfPages);
+    const allGenres = getGenres();
+    const films = data.results;
+    const normalFilmData = dataRevize(films, allGenres);
+    refs.pagination.classList.remove('visually-hidden');
+    refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+    localStorageAPI.save('query-pg', inputData);
+
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);
