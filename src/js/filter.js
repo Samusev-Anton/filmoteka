@@ -121,7 +121,7 @@ function submitResetFilter(evn) {
 
   apiHomePage(page, year, genre, sort).then(data => {
     moviesDataUpdate(data);
-    amountOfPages = data.total_pages;
+    let amountOfPages = data.total_pages;
     localStorageAPI.save('total-pages', amountOfPages);
     const allGenres = getGenres();
     const films = data.results;
