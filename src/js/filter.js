@@ -17,12 +17,15 @@ const btnSearch = document.querySelector('#filter-form');
 
 btnSearch.addEventListener('submit', onSearchSubmit);
 function onSearchSubmit(evt) {
-  spinner.classList.remove('done');
-  evt.preventDefault();
-  let page = 1;
-  const genre = evt.currentTarget.elements.genreForm.value;
-  const year = evt.currentTarget.elements.yearForm.value;
-  const sort = evt.currentTarget.elements.sortForm.value;
+spinner.classList.remove('done');
+evt.preventDefault();
+let page = 1;
+const genre = evt.currentTarget.elements.genreForm.value;
+const year = evt.currentTarget.elements.yearForm.value;
+const sort = evt.currentTarget.elements.sortForm.value;
+btnSearch[0].options.selectedIndex = 0;
+btnSearch[1].options.selectedIndex = 0;
+btnSearch[2].options.selectedIndex = 0;
   getSearch(page, year, genre, sort).then(data => {
     const allGenres = getGenres();
     console.log(allGenres);
