@@ -15,13 +15,13 @@ function onModal(event) {
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
-      refs.modal.classList.add('is-hidden');
+      disableScroll();
     }
   });
 
   document.addEventListener('click', event => {
     if (event.target.classList.contains('backdrop')) {
-      refs.modal.classList.add('is-hidden');
+      disableScroll();
     }
   });
 }
@@ -34,4 +34,9 @@ function closeModal() {
 function onModalStudents() {
   refs.modal.classList.toggle('is-hidden');
   document.body.classList.toggle('disable-scroll');
+}
+
+function disableScroll() {
+  refs.modal.classList.add('is-hidden');
+  document.body.classList.remove('disable-scroll');
 }
