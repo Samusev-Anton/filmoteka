@@ -28,7 +28,6 @@ function watchTrailer(event) {
   if (target.classList.contains('button__trailer')) {
     const movieID = target.dataset.id;
     apiMovieDetails(movieID).then(resp => {
-      console.log(resp.results[0].key);
       createPlayer(resp.results[0].key);
     });
   }
@@ -38,7 +37,7 @@ function createPlayer(videoKey) {
   instance = basicLightbox.create(
     `
     <iframe src='https://www.youtube.com/embed/${videoKey}' 
-	 width="100%" height="100%"
+	 width="80%" height="80%"
 	 title="YouTube video player"	frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 		allowfullscreen
