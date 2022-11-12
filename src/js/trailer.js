@@ -1,25 +1,23 @@
 import { apiMovieDetails } from './themovieApi';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/src/styles/main.scss';
-import { refs } from './refs';
 
 let instance;
 document.addEventListener('click', watchTrailer);
 document.addEventListener('keydown', closePlayer);
-refs.filmBox.addEventListener('DOMContentLoaded', trailerBtnVisible);
 
 export function trailerBtnVisible() {
   const listTrailerBtn = document.querySelectorAll('.button__trailer');
+  //   console.log('listTrailerBtn :>> ', listTrailerBtn);
 
-  // listTrailerBtn.forEach(item => {
-  //   const movieID = item.dataset.id;
-  //   apiMovieDetails(movieID).then(resp => {
-  //     console.log(resp);
-  //     if (resp.results.length === 0) {
-  //       item.classList.add('is-hidden');
-  //     }
-  //   });
-  // });
+  listTrailerBtn.forEach(item => {
+    const movieID = item.dataset.id;
+    apiMovieDetails(movieID).then(resp => {
+      if (resp.results.length === 0 || resp === undefined) {
+        item.classList.add('is-hidden');
+      }
+    });
+  });
 }
 
 function watchTrailer(event) {
