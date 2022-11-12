@@ -35,7 +35,8 @@ const refs = {
   loginBtn: document.querySelector('.login-btn'),
   signUpBtn: document.querySelector('.signup-btn'),
   logoutBtn: document.querySelector('[data-logout]'),
-  openAuthModalBtn: document.querySelector('[data-auth-modal-open]')
+  openAuthModalBtn: document.querySelector('[data-auth-modal-open]'),
+  libraryLink: document.querySelector('.js-library')
 }
 
 refs.loginBtn.addEventListener("click", onLogin);
@@ -98,11 +99,9 @@ async function authStatus ()  {
     if (user) {
       refs.openAuthModalBtn.setAttribute("hidden", "hidden")
       refs.logoutBtn.removeAttribute("hidden")
+      refs.libraryLink.removeAttribute("hidden")
     }
-    // else {
-    //  refs.logoutBtn.setAttribute("hidden", "hidden")
-    //   refs.openAuthModalBtn.removeAttribute("hidden")
-    // }
+    
   });
 }
 
