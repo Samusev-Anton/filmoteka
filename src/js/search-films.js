@@ -64,6 +64,7 @@ function onButtonClick(evt) {
       } else {
         warningUnShown();
         refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+        trailerBtnVisible();
         refs.form.reset();
       }
       //pagination

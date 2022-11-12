@@ -7,7 +7,7 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { apiHomePage, getSearch } from './themovieApi';
 import { inputData } from './search-films';
 import pagination from './pagin';
-
+import { trailerBtnVisible } from './trailer';
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -18,15 +18,15 @@ const btnSearch = document.querySelector('#filter-form');
 
 btnSearch.addEventListener('submit', onSearchSubmit);
 function onSearchSubmit(evt) {
-spinner.classList.remove('done');
-evt.preventDefault();
-let page = 1;
-const genre = evt.currentTarget.elements.genreForm.value;
-const year = evt.currentTarget.elements.yearForm.value;
-const sort = evt.currentTarget.elements.sortForm.value;
-btnSearch[0].options.selectedIndex = 0;
-btnSearch[1].options.selectedIndex = 0;
-btnSearch[2].options.selectedIndex = 0;
+  spinner.classList.remove('done');
+  evt.preventDefault();
+  let page = 1;
+  const genre = evt.currentTarget.elements.genreForm.value;
+  const year = evt.currentTarget.elements.yearForm.value;
+  const sort = evt.currentTarget.elements.sortForm.value;
+  btnSearch[0].options.selectedIndex = 0;
+  btnSearch[1].options.selectedIndex = 0;
+  btnSearch[2].options.selectedIndex = 0;
   getSearch(page, year, genre, sort).then(data => {
     const allGenres = getGenres();
     console.log(allGenres);
@@ -41,6 +41,7 @@ btnSearch[2].options.selectedIndex = 0;
     });
 
     refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+
     localStorageAPI.save('genre-pg', genre);
     localStorageAPI.save('year-pg', year);
     localStorageAPI.save('sort-pg', sort);
@@ -57,14 +58,13 @@ btnSearch[2].options.selectedIndex = 0;
     console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset();
+    trailerBtnVisible();
   });
 
   //   console.log(genre);
   //   console.log(year);
   //   console.log(sort);
 }
-
-
 
 function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
@@ -100,6 +100,7 @@ function submitResetFilter(evn) {
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);
+  trailerBtnVisible();
 }
 
 // commit
