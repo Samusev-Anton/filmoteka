@@ -37,10 +37,12 @@ async function clickOnMovie(evt) {
       Notify.failure(
         'Sorry, there is no information for this movie. Please try another movie.'
       );
+      return;
     }
     iD.push(movieId);
     apiMovieDetails(iD[0]).then(resp => {
-      if (resp === undefined) {
+      // console.log(resp.results.length);
+      if (resp.results.length === 0) {
         const rotateModal = document.querySelector('.modal__button-rotate');
         rotateModal.classList.add('visually-hidden');
       }
