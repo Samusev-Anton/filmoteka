@@ -1,38 +1,46 @@
 const refs = {
   iframe: document.querySelector('.students-movie__iframe'),
-  iframeEl: document.querySelector('iframe'),
-  iframeButton: document.querySelector('[favorite-movie-js]'),
+  listStudents: document.querySelector('.card-student__list'),
   modalStudents: document.querySelector('.modal-students'),
   iframeButtonClose: document.querySelector('.iframe-close'),
-  nameMovie: document.querySelector('.students-movie__name'),
+  iframeBody: document.querySelector('.iframe-backdrop'),
 };
 
-refs.iframeButton.addEventListener('click', onShowIframe);
+refs.listStudents.addEventListener('click', onShowIframe);
 refs.iframeButtonClose.addEventListener('click', onCloseIframe);
-
-let getAttributeDataScr = '';
 
 function onShowIframe(event) {
   event.preventDefault();
-  onChange();
-  refs.modalStudents.style.overflow = 'hidden';
+  if (!event.target.classList.contains('iframe-element')) {
+    return;
+  }
 
-  getAttributeDataScr = refs.iframeEl.getAttribute('data-src');
-  const changeAttributeToSrc = refs.iframeEl.setAttribute(
-    'src',
-    getAttributeDataScr
-  );
-  refs.iframeEl.removeAttribute('data-src');
+  const NameStudentMovie = event.target.id;
+  const iframeMarkUp = `<iframe
+  loading = "lazy"
+  width="640"
+  height="360"
+  src="${NameStudentMovie}"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  ></iframe>`;
+
+  refs.iframeBody.insertAdjacentHTML('beforeend', iframeMarkUp);
+  refs.modalStudents.scrollTo(0, 0);
+  refs.modalStudents.style.overflow = 'hidden';
+  onHidden();
 }
 
 function onCloseIframe() {
-  onChange();
   refs.modalStudents.style.overflow = 'auto';
-  refs.iframeEl.setAttribute('data-src', getAttributeDataScr);
-  refs.iframeEl.removeAttribute('src');
+  refs.iframeBody.innerHTML = '';
+  onHidden();
+  refs.listStudents.removeEventListener('click', onShowIframe);
 }
 
-function onChange() {
+function onHidden() {
   refs.iframe.classList.toggle('is-hidden');
   refs.iframeButtonClose.classList.toggle('is-hidden');
 }

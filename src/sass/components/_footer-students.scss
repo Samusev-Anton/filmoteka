@@ -256,6 +256,9 @@
 }
 
 .social-list__icon {
+  width: 25px;
+  height: 25px;
+
   fill: $pagination-hover-btn-bgc;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -283,8 +286,9 @@
 
 // iframe //
 
-.students-movie__iframe.is-hidden,
-.iframe-close .is-hidden {
+.students-movie__iframe .is-hidden,
+.iframe-close .is-hidden,
+.iframe-backdrop .is-hidden {
   opacity: 0;
   visibility: hidden;
   transition: all 350ms ease 0s;
@@ -342,4 +346,11 @@
   &:focus {
     stroke: $orange-hover;
   }
+}
+
+.iframe-element {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
 }
