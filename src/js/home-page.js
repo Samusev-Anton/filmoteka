@@ -17,7 +17,6 @@ import markupHomePage from './templates/markupHomePage.hbs';
 import { apiHomePage } from './themovieApi';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
-import { trailerBtnVisible } from './trailer';
 
 apiHomePage().then(data => {
   const allGenres = getGenres();
@@ -32,5 +31,4 @@ apiHomePage().then(data => {
   });
   console.log(normalFilmData);
   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
-  trailerBtnVisible();
 });

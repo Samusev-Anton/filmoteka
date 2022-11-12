@@ -7,7 +7,6 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { apiHomePage, getSearch } from './themovieApi';
 import { inputData } from './search-films';
 import pagination from './pagin';
-import { trailerBtnVisible } from './trailer';
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -58,7 +57,6 @@ function onSearchSubmit(evt) {
     console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset();
-    trailerBtnVisible();
   });
 
   //   console.log(genre);
@@ -100,7 +98,6 @@ function submitResetFilter(evn) {
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);
-  trailerBtnVisible();
 }
 
 // commit
