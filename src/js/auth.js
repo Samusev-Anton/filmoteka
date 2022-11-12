@@ -80,6 +80,8 @@ async function onSignUp() {
   catch (error) {
     if (error.code === "auth/email-already-in-use") {
       Notify.failure('Error! User is already exist')
+    } else if(error.code === "auth/invalid-email" || error.code === "auth/weak-password"){
+      Notify.failure('Password must be at least 6 characters')
     } else {
       console.log(error)
     }
@@ -107,7 +109,7 @@ async function authStatus ()  {
 authStatus();
 
 
-async function onLogOut() {
+export async function onLogOut() {
   await signOut(auth);
   Notify.info('See you');
   window.location.href='index.html'
