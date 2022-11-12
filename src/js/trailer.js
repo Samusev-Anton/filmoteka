@@ -1,24 +1,15 @@
 import { apiMovieDetails } from './themovieApi';
 import * as basicLightbox from 'basiclightbox';
+
 import 'basiclightbox/src/styles/main.scss';
+const basicLightbox = require('basiclightbox');
 
 let instance;
+let visiblePlayer = false;
+
 document.addEventListener('click', watchTrailer);
+
 document.addEventListener('keydown', closePlayer);
-
-export function trailerBtnVisible() {
-  const listTrailerBtn = document.querySelectorAll('.button__trailer');
-  //   console.log('listTrailerBtn :>> ', listTrailerBtn);
-
-  listTrailerBtn.forEach(item => {
-    const movieID = item.dataset.id;
-    apiMovieDetails(movieID).then(resp => {
-      if (resp.results.length === 0 || resp === undefined) {
-        item.classList.add('is-hidden');
-      }
-    });
-  });
-}
 
 function watchTrailer(event) {
   const target = event.target;
@@ -42,12 +33,21 @@ function createPlayer(videoKey) {
   </iframe>
 `
   );
-
-  instance.show();
+  document.addEventListener('click', closePlayerOnClick);
+  instance.show(() => document.body.classList.add('modal-open'));
 }
 
 function closePlayer(evt) {
   if (evt.key === 'Escape') {
-    instance.close();
+    instance.close(() => document.body.classList.remove('modal-open'));
+  }
+}
+
+function closePlayerOnClick() {
+  visiblePlayer = basicLightbox.visible();
+
+  if (visiblePlayer) {
+    document.body.classList.remove('modal-open');
+    document.removeEventListener('click', closePlayerOnClick);
   }
 }

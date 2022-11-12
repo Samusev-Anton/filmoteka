@@ -3,7 +3,6 @@ import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { localStorageAPI } from './api/localStorageAPI';
-import { trailerBtnVisible } from './trailer';
 import pagination from './pagin';
 
 let inputData = '';
@@ -52,7 +51,6 @@ function onButtonClick(evt) {
       localStorageAPI.save('query-pg', inputData);
 
       spinner.classList.add('done');
-      trailerBtnVisible();
 
       if (data.results.length < 1) {
         warningShown();
@@ -64,7 +62,7 @@ function onButtonClick(evt) {
       } else {
         warningUnShown();
         refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
-        trailerBtnVisible();
+
         refs.form.reset();
       }
       //pagination
