@@ -11,8 +11,8 @@ refs.homeGallery.addEventListener('click', clickOnMovie);
 
 // variable for localstorage
 let response;
-let addWathedBtnref = null;
-let addQueueBtnref = null;
+export let addWathedBtnref = null;
+export let addQueueBtnref = null;
 let iD = [];
 // -------------------------
 // Click Handler Function
@@ -120,7 +120,7 @@ function onEscButton(evt) {
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--queue') {
-    addQueueBtnref.innerText = 'ADDED TO VIEW';
+    addQueueBtnref.innerText = 'ADDED TO VIEW';    
     addWathedBtnref.disabled = true;
     addQueueBtn(STORAGE_KEY_QUEUE, response);
   }
