@@ -2,7 +2,13 @@ import { Notify } from 'notiflix';
 import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
-import { addWatchedBtn, addQueueBtn } from './modal-card-btn';
+import {
+  addWatchedBtn,
+  addQueueBtn,
+  checksForUniqueElement,
+  storageWatched,
+  storageQueue,
+} from './modal-card-btn';
 
 const STORAGE_KEY_WATCHED = 'watched';
 const STORAGE_KEY_QUEUE = 'queue';
@@ -33,6 +39,18 @@ async function clickOnMovie(evt) {
     if (resp !== undefined) {
       refs.filmBox.innerHTML = markupModal(resp);
       onOpenModal();
+      // checksForUniqueElement(
+      //   STORAGE_KEY_WATCHED,
+      //   resp,
+      //   storageWatched,
+      //   addWathedBtnref
+      // );
+      // checksForUniqueElement(
+      //   STORAGE_KEY_QUEUE,
+      //   resp,
+      //   storageQueue,
+      //   addQueueBtnref
+      // );
     } else {
       Notify.failure(
         'Sorry, there is no information for this movie. Please try another movie.'
@@ -122,12 +140,12 @@ function onEscButton(evt) {
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--queue') {
-    addQueueBtnref.innerText = 'ADDED TO VIEW';    
+    addQueueBtnref.innerText = 'ADDED TO LIBRARY';    
     addWathedBtnref.disabled = true;
     addQueueBtn(STORAGE_KEY_QUEUE, response);
   }
   if (event.target.className === 'modal__button--watched') {
-    addWathedBtnref.innerText = 'ADDED IN REVISED';
+    addWathedBtnref.innerText = 'ADDED TO LIBRARY';
     addQueueBtnref.disabled = true;
     addWatchedBtn(STORAGE_KEY_WATCHED, response);
   }
