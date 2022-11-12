@@ -11,6 +11,7 @@ const btnQueue = document.querySelector('.js-queue');
 const btnWatched = document.querySelector('.js-watched');
 const libraryTitle = document.querySelector('.library-text');
 
+
 btnQueue.addEventListener('click', onClickQueue);
 btnWatched.addEventListener('click', onClickWatched);
 
@@ -152,3 +153,4 @@ function deleteMovie(key) {
     return;
   });
 }
+

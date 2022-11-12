@@ -126,7 +126,7 @@ function handleClick(event) {
   }
   if (event.target.className === 'modal__button--watched') {
     addWathedBtnref.innerText = 'ADDED IN REVISED';
-    addQueueBtnref.disabled = true;    
+    addQueueBtnref.disabled = true;
     addWatchedBtn(STORAGE_KEY_WATCHED, response);
   }
 
