@@ -14,13 +14,19 @@ function onAuthModalOpen(evt) {
   document.body.style.overflow = 'hidden';
 
   document.addEventListener('keydown', evt => {
-    if (evt.key === 'Escape' || evt.target.classList.contains('auth-backdrop')) {
+    if (evt.key === 'Escape') {
       refs.authModal.classList.add('is-hidden');
       document.body.style.overflow = 'auto';
     }
     })
   };
 
+document.addEventListener('click', evt => {
+  if (evt.target.classList.contains('auth-backdrop')) {
+      refs.authModal.classList.add('is-hidden');
+      document.body.style.overflow = 'auto';
+  }
+})
 
 function onAuthModalClose(evt) {
     evt.preventDefault();
