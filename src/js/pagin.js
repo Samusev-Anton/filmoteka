@@ -73,38 +73,41 @@ const options = {
 const pagination = new Pagination(container, optionsTrending);
 
 pagination.on('afterMove', event => {
-  console.log("pagin.pagination.on('afterMove'");
-
-  let search_query = localStorageAPI.load('query-pg');
-
-  let genre = localStorageAPI.load('genre-pg');
-  let year = localStorageAPI.load('year-pg');
-  let sort = localStorageAPI.load('sort-pg');
-
   spinner.classList.remove('done');
+  apiHomePagePagin(event.page).then(data => {
+    const normalFilmData = dataRevize(data.results, getGenres());
+  // console.log("pagin.pagination.on('afterMove'");
+
+  // let search_query = localStorageAPI.load('query-pg');
+
+  // let genre = localStorageAPI.load('genre-pg');
+  // let year = localStorageAPI.load('year-pg');
+  // let sort = localStorageAPI.load('sort-pg');
+
+  // spinner.classList.remove('done');
   //for search by query
   // apiHomeSearch(search_query, event.page).then(data => {
   //for search by query
   // const films = data.results;
 
   // for search by filter
-  getSearch(event.page, year, genre, sort).then(data => {
-    // for search by filter
-    const films = data.data.results;
+  // getSearch(event.page, year, genre, sort).then(data => {
+  //   // for search by filter
+  //   const films = data.data.results;
 
-    const allGenres = getGenres();
-    const normalFilmData = dataRevize(films, allGenres);
-    normalFilmData.forEach(element => {
-      if (element.genre_ids.length > 3) {
-        element.genres.splice(2, 2, { name: 'Other' });
-      }
-    });
+  //   const allGenres = getGenres();
+  //   const normalFilmData = dataRevize(films, allGenres);
+  //   normalFilmData.forEach(element => {
+  //     if (element.genre_ids.length > 3) {
+  //       element.genres.splice(2, 2, { name: 'Other' });
+  //     }
+  //   });
     refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
     spinner.classList.add('done');
 
     // localStorageAPI.save('page-pg', event.page);
 
-    refs.sticker.textContent = 'SEARCHED FILMS';
+    // refs.sticker.textContent = 'SEARCHED FILMS';
   });
 
   windowScroll();
