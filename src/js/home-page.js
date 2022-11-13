@@ -29,6 +29,6 @@ apiHomePage().then(data => {
       element.genres.splice(2, 2, { name: 'Other' });
     }
   });
-  console.log(normalFilmData);
+  // console.log(normalFilmData);
   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
 });
