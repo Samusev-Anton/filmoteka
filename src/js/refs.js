@@ -10,4 +10,5 @@ export const refs = {
   divError: document.querySelector('.to_main__div'),
   filterForm: document.querySelector('#filter-form'),
   pagination: document.querySelector('#pagination'),
+  sticker: document.querySelector('.sticker'),
 };
