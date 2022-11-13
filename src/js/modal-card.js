@@ -2,15 +2,12 @@ import { Notify } from 'notiflix';
 import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
-import {
-  addLocalStorage,
-  checksForUniqueElement,
-} from './modal-card-btn';
+import { addLocalStorage, checksForUniqueElement } from './modal-card-btn';
 
-const STORAGE_KEY_WATCHED = 'watched';
-const STORAGE_KEY_QUEUE = 'queue';
+const STORAGE_KEY_WATCHED = 'WATCHED';
+const STORAGE_KEY_QUEUE = 'QUEUE';
 
-export let statusLocalStorage;
+export let statusLocalStorage = true;
 let response;
 let addWathedBtnref = null;
 let addQueueBtnref = null;
@@ -67,12 +64,15 @@ function onOpenModal() {
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
   statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
+  // statusLocalStorage.localStorage = true;
   if (statusLocalStorage.btnText === true) {
-    addWathedBtnref.innerText = 'ADDED TO LIBRARY';
+    addWathedBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_WATCHED}`;
+    statusLocalStorage.localStorage = false;
   }
   statusLocalStorage = checksForUniqueElement(STORAGE_KEY_QUEUE, response);
   if (statusLocalStorage.btnText === true) {
-    addQueueBtnref.innerText = 'ADDED TO LIBRARY';
+    addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
+    statusLocalStorage.localStorage = false;
   }
 }
 
@@ -132,14 +132,12 @@ function onEscButton(evt) {
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--watched') {
-    addQueueBtnref.disabled = true;
     addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
   }
 
   if (event.target.className === 'modal__button--queue') {
-    addWathedBtnref.disabled = true;
     addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
-  }  
+  }
 
   if (event.target === refs.filmBox) {
     onCloseModal();
