@@ -19,6 +19,7 @@ import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 
 apiHomePage().then(data => {
+  // localStorage.clear();
   const allGenres = getGenres();
   //   console.log(allGenres);
   const films = data.results;

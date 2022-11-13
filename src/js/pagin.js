@@ -3,6 +3,7 @@ import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import markupHomePage from './templates/markupHomePage.hbs';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
+import { localStorageAPI } from './api/localStorageAPI';
 // import { getSearch } from "./filter";
 import { apiHomeSearch, getSearch } from './themovieApi';
 import {
@@ -72,11 +73,38 @@ const options = {
 const pagination = new Pagination(container, optionsTrending);
 
 pagination.on('afterMove', event => {
-spinner.classList.remove('done');
-  apiHomePagePagin(event.page).then(data => {
-    const normalFilmData = dataRevize(data.results, getGenres());
+  console.log("pagin.pagination.on('afterMove'");
+
+  let search_query = localStorageAPI.load('query-pg');
+
+  let genre = localStorageAPI.load('genre-pg');
+  let year = localStorageAPI.load('year-pg');
+  let sort = localStorageAPI.load('sort-pg');
+
+  spinner.classList.remove('done');
+  //for search by query
+  // apiHomeSearch(search_query, event.page).then(data => {
+  //for search by query
+  // const films = data.results;
+
+  // for search by filter
+  getSearch(event.page, year, genre, sort).then(data => {
+    // for search by filter
+    const films = data.data.results;
+
+    const allGenres = getGenres();
+    const normalFilmData = dataRevize(films, allGenres);
+    normalFilmData.forEach(element => {
+      if (element.genre_ids.length > 3) {
+        element.genres.splice(2, 2, { name: 'Other' });
+      }
+    });
     refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
     spinner.classList.add('done');
+
+    // localStorageAPI.save('page-pg', event.page);
+
+    refs.sticker.textContent = 'SEARCHED FILMS';
   });
 
   windowScroll();
@@ -94,32 +122,32 @@ export async function apiHomePagePagin(totalPages) {
   }
 }
 
-// ------------ SEARCH ------------
-export function paginationSearch(inputData) {
-  const pagination = new Pagination(container, options);
-    pagination.on('afterMove', async event => {
-    apiHomeSearch(inputData, event.page)
-    .then(data => {
-      markupSearchPage(data.results);
-    })
-    .catch(error => console.log(error));;
-    windowScroll();
-    });
-  }
+// // ------------ SEARCH ------------
+// export function paginationSearch(inputData) {
+//   const pagination = new Pagination(container, options);
+//     pagination.on('afterMove', async event => {
+//     apiHomeSearch(inputData, event.page)
+//     .then(data => {
+//       markupSearchPage(data.results);
+//     })
+//     .catch(error => console.log(error));;
+//     windowScroll();
+//     });
+//   }
 
 
-// ------------ FILTER ------------
-export function paginationFilter(page, year, genre, sort) {
-const pagination = new Pagination(container, options);
-    pagination.on('afterMove', async event => {
-      getSearch(event.page, year, genre, sort)
-      .then(data => {
-        markupSearchPage(data.data.results);
-      })
-      .catch(error => console.log(error));;
-      windowScroll()
-  });
-}
+// // ------------ FILTER ------------
+// export function paginationFilter(page, year, genre, sort) {
+// const pagination = new Pagination(container, options);
+//     pagination.on('afterMove', async event => {
+//       getSearch(event.page, year, genre, sort)
+//       .then(data => {
+//         markupSearchPage(data.data.results);
+//       })
+//       .catch(error => console.log(error));;
+//       windowScroll()
+//   });
+// }
 
 // click on the pagination button => return to the top
 function windowScroll() {
