@@ -1,56 +1,87 @@
 import { Notify } from 'notiflix';
 import { localStorageAPI } from './api/localStorageAPI';
-import { addWathedBtnref, addQueueBtnref } from './modal-card';
+import { statusLocalStorage } from './modal-card';
 
-export let storageWatched = [];
-export let storageQueue = [];
-export let arrJSON = [];
+let storageJSON = [];
+let storageSave = [];
+let uniqueId;
 
-export function addWatchedBtn(key, obj) {
-  arrJSON = localStorage.getItem(key);
-  checksForUniqueElement(key, obj, storageWatched, addWathedBtnref);
-  if (arrJSON === null) {
-    storageWatched.push(obj);
-    localStorageAPI.save(key, storageWatched);
+export function checksForUniqueElement(key, obj) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  if (storageJSON !== null) {
+    uniqueId = storageObj.filter(({ id }) => id === obj.id);
+  }
+
+  if (storageJSON === null) {
+    return {
+      localStorage: true,
+      btnText: false,
+    };
+  } else if (uniqueId.length >= 1) {
+    return {
+      localStorage: false,
+      btnText: true,
+    };
   } else {
-    addLocalStorage(key, obj, storageWatched, arrJSON);
+    return {
+      localStorage: false,
+      btnText: false,
+    };
   }
 }
 
-export function addQueueBtn(key, obj) {
-  arrJSON = localStorage.getItem(key);
-  checksForUniqueElement(key, obj, storageQueue, addQueueBtnref);
-  if (arrJSON === null) {
-    storageQueue.push(obj); // console.dir(storageQueue[0].id);
-    localStorageAPI.save(key, storageQueue);
-  } else {
-    addLocalStorage(key, obj, storageQueue, arrJSON);
-  }
-}
-
-export function checksForUniqueElement(key, obj, arr, btnRef) {
-  if (arr.includes(obj)) {
+export function addLocalStorage(key, obj, btnRef) {
+  if (storageSave.includes(obj)) {
     errorNotify();
-    btnRef.innerText = 'ADDED TO LIBRARY';
     return;
+  } else
+    if (
+    statusLocalStorage.localStorage === true &&
+    statusLocalStorage.btnText === false
+  ) {
+    recordingDataLocalStorage(key, obj, btnRef);
+  } else if (
+    statusLocalStorage.localStorage === false &&
+    statusLocalStorage.btnText === true
+  ) {
+    returnDataLocalStorage(key, obj, btnRef);
+  } else if (
+    statusLocalStorage.localStorage === false &&
+    statusLocalStorage.btnText === false
+  ) {
+    rewritesDataLocalStorage(key, obj, btnRef);
   }
 }
 
-function addLocalStorage(key, obj, storageObj, arrJSON) {
-  storageObj = JSON.parse(arrJSON);
-  let uniqueId = storageObj.filter(({ id }) => id === obj.id);
-  if (uniqueId.length >= 1) {
-    errorNotify();
-    localStorage.removeItem(key);
-    localStorageAPI.save(key, storageWatched);
-  } else {
-    storageWatched.push(obj);
-    localStorage.removeItem(key);
-    localStorageAPI.save(key, storageWatched);
-  }
+function returnDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave = storageObj;
+  localStorage.removeItem(key);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
+  errorNotify();
+}
+
+function rewritesDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave = storageObj;
+  storageSave.push(obj);
+  localStorage.removeItem(key);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
+}
+
+function recordingDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave.push(obj);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
 }
 
 function errorNotify() {
   Notify.failure('we have alredy added that movie');
-  console.log('подвійна нотифікашка')
 }
