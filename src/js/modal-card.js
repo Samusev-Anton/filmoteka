@@ -4,10 +4,10 @@ import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
 import { addLocalStorage, checksForUniqueElement } from './modal-card-btn';
 
-const STORAGE_KEY_WATCHED = 'watched';
-const STORAGE_KEY_QUEUE = 'queue';
+const STORAGE_KEY_WATCHED = 'WATCHED';
+const STORAGE_KEY_QUEUE = 'QUEUE';
 
-export let statusLocalStorage;
+export let statusLocalStorage = true;
 let response;
 let addWathedBtnref = null;
 let addQueueBtnref = null;
@@ -71,6 +71,18 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
+
+  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
+  // statusLocalStorage.localStorage = true;
+  if (statusLocalStorage.btnText === true) {
+    addWathedBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_WATCHED}`;
+    statusLocalStorage.localStorage = false;
+  }
+  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_QUEUE, response);
+  if (statusLocalStorage.btnText === true) {
+    addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
+    statusLocalStorage.localStorage = false;
+
   if (respprodLogo !== null) {
     modalImg.insertAdjacentHTML(
       'beforeend',
@@ -82,14 +94,6 @@ function onOpenModal() {
         />`
     );
 
-    statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
-    if (statusLocalStorage.btnText === true) {
-      addWathedBtnref.innerText = 'ADDED TO LIBRARY';
-    }
-    statusLocalStorage = checksForUniqueElement(STORAGE_KEY_QUEUE, response);
-    if (statusLocalStorage.btnText === true) {
-      addQueueBtnref.innerText = 'ADDED TO LIBRARY';
-    }
   }
 
   function onUnRotateModal() {
@@ -107,6 +111,7 @@ function onOpenModal() {
         youtubePlayer.remove();
       }, 700);
     }
+
   }
 
   function onRotateModal() {
@@ -146,22 +151,15 @@ function onOpenModal() {
     }
   }
 
-  function handleClick(event) {
-    if (event.target.className === 'modal__button--queue') {
-      addQueueBtnref.innerText = 'ADDED TO VIEW';
-      addWathedBtnref.disabled = true;
-      addQueueBtn(STORAGE_KEY_QUEUE, response);
-    }
+function handleClick(event) {
+  if (event.target.className === 'modal__button--watched') {
+    addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
+  }
 
-    if (event.target.className === 'modal__button--watched') {
-      addQueueBtnref.disabled = true;
-      addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
-    }
+  if (event.target.className === 'modal__button--queue') {
+    addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
+  }
 
-    if (event.target.className === 'modal__button--queue') {
-      addWathedBtnref.disabled = true;
-      addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
-    }
 
     if (event.target === refs.filmBox) {
       onCloseModal();

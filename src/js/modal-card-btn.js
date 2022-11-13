@@ -33,53 +33,98 @@ export function checksForUniqueElement(key, obj) {
 }
 
 export function addLocalStorage(key, obj, btnRef) {
-  if (storageSave.includes(obj)) {
-    errorNotify();
-    return;
-  } else if (
-    statusLocalStorage.localStorage === true &&
-    statusLocalStorage.btnText === false
-  ) {
-    recordingDataLocalStorage(key, obj, btnRef);
-  } else if (
+  if (
     statusLocalStorage.localStorage === false &&
     statusLocalStorage.btnText === true
   ) {
-    returnDataLocalStorage(key, obj, btnRef);
-  } else if (
-    statusLocalStorage.localStorage === false &&
-    statusLocalStorage.btnText === false
-  ) {
+    removeDataLocalStorage(key, obj, btnRef);
+    console.log('removeDataLocalStorage');
+  } else {
     rewritesDataLocalStorage(key, obj, btnRef);
+    console.log('rewritesDataLocalStorage');
   }
+  // if (storageSave.includes(obj)) {
+  //   removeDataLocalStorage(key, obj, btnRef);
+  //   console.log('removeDataLocalStorage');
+  //   console.log(storageSave);
+  //   console.log(obj);
+  // } else
+  //   if (
+  //   statusLocalStorage.localStorage === true &&
+  //   statusLocalStorage.btnText === false
+  // ) {
+  //   recordingDataLocalStorage(key, obj, btnRef);
+  //   console.log('recordingDataLocalStorage');
+  //   } 
+  //   else
+  //   if (
+  // (statusLocalStorage.localStorage === false &&
+  //   statusLocalStorage.btnText === false) ||
+  // (statusLocalStorage.localStorage === true &&
+  //   statusLocalStorage.btnText === true)
+  //   )  
 }
 
-function returnDataLocalStorage(key, obj, btnRef) {
+function removeDataLocalStorage(key, obj, btnRef) {  
+  console.log(statusLocalStorage.localStorage);
+  console.log(statusLocalStorage.btnText);
   storageJSON = localStorage.getItem(key);
   storageObj = JSON.parse(storageJSON);
-  storageSave = storageObj;
+  let objId = obj.id;
+  console.log(obj.id);
+
+  storageSave.forEach((objStorage, index) => {
+    if (objStorage.id === objId) {
+      return storageObj.splice(index, 1);
+      // localStorage.removeItem(key);
+      // localStorageAPI.save(key, storageObj);
+    }
+    return storageObj;
+  });
   localStorage.removeItem(key);
-  localStorageAPI.save(key, storageSave);
-  btnRef.innerText = 'ADDED TO LIBRARY';
-  errorNotify();
+  localStorageAPI.save(key, storageObj);
+  btnRef.innerText = `ADD TO ${key}`;  
+  statusLocalStorage.localStorage = true;
+  console.log(statusLocalStorage.localStorage);
+  statusLocalStorage.btnText = false;
+  console.log(statusLocalStorage.btnText);
+  // errorNotify();
 }
 
 function rewritesDataLocalStorage(key, obj, btnRef) {
+  console.log(statusLocalStorage.localStorage);
+  console.log(statusLocalStorage.btnText);
   storageJSON = localStorage.getItem(key);
   storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
+  console.log(storageSave);
+  if (storageSave === null) {
+    storageSave = []
+  }
   storageSave.push(obj);
+  console.log(storageSave);
   localStorage.removeItem(key);
   localStorageAPI.save(key, storageSave);
-  btnRef.innerText = 'ADDED TO LIBRARY';
+  btnRef.innerText = `REMOVE FROM ${key}`;  
+  statusLocalStorage.localStorage = false;
+  console.log(statusLocalStorage.localStorage);
+  statusLocalStorage.btnText = true;
+  console.log(statusLocalStorage.btnText);
 }
 
 function recordingDataLocalStorage(key, obj, btnRef) {
-  storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+  // storageJSON = localStorage.getItem(key);
+  // storageObj = JSON.parse(storageJSON);
+  console.log(statusLocalStorage.btnText);
+  console.log(statusLocalStorage.localStorage);
+  storageSave = [];
   storageSave.push(obj);
   localStorageAPI.save(key, storageSave);
-  btnRef.innerText = 'ADDED TO LIBRARY';
+  btnRef.innerText = `REMOVE FROM ${key}`;
+  statusLocalStorage.btnText = true;
+  console.log(statusLocalStorage.btnText);
+  statusLocalStorage.localStorage = false;
+  console.log(statusLocalStorage.localStorage);
 }
 
 function errorNotify() {
