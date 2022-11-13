@@ -28,9 +28,9 @@ function onSearchSubmit(evt) {
   btnSearch[2].options.selectedIndex = 0;
   getSearch(page, year, genre, sort).then(data => {
     const allGenres = getGenres();
-    console.log(allGenres);
+    // console.log(allGenres);
     const films = data.data.results;
-    console.log(films);
+    // console.log(films);
 
     const normalFilmData = dataRevize(films, allGenres);
     normalFilmData.forEach(element => {
@@ -54,9 +54,10 @@ function onSearchSubmit(evt) {
     pagination.reset(data.data.results);
     //set total results of filtered movies
     pagination.setTotalItems(data.data.total_results);
-    console.log('Total pages: ', data.data.total_pages);
+    // console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset();
+    refs.sticker.textContent = 'SEARCHED FILMS';
   });
 
   //   console.log(genre);
@@ -98,6 +99,7 @@ function submitResetFilter(evn) {
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);
+  refs.sticker.textContent = 'POPULAR MOVIES';
 }
 
 // commit

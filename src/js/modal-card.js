@@ -12,6 +12,9 @@ let response;
 let addWathedBtnref = null;
 let addQueueBtnref = null;
 let iD = [];
+let respprodLogo = [];
+// -------------------------
+// Click Handler Function
 
 refs.homeGallery.addEventListener('click', clickOnMovie);
 
@@ -30,6 +33,10 @@ async function clickOnMovie(evt) {
     //--------------------------
     // console.log(resp);
     if (resp !== undefined) {
+      // console.log(resp);
+      if (resp.production_companies.length !== 0) {
+        respprodLogo = resp.production_companies[0].logo_path;
+      }
       refs.filmBox.innerHTML = markupModal(resp);
       onOpenModal();
     } else {
@@ -50,6 +57,7 @@ async function clickOnMovie(evt) {
 }
 
 function onOpenModal() {
+  const modalImg = document.querySelector('.modal__img');
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
@@ -63,6 +71,7 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
+
   statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
   // statusLocalStorage.localStorage = true;
   if (statusLocalStorage.btnText === true) {
@@ -73,62 +82,74 @@ function onOpenModal() {
   if (statusLocalStorage.btnText === true) {
     addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
     statusLocalStorage.localStorage = false;
-  }
-}
 
-function onUnRotateModal() {
-  const modal = document.querySelector('.modal');
-  const modalBackSide = document.querySelector('.modal__backside');
-  const youtubePlayer = document.querySelector('.youtube-player');
-  modal.classList.remove('rotated');
-  modalBackSide.classList.remove('rotated360');
-  setTimeout(() => {
-    const rotateModal = document.querySelector('.modal__button-rotate');
-    rotateModal.style.display = 'flex';
-  }, 700);
-  if (modalBackSide.lastElementChild === youtubePlayer) {
+  if (respprodLogo !== null) {
+    modalImg.insertAdjacentHTML(
+      'beforeend',
+      `<img
+          class="modal__prod-logo"
+          src="https://image.tmdb.org/t/p/w400/${respprodLogo}"
+          alt="111"
+          loading="lazy"
+        />`
+    );
+
+  }
+
+  function onUnRotateModal() {
+    const modal = document.querySelector('.modal');
+    const modalBackSide = document.querySelector('.modal__backside');
+    const youtubePlayer = document.querySelector('.youtube-player');
+    modal.classList.remove('rotated');
+    modalBackSide.classList.remove('rotated360');
     setTimeout(() => {
-      youtubePlayer.remove();
+      const rotateModal = document.querySelector('.modal__button-rotate');
+      rotateModal.style.display = 'flex';
     }, 700);
-  }
-}
+    if (modalBackSide.lastElementChild === youtubePlayer) {
+      setTimeout(() => {
+        youtubePlayer.remove();
+      }, 700);
+    }
 
-function onRotateModal() {
-  const modal = document.querySelector('.modal');
-  const modalBackSide = document.querySelector('.modal__backside');
-  setTimeout(() => {
+  }
+
+  function onRotateModal() {
+    const modal = document.querySelector('.modal');
+    const modalBackSide = document.querySelector('.modal__backside');
+    setTimeout(() => {
+      const rotateModal = document.querySelector('.modal__button-rotate');
+      rotateModal.style.display = 'none';
+    }, 700);
+    modal.classList.add('rotated');
+    modalBackSide.classList.add('rotated360');
+  }
+
+  function onCloseModal() {
+    const closeModalBtn = document.querySelector('.modal__button-close');
     const rotateModal = document.querySelector('.modal__button-rotate');
-    rotateModal.style.display = 'none';
-  }, 700);
-  modal.classList.add('rotated');
-  modalBackSide.classList.add('rotated360');
-}
-
-function onCloseModal() {
-  const closeModalBtn = document.querySelector('.modal__button-close');
-  const rotateModal = document.querySelector('.modal__button-rotate');
-  const unRotateModal = document.querySelector('.modal__button-backtoinfo');
-  const modalBackSide = document.querySelector('.modal__backside');
-  const youtubePlayer = document.querySelector('.youtube-player');
-  document.body.classList.remove('modal-open');
-  refs.filmBox.classList.add('visually-hidden');
-  rotateModal.removeEventListener('click', onRotateModal);
-  rotateModal.removeEventListener('click', watchTrailer);
-  unRotateModal.removeEventListener('click', onUnRotateModal);
-  document.body.removeEventListener('keydown', onEscButton);
-  document.body.removeEventListener('click', handleClick);
-  closeModalBtn.removeEventListener('click', onCloseModal);
-  iD = [];
-  if (modalBackSide.lastElementChild === youtubePlayer) {
-    youtubePlayer.remove();
+    const unRotateModal = document.querySelector('.modal__button-backtoinfo');
+    const modalBackSide = document.querySelector('.modal__backside');
+    const youtubePlayer = document.querySelector('.youtube-player');
+    document.body.classList.remove('modal-open');
+    refs.filmBox.classList.add('visually-hidden');
+    rotateModal.removeEventListener('click', onRotateModal);
+    rotateModal.removeEventListener('click', watchTrailer);
+    unRotateModal.removeEventListener('click', onUnRotateModal);
+    document.body.removeEventListener('keydown', onEscButton);
+    document.body.removeEventListener('click', handleClick);
+    closeModalBtn.removeEventListener('click', onCloseModal);
+    iD = [];
+    if (modalBackSide.lastElementChild === youtubePlayer) {
+      youtubePlayer.remove();
+    }
   }
-}
 
-function onEscButton(evt) {
-  if (evt.code === 'Escape') {
-    onCloseModal();
+  function onEscButton(evt) {
+    if (evt.code === 'Escape') {
+      onCloseModal();
+    }
   }
-}
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--watched') {
@@ -139,21 +160,22 @@ function handleClick(event) {
     addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
   }
 
-  if (event.target === refs.filmBox) {
-    onCloseModal();
+
+    if (event.target === refs.filmBox) {
+      onCloseModal();
+    }
   }
-}
 
-function watchTrailer() {
-  apiMovieDetails(iD).then(resp => {
-    // console.log(resp);
-    createPlayer(resp.results[0].key);
-  });
-}
+  function watchTrailer() {
+    apiMovieDetails(iD).then(resp => {
+      // console.log(resp);
+      createPlayer(resp.results[0].key);
+    });
+  }
 
-function createPlayer(videoKey) {
-  const modalBackSide = document.querySelector('.modal__backside');
-  const player = `<iframe class="youtube-player" id="player"
+  function createPlayer(videoKey) {
+    const modalBackSide = document.querySelector('.modal__backside');
+    const player = `<iframe class="youtube-player" id="player"
   width="100%"
   height="100%"
   src="https://www.youtube.com/embed/${videoKey}?enablejsapi=1"
@@ -162,5 +184,6 @@ function createPlayer(videoKey) {
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen
   ></iframe>`;
-  modalBackSide.insertAdjacentHTML('beforeend', player);
+    modalBackSide.insertAdjacentHTML('beforeend', player);
+  }
 }

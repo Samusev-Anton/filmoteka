@@ -42,7 +42,7 @@ export async function apiHomeSearch(inputData, page) {
     const data = await responce.json();
     //   console.log(data);
     totalPages = data.total_pages;
-    console.log(totalPages);
+    // console.log(totalPages);
 
     return data;
   } catch (Error) {

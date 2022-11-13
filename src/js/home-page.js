@@ -19,6 +19,7 @@ import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 
 apiHomePage().then(data => {
+  // localStorage.clear();
   const allGenres = getGenres();
   //   console.log(allGenres);
   const films = data.results;
@@ -29,6 +30,6 @@ apiHomePage().then(data => {
       element.genres.splice(2, 2, { name: 'Other' });
     }
   });
-  console.log(normalFilmData);
+  // console.log(normalFilmData);
   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
 });
