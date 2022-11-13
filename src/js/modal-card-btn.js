@@ -8,7 +8,7 @@ let uniqueId;
 
 export function checksForUniqueElement(key, obj) {
   storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+  const storageObj = JSON.parse(storageJSON);
   if (storageJSON !== null) {
     uniqueId = storageObj.filter(({ id }) => id === obj.id);
   }
@@ -35,8 +35,7 @@ export function addLocalStorage(key, obj, btnRef) {
   if (storageSave.includes(obj)) {
     errorNotify();
     return;
-  } else
-    if (
+  } else if (
     statusLocalStorage.localStorage === true &&
     statusLocalStorage.btnText === false
   ) {
