@@ -82,6 +82,7 @@ function onOpenModal() {
   if (statusLocalStorage.btnText === true) {
     addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
     statusLocalStorage.localStorage = false;
+  }
 
   if (respprodLogo !== null) {
     modalImg.insertAdjacentHTML(
@@ -93,7 +94,6 @@ function onOpenModal() {
           loading="lazy"
         />`
     );
-
   }
 
   function onUnRotateModal() {
@@ -111,7 +111,6 @@ function onOpenModal() {
         youtubePlayer.remove();
       }, 700);
     }
-
   }
 
   function onRotateModal() {
@@ -151,15 +150,14 @@ function onOpenModal() {
     }
   }
 
-function handleClick(event) {
-  if (event.target.className === 'modal__button--watched') {
-    addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
-  }
+  function handleClick(event) {
+    if (event.target.className === 'modal__button--watched') {
+      addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
+    }
 
-  if (event.target.className === 'modal__button--queue') {
-    addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
-  }
-
+    if (event.target.className === 'modal__button--queue') {
+      addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
+    }
 
     if (event.target === refs.filmBox) {
       onCloseModal();
