@@ -55,7 +55,7 @@ export function addLocalStorage(key, obj, btnRef) {
 
 function returnDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+  const storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
   localStorage.removeItem(key);
   localStorageAPI.save(key, storageSave);
@@ -65,7 +65,7 @@ function returnDataLocalStorage(key, obj, btnRef) {
 
 function rewritesDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+  const storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
   storageSave.push(obj);
   localStorage.removeItem(key);
