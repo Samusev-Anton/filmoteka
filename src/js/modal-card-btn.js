@@ -4,11 +4,12 @@ import { statusLocalStorage } from './modal-card';
 
 let storageJSON = [];
 let storageSave = [];
+let storageObj = [];
 let uniqueId;
 
 export function checksForUniqueElement(key, obj) {
   storageJSON = localStorage.getItem(key);
-  const storageObj = JSON.parse(storageJSON);
+  storageObj = JSON.parse(storageJSON);
   if (storageJSON !== null) {
     uniqueId = storageObj.filter(({ id }) => id === obj.id);
   }
@@ -55,7 +56,7 @@ export function addLocalStorage(key, obj, btnRef) {
 
 function returnDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  const storageObj = JSON.parse(storageJSON);
+  storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
   localStorage.removeItem(key);
   localStorageAPI.save(key, storageSave);
@@ -65,7 +66,7 @@ function returnDataLocalStorage(key, obj, btnRef) {
 
 function rewritesDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  const storageObj = JSON.parse(storageJSON);
+  storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
   storageSave.push(obj);
   localStorage.removeItem(key);
@@ -75,7 +76,7 @@ function rewritesDataLocalStorage(key, obj, btnRef) {
 
 function recordingDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  const storageObj = JSON.parse(storageJSON);
+  storageObj = JSON.parse(storageJSON);
   storageSave.push(obj);
   localStorageAPI.save(key, storageSave);
   btnRef.innerText = 'ADDED TO LIBRARY';
