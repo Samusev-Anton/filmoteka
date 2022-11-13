@@ -57,6 +57,7 @@ function onSearchSubmit(evt) {
     console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset();
+    refs.sticker.textContent = 'SEARCHED FILMS';
   });
 
   //   console.log(genre);
@@ -98,6 +99,7 @@ function submitResetFilter(evn) {
     spinner.classList.add('done');
   });
   localStorageAPI.save('page-pg', page);
+  refs.sticker.textContent = 'POPULAR MOVIES';
 }
 
 // commit

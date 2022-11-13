@@ -1,0 +1,60 @@
+@import './variables';
+.sticker {
+  position: absolute;
+  top: 385px;
+  left: 0px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  //   background-color: rgba(201, 12, 12, 0.466);
+  //   background-color: rgb(159, 15, 15);
+  background-image: radial-gradient(
+    circle at center,
+    rgba(159, 15, 15, 0.6) 10%,
+    transparent 70%
+  );
+  text-align: center;
+  z-index: -1;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  //   color: $orange-text;
+  color: white;
+  @media screen and (min-width: 768px) {
+    top: 250px;
+    font-size: 20px;
+    letter-spacing: 1em;
+  }
+}
+
+.library-sticker {
+  position: absolute;
+  top: 248px;
+  left: 0px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  //   background-color: rgba(201, 12, 12, 0.466);
+  //   background-color: rgb(159, 15, 15);
+  background-image: radial-gradient(
+    circle at center,
+    rgba(159, 15, 15, 0.6) 10%,
+    transparent 70%
+  );
+  text-align: center;
+  z-index: -1;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  //   color: $orange-text;
+  color: white;
+  @media screen and (min-width: 768px) {
+    top: 243px;
+    font-size: 20px;
+    letter-spacing: 1em;
+  }
+}

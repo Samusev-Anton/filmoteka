@@ -75,6 +75,8 @@ function onButtonClick(evt) {
 
       //reset pagination
       pagination.reset();
+
+      refs.sticker.textContent = 'SEARCHED FILMS';
     });
   }
 }
@@ -83,12 +85,14 @@ function warningShown() {
   refs.divError.classList.remove('visually-hidden');
   refs.homeGallery.classList.add('visually-hidden');
   refs.filterForm.classList.add('visually-hidden');
+  refs.sticker.classList.add('visually-hidden');
 }
 
 function warningUnShown() {
   refs.divError.classList.add('visually-hidden');
   refs.homeGallery.classList.remove('visually-hidden');
   refs.filterForm.classList.remove('visually-hidden');
+  refs.sticker.classList.remove('visually-hidden');
 }
 
 refs.logo.addEventListener('click', onLogoClick);
