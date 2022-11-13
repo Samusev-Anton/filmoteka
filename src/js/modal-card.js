@@ -14,6 +14,7 @@ let response;
 export let addWathedBtnref = null;
 export let addQueueBtnref = null;
 let iD = [];
+let respprodLogo = [];
 // -------------------------
 // Click Handler Function
 async function clickOnMovie(evt) {
@@ -31,6 +32,10 @@ async function clickOnMovie(evt) {
     //--------------------------
     // console.log(resp);
     if (resp !== undefined) {
+      // console.log(resp);
+      if (resp.production_companies.length !== 0) {
+        respprodLogo = resp.production_companies[0].logo_path;
+      }
       refs.filmBox.innerHTML = markupModal(resp);
       onOpenModal();
     } else {
@@ -51,6 +56,7 @@ async function clickOnMovie(evt) {
 }
 
 function onOpenModal() {
+  const modalImg = document.querySelector('.modal__img');
   const closeModalBtn = document.querySelector('.modal__button-close');
   const rotateModal = document.querySelector('.modal__button-rotate');
   const unRotateModal = document.querySelector('.modal__button-backtoinfo');
@@ -64,6 +70,17 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
+  if (respprodLogo !== null) {
+    modalImg.insertAdjacentHTML(
+      'beforeend',
+      `<img
+          class="modal__prod-logo"
+          src="https://image.tmdb.org/t/p/w400/${respprodLogo}"
+          alt="111"
+          loading="lazy"
+        />`
+    );
+  }
 }
 
 function onUnRotateModal() {
@@ -122,7 +139,7 @@ function onEscButton(evt) {
 
 function handleClick(event) {
   if (event.target.className === 'modal__button--queue') {
-    addQueueBtnref.innerText = 'ADDED TO VIEW';    
+    addQueueBtnref.innerText = 'ADDED TO VIEW';
     addWathedBtnref.disabled = true;
     addQueueBtn(STORAGE_KEY_QUEUE, response);
   }

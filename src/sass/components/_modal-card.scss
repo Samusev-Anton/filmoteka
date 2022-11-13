@@ -420,6 +420,23 @@
   z-index: 0;
 }
 
+.modal__prod-logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(121, 121, 121);
+  padding: 5px;
+  // width: 174.91px;
+  width: 90px;
+  // height: 80px;
+  z-index: 4;
+  border-radius: 5px;
+  @media screen and (max-width: 767px) {
+    bottom: 20px;
+  }
+}
+
 //__________________MY LIBRARY page
 .modal_button-close {
   position: absolute;
