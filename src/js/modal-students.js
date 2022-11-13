@@ -13,22 +13,16 @@ function onModal(event) {
   refs.modal.show();
   onModalStudents();
 
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      disableScroll();
-    }
-  });
-
-  document.addEventListener('click', event => {
-    if (event.target.classList.contains('backdrop')) {
-      disableScroll();
-    }
-  });
+  document.addEventListener('keydown', onExit);
+  document.addEventListener('click', onExit);
 }
 
 function closeModal() {
   refs.modal.close();
   onModalStudents();
+
+  document.removeEventListener('keydown', onExit);
+  document.removeEventListener('click', onExit);
 }
 
 function onModalStudents() {
@@ -39,4 +33,10 @@ function onModalStudents() {
 function disableScroll() {
   refs.modal.classList.add('is-hidden');
   document.body.classList.remove('disable-scroll');
+}
+
+function onExit(event) {
+  if (event.key === 'Escape' || event.target.classList.contains('backdrop')) {
+    disableScroll();
+  }
 }

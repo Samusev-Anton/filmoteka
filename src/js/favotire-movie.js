@@ -20,32 +20,44 @@ function onShowIframe(event) {
     return;
   }
 
-  const NameStudentMovie = event.target.parentElement.getAttribute('data-href');
-  const iframeMarkUp = `<iframe
-    loading = "lazy"
-    width="640"
-    height="360"
-    src="${NameStudentMovie}"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    ></iframe>`;
+  const nameStudentMovie = event.target.parentElement.getAttribute('data-href');
+  markUpIframe(nameStudentMovie);
 
-  refs.iframeBody.insertAdjacentHTML('beforeend', iframeMarkUp);
   refs.modalStudents.scrollTo(0, 0);
   refs.modalStudents.style.overflow = 'hidden';
   onHidden();
+  document.addEventListener('click', onExitMainModal);
 }
 
 function onCloseIframe() {
   refs.modalStudents.style.overflow = 'auto';
   refs.iframeBody.innerHTML = '';
   onHidden();
+  document.removeEventListener('click', onExitMainModal);
 }
 
 function onHidden() {
   refs.iframe.classList.toggle('is-hidden');
   refs.iframeButtonClose.classList.toggle('is-hidden');
   refs.modalStudentsBtnClose.classList.toggle('is-hidden');
+}
+
+function onExitMainModal(event) {
+  if (event.target.classList.contains('backdrop')) {
+    onCloseIframe();
+  }
+}
+
+function markUpIframe(nameStudentMovie) {
+  const iframeMarkUp = `<iframe
+    loading = "lazy"
+    width="640"
+    height="360"
+    src="${nameStudentMovie}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    ></iframe>`;
+  refs.iframeBody.insertAdjacentHTML('beforeend', iframeMarkUp);
 }
