@@ -75,7 +75,7 @@ function rewritesDataLocalStorage(key, obj, btnRef) {
 
 function recordingDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+  const storageObj = JSON.parse(storageJSON);
   storageSave.push(obj);
   localStorageAPI.save(key, storageSave);
   btnRef.innerText = 'ADDED TO LIBRARY';
