@@ -57,7 +57,7 @@ function onSearchSubmit(evt) {
     // console.log('Total pages: ', data.data.total_pages);
     //reset pagination
     pagination.reset();
-    refs.sticker.textContent = 'SEARCHED FILMS';
+    refs.sticker.textContent = 'SEARCHED MOVIES';
   });
 
   //   console.log(genre);
