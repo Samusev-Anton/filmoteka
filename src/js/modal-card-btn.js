@@ -1,68 +1,87 @@
 import { Notify } from 'notiflix';
 import { localStorageAPI } from './api/localStorageAPI';
-import { addWathedBtnref, addQueueBtnref } from './modal-card';
+import { statusLocalStorage } from './modal-card';
 
-let storageWatched = [];
-let storageQueue = [];
+let storageJSON = [];
+let storageSave = [];
+let uniqueId;
 
-export function addWatchedBtn(key, obj) {
-  let arrWatched = localStorage.getItem(key);
-  if (storageWatched.includes(obj)) {
-    errorNotify();
-    addWathedBtnref.innerText = 'ADDED IN REVISED'; 
-    return;
-  } else if (arrWatched === null) {
-    storageWatched.push(obj);
-    localStorageAPI.save(key, storageWatched);
+export function checksForUniqueElement(key, obj) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  if (storageJSON !== null) {
+    uniqueId = storageObj.filter(({ id }) => id === obj.id);
+  }
+
+  if (storageJSON === null) {
+    return {
+      localStorage: true,
+      btnText: false,
+    };
+  } else if (uniqueId.length >= 1) {
+    return {
+      localStorage: false,
+      btnText: true,
+    };
   } else {
-    storageWatched = JSON.parse(arrWatched);
-    // console.log(storageWatched);
-    let uniqueId = storageWatched.filter(({ id }) => id === obj.id);
-    // console.dir(Object.keys(uniqueId));
-    // console.log(uniqueId.length);
-    if (uniqueId.length >= 1) {
-      // console.log(uniqueId.length >= 1);
-      errorNotify();
-      localStorage.removeItem(key);
-      localStorageAPI.save(key, storageWatched);
-    } else {
-      // console.log(uniqueId === []);
-      storageWatched.push(obj);
-      localStorage.removeItem(key);
-      localStorageAPI.save(key, storageWatched);
-    }
+    return {
+      localStorage: false,
+      btnText: false,
+    };
   }
 }
 
-export function addQueueBtn(key, obj) {
-  let arrQueue = localStorage.getItem(key); // console.dir(obj.id);
-  if (storageQueue.includes(obj)) {
-    Notify.failure('we have alredy added that movie');
-    addQueueBtnref.innerText = 'ADDED TO VIEW'; 
+export function addLocalStorage(key, obj, btnRef) {
+  if (storageSave.includes(obj)) {
+    errorNotify();
     return;
-  } else if (arrQueue === null) {
-    storageQueue.push(obj); // console.dir(storageQueue[0].id);
-    localStorageAPI.save(key, storageQueue);
-  } else {
-    storageQueue = JSON.parse(arrQueue);
-    // console.log(storageQueue);
-    let uniqueId = storageQueue.filter(({ id }) => id === obj.id);
-    // console.dir(Object.keys(uniqueId));
-    // console.log(uniqueId.length);
-    if (uniqueId.length >= 1) {
-      // console.log(uniqueId.length >= 1);
-      Notify.failure('we have alredy added that movie');
-      localStorage.removeItem(key);
-      localStorageAPI.save(key, storageQueue);
-    } else {
-      // console.log(uniqueId === []);
-      storageQueue.push(obj);
-      localStorage.removeItem(key);
-      localStorageAPI.save(key, storageQueue);
-    }
+  } else
+    if (
+    statusLocalStorage.localStorage === true &&
+    statusLocalStorage.btnText === false
+  ) {
+    recordingDataLocalStorage(key, obj, btnRef);
+  } else if (
+    statusLocalStorage.localStorage === false &&
+    statusLocalStorage.btnText === true
+  ) {
+    returnDataLocalStorage(key, obj, btnRef);
+  } else if (
+    statusLocalStorage.localStorage === false &&
+    statusLocalStorage.btnText === false
+  ) {
+    rewritesDataLocalStorage(key, obj, btnRef);
   }
+}
+
+function returnDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave = storageObj;
+  localStorage.removeItem(key);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
+  errorNotify();
+}
+
+function rewritesDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave = storageObj;
+  storageSave.push(obj);
+  localStorage.removeItem(key);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
+}
+
+function recordingDataLocalStorage(key, obj, btnRef) {
+  storageJSON = localStorage.getItem(key);
+  storageObj = JSON.parse(storageJSON);
+  storageSave.push(obj);
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = 'ADDED TO LIBRARY';
 }
 
 function errorNotify() {
-  Notify.failure('we have alredy added that movie');
+  Notify.failure('we have alredy added that movie');
 }

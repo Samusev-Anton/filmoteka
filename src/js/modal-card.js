@@ -2,20 +2,22 @@ import { Notify } from 'notiflix';
 import { apiModalDetails, apiMovieDetails } from './themovieApi';
 import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
-import { addWatchedBtn, addQueueBtn } from './modal-card-btn';
+import {
+  addLocalStorage,
+  checksForUniqueElement,
+} from './modal-card-btn';
 
 const STORAGE_KEY_WATCHED = 'watched';
 const STORAGE_KEY_QUEUE = 'queue';
 
+export let statusLocalStorage;
+let response;
+let addWathedBtnref = null;
+let addQueueBtnref = null;
+let iD = [];
+
 refs.homeGallery.addEventListener('click', clickOnMovie);
 
-// variable for localstorage
-let response;
-export let addWathedBtnref = null;
-export let addQueueBtnref = null;
-let iD = [];
-// -------------------------
-// Click Handler Function
 async function clickOnMovie(evt) {
   evt.preventDefault();
 
@@ -64,6 +66,14 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
+  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
+  if (statusLocalStorage.btnText === true) {
+    addWathedBtnref.innerText = 'ADDED TO LIBRARY';
+  }
+  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_QUEUE, response);
+  if (statusLocalStorage.btnText === true) {
+    addQueueBtnref.innerText = 'ADDED TO LIBRARY';
+  }
 }
 
 function onUnRotateModal() {
@@ -121,16 +131,15 @@ function onEscButton(evt) {
 }
 
 function handleClick(event) {
-  if (event.target.className === 'modal__button--queue') {
-    addQueueBtnref.innerText = 'ADDED TO VIEW';    
-    addWathedBtnref.disabled = true;
-    addQueueBtn(STORAGE_KEY_QUEUE, response);
-  }
   if (event.target.className === 'modal__button--watched') {
-    addWathedBtnref.innerText = 'ADDED IN REVISED';
     addQueueBtnref.disabled = true;
-    addWatchedBtn(STORAGE_KEY_WATCHED, response);
+    addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
   }
+
+  if (event.target.className === 'modal__button--queue') {
+    addWathedBtnref.disabled = true;
+    addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
+  }  
 
   if (event.target === refs.filmBox) {
     onCloseModal();
