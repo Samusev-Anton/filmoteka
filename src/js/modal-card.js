@@ -4,8 +4,8 @@ import markupModal from '../js/templates/markupModal.hbs';
 import { refs } from './refs';
 import { addLocalStorage, checksForUniqueElement } from './modal-card-btn';
 
-const STORAGE_KEY_WATCHED = 'WATCHED';
-const STORAGE_KEY_QUEUE = 'QUEUE';
+const STORAGE_KEY_WATCHED = 'watched';
+const STORAGE_KEY_QUEUE = 'queue';
 
 export let statusLocalStorage = true;
 let response;
