@@ -192,19 +192,34 @@ export const initPagination = ({ totalItems }) => {
     spinner.classList.remove('done');
     if (paginationSettings.searchType === 'popular') {
       apiHomePagePagin(page).then(data => {
-      refs.homeGallery.innerHTML = markupHomePage(dataRevize(data.results, getGenres()));
+        refs.homeGallery.innerHTML = markupHomePage(dataRevize(data.results, getGenres()));
+        spinner.classList.add('done');
       })
     } else if (paginationSettings.searchType === 'search') {
       apiHomeSearch(paginationSettings.pagination.inputData, page).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(dataRevize(data.results, getGenres()));
+        refs.homeGallery.innerHTML = markupSearchPage(dataRevize(data.results, getGenres()));
+        spinner.classList.add('done');
       })
     }
     else if (paginationSettings.searchType === 'filter') {
       getSearch(page, paginationSettings.pagination.year, paginationSettings.pagination.genre, paginationSettings.pagination.sort).then(data => {
-      refs.homeGallery.innerHTML = markupSearchPage(data.data.results);
+        const allGenres = getGenres();
+        // console.log(allGenres);
+        const films = data.data.results;
+        // console.log(films);
+
+        const normalFilmData = dataRevize(films, allGenres);
+        normalFilmData.forEach(element => {
+          if (element.genre_ids.length > 3) {
+            element.genres.splice(2, 2, { name: 'Other' });
+          }
+        });
+
+        refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
+        spinner.classList.add('done');
     })
     };
-    spinner.classList.add('done');
+    // spinner.classList.add('done');
     windowScroll();
 });
 return pagination;
