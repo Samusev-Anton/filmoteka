@@ -17,10 +17,9 @@ import markupHomePage from './templates/markupHomePage.hbs';
 import { apiHomePage } from './themovieApi';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
-import { initPagination, paginationSettings} from "./pagin";
+import { initPagination, paginationSettings } from './pagin';
 
-apiHomePage()
-.then(data => {
+apiHomePage().then(data => {
   const { total_results: totalItems } = data;
   initPagination({
     totalItems,
@@ -39,9 +38,8 @@ apiHomePage()
     }
   });
   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
-  trailerBtnVisible();
+  // trailerBtnVisible();
 });
-
 
 // apiHomePage().then(data => {
 //   // localStorage.clear();
@@ -58,4 +56,3 @@ apiHomePage()
 //   // console.log(normalFilmData);
 //   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
 // });
-
