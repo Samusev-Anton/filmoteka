@@ -28,6 +28,13 @@ function onSearchSubmit(evt) {
   btnSearch[1].options.selectedIndex = 0;
   btnSearch[2].options.selectedIndex = 0;
   getSearch(page, year, genre, sort).then(data => {
+    const { total_results: totalItems } = data.data;
+    paginationSettings.pagination.reset(totalItems);
+    paginationSettings.pagination.year = year;
+    paginationSettings.pagination.genre = genre;
+    paginationSettings.pagination.sort = sort;
+    paginationSettings.searchType = 'filter';
+
     const allGenres = getGenres();
     console.log(allGenres);
     const films = data.data.results;
@@ -52,13 +59,7 @@ function onSearchSubmit(evt) {
     
     // pagination.reset(data.results);
     // pagination.setTotalItems(data.total_results);
-    // pagination.reset();
-    // const { total_results: totalItems } = data;
-    // paginationSettings.pagination.reset(totalItems);
-    // paginationSettings.pagination.year = year;
-    // paginationSettings.pagination.genre = genre;
-    // paginationSettings.pagination.sort = sort;
-    // paginationSettings.searchType = 'filter';
+    // pagination.reset();;
     trailerBtnVisible();
   });
 
