@@ -6,7 +6,7 @@ let page = 1;
 
 export default {
   // Получение полной информации о трендах
-  async apiHomePage() {
+  async apiHomePage(page) {
     try {
       const { data } = await axios.get(
         `${TREND_URL}?api_key=${API_KEY}&page=${page}`
