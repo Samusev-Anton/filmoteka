@@ -1,6 +1,5 @@
-import { Notify } from 'notiflix';
 import { localStorageAPI } from './api/localStorageAPI';
-import { statusLocalStorage } from './modal-card';
+import { statusLocalStorageW, statusLocalStorageQ } from './modal-card';
 
 let storageJSON = [];
 let storageSave = [];
@@ -34,99 +33,56 @@ export function checksForUniqueElement(key, obj) {
 
 export function addLocalStorage(key, obj, btnRef) {
   if (
-    statusLocalStorage.localStorage === false &&
-    statusLocalStorage.btnText === true
+    (statusLocalStorageW.localStorage === false &&
+      statusLocalStorageW.btnText === true) ||
+    (statusLocalStorageQ.localStorage === false &&
+      statusLocalStorageQ.btnText === true)
   ) {
     removeDataLocalStorage(key, obj, btnRef);
-    console.log('removeDataLocalStorage');
   } else {
     rewritesDataLocalStorage(key, obj, btnRef);
-    console.log('rewritesDataLocalStorage');
   }
-  // if (storageSave.includes(obj)) {
-  //   removeDataLocalStorage(key, obj, btnRef);
-  //   console.log('removeDataLocalStorage');
-  //   console.log(storageSave);
-  //   console.log(obj);
-  // } else
-  //   if (
-  //   statusLocalStorage.localStorage === true &&
-  //   statusLocalStorage.btnText === false
-  // ) {
-  //   recordingDataLocalStorage(key, obj, btnRef);
-  //   console.log('recordingDataLocalStorage');
-  //   } 
-  //   else
-  //   if (
-  // (statusLocalStorage.localStorage === false &&
-  //   statusLocalStorage.btnText === false) ||
-  // (statusLocalStorage.localStorage === true &&
-  //   statusLocalStorage.btnText === true)
-  //   )  
 }
 
-function removeDataLocalStorage(key, obj, btnRef) {  
-  console.log(statusLocalStorage.localStorage);
-  console.log(statusLocalStorage.btnText);
-  storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+function removeDataLocalStorage(key, obj, btnRef) {
+  storageObj = localStorageAPI.load(key);
   let objId = obj.id;
-  console.log(obj.id);
-
+  storageSave = storageObj;
   storageSave.forEach((objStorage, index) => {
     if (objStorage.id === objId) {
-      return storageObj.splice(index, 1);
-      // localStorage.removeItem(key);
-      // localStorageAPI.save(key, storageObj);
+      storageObj.splice(index, 1);
     }
-    return storageObj;
   });
   localStorage.removeItem(key);
-  localStorageAPI.save(key, storageObj);
-  btnRef.innerText = `ADD TO ${key}`;  
-  statusLocalStorage.localStorage = true;
-  console.log(statusLocalStorage.localStorage);
-  statusLocalStorage.btnText = false;
-  console.log(statusLocalStorage.btnText);
-  // errorNotify();
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = `ADD TO ${key}`;
+  if (key === 'watched') {
+    statusLocalStorageW.localStorage = true;
+    statusLocalStorageW.btnText = false;
+  }
+  if (key === 'queue') {
+    statusLocalStorageQ.localStorage = true;
+    statusLocalStorageQ.btnText = false;
+  }
 }
 
 function rewritesDataLocalStorage(key, obj, btnRef) {
-  console.log(statusLocalStorage.localStorage);
-  console.log(statusLocalStorage.btnText);
   storageJSON = localStorage.getItem(key);
   storageObj = JSON.parse(storageJSON);
   storageSave = storageObj;
-  console.log(storageSave);
   if (storageSave === null) {
-    storageSave = []
+    storageSave = [];
   }
   storageSave.push(obj);
-  console.log(storageSave);
   localStorage.removeItem(key);
   localStorageAPI.save(key, storageSave);
-  btnRef.innerText = `REMOVE FROM ${key}`;  
-  statusLocalStorage.localStorage = false;
-  console.log(statusLocalStorage.localStorage);
-  statusLocalStorage.btnText = true;
-  console.log(statusLocalStorage.btnText);
-}
-
-function recordingDataLocalStorage(key, obj, btnRef) {
-  // storageJSON = localStorage.getItem(key);
-  // storageObj = JSON.parse(storageJSON);
-  console.log(statusLocalStorage.btnText);
-  console.log(statusLocalStorage.localStorage);
-  storageSave = [];
-  storageSave.push(obj);
-  localStorageAPI.save(key, storageSave);
   btnRef.innerText = `REMOVE FROM ${key}`;
-  statusLocalStorage.btnText = true;
-  console.log(statusLocalStorage.btnText);
-  statusLocalStorage.localStorage = false;
-  console.log(statusLocalStorage.localStorage);
-}
-
-function errorNotify() {
-  Notify.failure('we have alredy added that movie');
+  if (key === 'watched') {
+    statusLocalStorageW.localStorage = false;
+    statusLocalStorageW.btnText = true;
+  }
+  if (key === 'queue') {
+    statusLocalStorageQ.localStorage = false;
+  statusLocalStorageQ.btnText = true;
+  }
 }

@@ -7,7 +7,8 @@ import { addLocalStorage, checksForUniqueElement } from './modal-card-btn';
 const STORAGE_KEY_WATCHED = 'watched';
 const STORAGE_KEY_QUEUE = 'queue';
 
-export let statusLocalStorage = true;
+export let statusLocalStorageW = true;
+export let statusLocalStorageQ = true;
 let response;
 let addWathedBtnref = null;
 let addQueueBtnref = null;
@@ -71,17 +72,17 @@ function onOpenModal() {
   closeModalBtn.addEventListener('click', onCloseModal);
   document.body.classList.add('modal-open');
   refs.filmBox.classList.remove('visually-hidden');
-
-  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_WATCHED, response);
-  // statusLocalStorage.localStorage = true;
-  if (statusLocalStorage.btnText === true) {
+  
+  statusLocalStorageW = checksForUniqueElement(STORAGE_KEY_WATCHED, response);  
+  if (statusLocalStorageW.btnText === true) {
     addWathedBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_WATCHED}`;
-    statusLocalStorage.localStorage = false;
+    statusLocalStorageW.localStorage = false;
   }
-  statusLocalStorage = checksForUniqueElement(STORAGE_KEY_QUEUE, response);
-  if (statusLocalStorage.btnText === true) {
+  
+  statusLocalStorageQ = checksForUniqueElement(STORAGE_KEY_QUEUE, response);  
+  if (statusLocalStorageQ.btnText === true) {
     addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
-    statusLocalStorage.localStorage = false;
+    statusLocalStorageQ.localStorage = false;
   }
 
   if (respprodLogo !== null) {
@@ -152,10 +153,19 @@ function onOpenModal() {
 
   function handleClick(event) {
     if (event.target.className === 'modal__button--watched') {
+          
+      if (statusLocalStorageW.btnText === true) {
+        addWathedBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_WATCHED}`;
+        statusLocalStorageW.localStorage = false;
+      }
       addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
     }
 
-    if (event.target.className === 'modal__button--queue') {
+    if (event.target.className === 'modal__button--queue') {      
+      if (statusLocalStorageQ.btnText === true) {
+        addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
+        statusLocalStorageQ.localStorage = false;
+      }
       addLocalStorage(STORAGE_KEY_QUEUE, response, addQueueBtnref);
     }
 
