@@ -6,8 +6,8 @@ import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { apiHomePage, getSearch } from './themovieApi';
 import { inputData } from './search-films';
-import pagination from './pagin';
 import { trailerBtnVisible } from './trailer';
+import { paginationSettings } from './pagin';
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -49,15 +49,16 @@ function onSearchSubmit(evt) {
     spinner.classList.add('done');
 
     refs.homeGallery.innerHTML = markupSearchPage(normalFilmData);
-
-    //pagination
-    //reset results
-    pagination.reset(data.data.results);
-    //set total results of filtered movies
-    pagination.setTotalItems(data.data.total_results);
-    console.log('Total pages: ', data.data.total_pages);
-    //reset pagination
-    pagination.reset();
+    
+    // pagination.reset(data.results);
+    // pagination.setTotalItems(data.total_results);
+    // pagination.reset();
+    // const { total_results: totalItems } = data;
+    // paginationSettings.pagination.reset(totalItems);
+    // paginationSettings.pagination.year = year;
+    // paginationSettings.pagination.genre = genre;
+    // paginationSettings.pagination.sort = sort;
+    // paginationSettings.searchType = 'filter';
     trailerBtnVisible();
   });
 
