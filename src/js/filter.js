@@ -6,7 +6,8 @@ import { localStorageAPI } from './api/localStorageAPI';
 import markupSearchPage from '../js/templates/markupHomePage.hbs';
 import { apiHomePage, getSearch } from './themovieApi';
 import { inputData } from './search-films';
-import pagination from './pagin';
+// import pagination from './pagin';
+import { paginationSettings } from './pagin';
 
 const btnReset = document.querySelector('#btnResetFilter');
 const spinner = document.querySelector('.preloader');
@@ -27,6 +28,13 @@ function onSearchSubmit(evt) {
   btnSearch[1].options.selectedIndex = 0;
   btnSearch[2].options.selectedIndex = 0;
   getSearch(page, year, genre, sort).then(data => {
+    const { total_results: totalItems } = data.data;
+    paginationSettings.pagination.reset(totalItems);
+    paginationSettings.pagination.year = year;
+    paginationSettings.pagination.genre = genre;
+    paginationSettings.pagination.sort = sort;
+    paginationSettings.searchType = 'filter';
+
     const allGenres = getGenres();
     // console.log(allGenres);
     const films = data.data.results;
@@ -51,12 +59,12 @@ function onSearchSubmit(evt) {
 
     //pagination
     //reset results
-    pagination.reset(data.data.results);
-    //set total results of filtered movies
-    pagination.setTotalItems(data.data.total_results);
-    // console.log('Total pages: ', data.data.total_pages);
-    //reset pagination
-    pagination.reset();
+    // pagination.reset(data.data.results);
+    // //set total results of filtered movies
+    // pagination.setTotalItems(data.data.total_results);
+    // // console.log('Total pages: ', data.data.total_pages);
+    // //reset pagination
+    // pagination.reset();
     refs.sticker.textContent = 'SEARCHED MOVIES';
   });
 
