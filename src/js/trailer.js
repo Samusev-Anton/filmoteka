@@ -7,22 +7,21 @@ const basicLightbox = require('basiclightbox');
 let instance;
 let visiblePlayer = false;
 
-document.addEventListener('click', watchTrailer);
+document.addEventListener('click', watchTrailerLBox);
 
-document.addEventListener('keydown', closePlayer);
-
-function watchTrailer(event) {
+function watchTrailerLBox(event) {
   const target = event.target;
 
   if (target.classList.contains('button__trailer')) {
     const movieID = target.dataset.id;
     apiMovieDetails(movieID).then(resp => {
-      createPlayer(resp.results[0].key);
+      createLightBox(resp.results[0].key);
+      document.addEventListener('keydown', closeLightBox);
     });
   }
 }
 
-function createPlayer(videoKey) {
+function createLightBox(videoKey) {
   instance = basicLightbox.create(
     `
     <iframe src='https://www.youtube.com/embed/${videoKey}' 
@@ -33,21 +32,23 @@ function createPlayer(videoKey) {
   </iframe>
 `
   );
-  document.addEventListener('click', closePlayerOnClick);
+  document.addEventListener('click', closeLightBoxOnClick);
+
   instance.show(() => document.body.classList.add('modal-open'));
 }
 
-function closePlayer(evt) {
+function closeLightBox(evt) {
   if (evt.key === 'Escape') {
     instance.close(() => document.body.classList.remove('modal-open'));
+    document.removeEventListener('keydown', closeLightBox);
   }
 }
 
-function closePlayerOnClick() {
+function closeLightBoxOnClick() {
   visiblePlayer = basicLightbox.visible();
 
   if (visiblePlayer) {
     document.body.classList.remove('modal-open');
-    document.removeEventListener('click', closePlayerOnClick);
+    document.removeEventListener('click', closeLightBoxOnClick);
   }
 }
