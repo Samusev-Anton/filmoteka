@@ -113,11 +113,11 @@ export const initPagination = ({ totalItems }) => {
       refs.homeGallery.innerHTML = markupSearchPage(dataRevize(data.results, getGenres()));
       })
     }
-    // else {
-    //   getSearch(page, paginationSettings.pagination.year, paginationSettings.pagination.genre, paginationSettings.pagination.sort).then(data => {
-    //   refs.homeGallery.innerHTML = markupSearchPage(data.data.results);
-    // })
-    // };
+    else if (paginationSettings.searchType === 'filter') {
+      getSearch(page, paginationSettings.pagination.year, paginationSettings.pagination.genre, paginationSettings.pagination.sort).then(data => {
+      refs.homeGallery.innerHTML = markupSearchPage(data.data.results);
+    })
+    };
     spinner.classList.add('done');
     windowScroll();
 });
