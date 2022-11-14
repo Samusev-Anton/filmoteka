@@ -18,8 +18,17 @@ import { apiHomePage } from './themovieApi';
 import { refs } from './refs';
 import { getGenres, dataRevize } from './data/data-revize';
 import { trailerBtnVisible } from './trailer';
+import { initPagination, paginationSettings} from "./pagin";
 
-apiHomePage().then(data => {
+apiHomePage()
+.then(data => {
+  const { total_results: totalItems } = data;
+  initPagination({
+    totalItems,
+  });
+  paginationSettings.searchType = 'popular';
+  paginationSettings.totalItemsHome = totalItems;
+
   const allGenres = getGenres();
   //   console.log(allGenres);
   const films = data.results;
@@ -30,7 +39,7 @@ apiHomePage().then(data => {
       element.genres.splice(2, 2, { name: 'Other' });
     }
   });
-  console.log(normalFilmData);
   refs.homeGallery.innerHTML = markupHomePage(normalFilmData);
   trailerBtnVisible();
 });
+
