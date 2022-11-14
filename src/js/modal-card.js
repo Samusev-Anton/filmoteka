@@ -153,10 +153,7 @@ function onOpenModal() {
 
   function handleClick(event) {
     if (event.target.className === 'modal__button--watched') {
-      statusLocalStorageW = checksForUniqueElement(
-        STORAGE_KEY_WATCHED,
-        response
-      );      
+          
       if (statusLocalStorageW.btnText === true) {
         addWathedBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_WATCHED}`;
         statusLocalStorageW.localStorage = false;
@@ -164,8 +161,7 @@ function onOpenModal() {
       addLocalStorage(STORAGE_KEY_WATCHED, response, addWathedBtnref);
     }
 
-    if (event.target.className === 'modal__button--queue') {
-      statusLocalStorageQ = checksForUniqueElement(STORAGE_KEY_QUEUE, response);      
+    if (event.target.className === 'modal__button--queue') {      
       if (statusLocalStorageQ.btnText === true) {
         addQueueBtnref.innerText = `REMOVE FROM ${STORAGE_KEY_QUEUE}`;
         statusLocalStorageQ.localStorage = false;

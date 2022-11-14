@@ -44,40 +44,45 @@ export function addLocalStorage(key, obj, btnRef) {
   }
 }
 
-function removeDataLocalStorage(key, obj, btnRef) {  
-  storageJSON = localStorage.getItem(key);
-  storageObj = JSON.parse(storageJSON);
+function removeDataLocalStorage(key, obj, btnRef) {
+  storageObj = localStorageAPI.load(key);
   let objId = obj.id;
-
+  storageSave = storageObj;
   storageSave.forEach((objStorage, index) => {
     if (objStorage.id === objId) {
-      return storageObj.splice(index, 1);
+      storageObj.splice(index, 1);
     }
-    return storageObj;
   });
-
   localStorage.removeItem(key);
-  localStorageAPI.save(key, storageObj);
-  btnRef.innerText = `ADD TO ${key}`;  
-  statusLocalStorageW.localStorage = true;
-  statusLocalStorageQ.localStorage = true;  
-  statusLocalStorageW.btnText = false;
-  statusLocalStorageQ.btnText = false;  
+  localStorageAPI.save(key, storageSave);
+  btnRef.innerText = `ADD TO ${key}`;
+  if (key === 'watched') {
+    statusLocalStorageW.localStorage = true;
+    statusLocalStorageW.btnText = false;
+  }
+  if (key === 'queue') {
+    statusLocalStorageQ.localStorage = true;
+    statusLocalStorageQ.btnText = false;
+  }
 }
 
 function rewritesDataLocalStorage(key, obj, btnRef) {
   storageJSON = localStorage.getItem(key);
   storageObj = JSON.parse(storageJSON);
-  storageSave = storageObj;  
+  storageSave = storageObj;
   if (storageSave === null) {
-    storageSave = []
+    storageSave = [];
   }
-  storageSave.push(obj);  
+  storageSave.push(obj);
   localStorage.removeItem(key);
   localStorageAPI.save(key, storageSave);
-  btnRef.innerText = `REMOVE FROM ${key}`;  
-  statusLocalStorageW.localStorage = false;
-  statusLocalStorageW.btnText = true;
-  statusLocalStorageQ.localStorage = false;
-  statusLocalStorageQ.btnText = true;  
+  btnRef.innerText = `REMOVE FROM ${key}`;
+  if (key === 'watched') {
+    statusLocalStorageW.localStorage = false;
+    statusLocalStorageW.btnText = true;
+  }
+  if (key === 'queue') {
+    statusLocalStorageQ.localStorage = false;
+  statusLocalStorageQ.btnText = true;
+  }
 }
