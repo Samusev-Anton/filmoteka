@@ -76,7 +76,7 @@ function onButtonClick(evt) {
       //reset pagination
       pagination.reset();
 
-      refs.sticker.textContent = 'SEARCHED FILMS';
+      refs.sticker.textContent = 'SEARCHED MOVIES';
     });
   }
 }
